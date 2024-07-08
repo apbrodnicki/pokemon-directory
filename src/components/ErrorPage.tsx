@@ -4,7 +4,6 @@ import { isRouteErrorResponse, useRouteError } from 'react-router-dom';
 import { Footer } from './Footer';
 import { Header } from './Header';
 
-
 export const ErrorPage = (): React.JSX.Element => {
 	const error = useRouteError();
 	let errorMessage: string;

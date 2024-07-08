@@ -1,6 +1,6 @@
 import { Box, Grid, Paper, Typography } from '@mui/material';
 import { typeColors } from 'data';
-import { capitalizeFirstLetter } from 'helper';
+import { capitalizeFirstLetter } from 'helper/helper';
 import PopupState, { bindHover, bindPopover } from 'material-ui-popup-state';
 import HoverPopover from 'material-ui-popup-state/HoverPopover';
 import type { DamageRelation, Type, Types } from 'models/models';

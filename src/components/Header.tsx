@@ -1,9 +1,9 @@
 import { Box, Paper, Typography } from '@mui/material';
 import { useFetchSprite } from 'api/useFetchSprite';
-import { CustomTooltip } from 'components/custom/CustomTooltip';
 import { PokemonListContext } from 'contexts/PokemonListContext';
 import { useUpdatePokemonList, type updatePokemonListProps } from 'hooks/useUpdatePokemonList';
 import React, { useContext } from 'react';
+import { CustomTooltip } from './custom/CustomTooltip';
 
 export const Header = (): React.JSX.Element => {
 	const { pokemonList } = useContext(PokemonListContext);

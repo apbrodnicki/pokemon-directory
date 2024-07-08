@@ -1,4 +1,21 @@
-import { capitalizeFirstLetter } from 'helper';
+export const capitalizeFirstLetter = (word: string): string => {
+	return word.charAt(0).toUpperCase() + word.slice(1);
+};
+
+export const reduceArray = (array: unknown[][]): unknown[] => {
+	return array.reduce(
+		(accumulator, currentArray) => {
+			for (const currentElement of currentArray) {
+				if (!accumulator.includes(currentElement)) {
+					accumulator.push(currentElement);
+				}
+			}
+
+			return accumulator;
+		},
+		[]
+	);
+};
 
 /**
  * Converts an ability string for cleaner output, dry-skin -> Dry Skin

@@ -6,14 +6,13 @@ import { RemoveCellHeader } from 'components/cells/RemoveCellHeader';
 import { StatCell } from 'components/cells/StatCell';
 import { TypesCell } from 'components/cells/TypesCell';
 import type { Ability, Type } from 'models/models';
-import React from 'react';
 
 interface getDataGridColumnsProps {
 	abilitiesWithDescriptions: Ability[],
 	types: Type[]
 }
 
-export const getDataGridColumns = ({ abilitiesWithDescriptions, types } : getDataGridColumnsProps): GridColDef[] => {
+export const getDataGridColumns = ({ abilitiesWithDescriptions, types }: getDataGridColumnsProps): GridColDef[] => {
 	return [
 		{
 			field: 'remove',

@@ -28,15 +28,16 @@ export interface GenericPokemon {
 			}
 		},
 	},
-	[key: string]: any,
+	id: number,
+	[key: string]: unknown,
 }
 
-export interface GenericAllPokemonResponse {
+export interface GenericAllPokemon {
 	results: [{
 		name: string,
 		url: string,
 	}],
-	[key: string]: any,
+	[key: string]: unknown,
 }
 
 export interface GenericAbility {
@@ -53,14 +54,14 @@ export interface GenericAbility {
 			name: string,
 		}
 	}]
-	[key: string]: any,
+	[key: string]: unknown,
 }
 
 export interface GenericAbilities {
 	results: [{
 		name: string,
 	}],
-	[key: string]: any,
+	[key: string]: unknown,
 }
 
 export interface GenericType {
@@ -85,7 +86,7 @@ export interface GenericType {
 			name: string
 		}],
 	},
-	[key: string]: any,
+	[key: string]: unknown,
 }
 
 export interface GenericDamageRelation {

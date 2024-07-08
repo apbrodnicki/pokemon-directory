@@ -1,13 +1,16 @@
-import { capitalizeFirstLetter } from 'helper/helper';
-import type { GenericAbility, GenericAllPokemonResponse, GenericDamageRelation, GenericPokemon, GenericType } from 'models/genericModels';
-import type { Ability, DamageRelation, Pokemon, Stats, Type } from 'models/models';
+import { formatPokemonName, getGeneration } from 'helper/helper';
+import type { GenericAbility, GenericAllPokemon, GenericDamageRelation, GenericPokemon, GenericType } from 'models/genericModels';
+import type { Ability, DamageRelation, Pokemon, PokemonAutocompleteItem, Stats, Type } from 'models/models';
 
 export const getSprite = (pokemon: GenericPokemon): string => {
 	return pokemon.sprites.versions['generation-v']['black-white'].animated.front_default ?? pokemon.sprites.front_default; // choose gif over png
 };
 
+export const getPokedexNumber = (pokemon: GenericPokemon): number => {
+	return pokemon.id;
+};
+
 export const filterPokemonData = (pokemon: GenericPokemon): Pokemon => {
-	let name: string = '';
 	const types: string[] = [];
 	const abilities: string[] = [];
 	const stats = {
@@ -19,19 +22,7 @@ export const filterPokemonData = (pokemon: GenericPokemon): Pokemon => {
 		speed: 0,
 	};
 
-	if (pokemon.name.includes('-')) {
-		const split = pokemon.name.split('-');
-
-		for (const word of split) {
-			name += capitalizeFirstLetter(word) + ' ';
-		}
-
-		if (name.includes('Mega')) {
-			name = 'Mega ' + name.replace('Mega', '');
-		}
-	} else {
-		name = capitalizeFirstLetter(pokemon.name);
-	}
+	const name = formatPokemonName(pokemon.name);
 
 	for (const type of pokemon.types) {
 		types.push(type.type.name);
@@ -60,6 +51,13 @@ export const filterPokemonData = (pokemon: GenericPokemon): Pokemon => {
 		...convertedStats,
 	};
 };
+
+export const getPokemonAutocompleteItem = (pokemon: GenericPokemon): PokemonAutocompleteItem => ({
+	pokedexNumber: pokemon.id,
+	name: pokemon.name,
+	sprite: getSprite(pokemon),
+	generation: getGeneration(pokemon.id)
+});
 
 export const getAbilityDescription = (ability: GenericAbility): Ability => {
 	let description: string = '';
@@ -112,6 +110,6 @@ export const filterTypeData = (type: GenericType): Type => {
 	};
 };
 
-export const filterAllPokemonData = (allPokemon: GenericAllPokemonResponse): string[] => {
+export const getAllPokemonNames = (allPokemon: GenericAllPokemon): string[] => {
 	return allPokemon.results.map((pokemon) => pokemon.name);
 };

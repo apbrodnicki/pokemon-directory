@@ -1,14 +1,14 @@
-import { Box, CardMedia, Paper } from '@mui/material';
+import { Box, Paper } from '@mui/material';
 import { DataGrid, type GridColDef } from '@mui/x-data-grid';
 import { useFetchAbilityDescriptions } from 'api/useFetchAbilityDescriptions';
 import { useFetchPokemon } from 'api/useFetchPokemon';
 import { useFetchTypes } from 'api/useFetchTypes';
-import loader from 'assets/loader.webm';
 import { PokemonListContext } from 'contexts/PokemonListContext';
+import { reduceArray } from 'helper';
 import { getDataGridColumns } from 'helper/getDataGridColumns';
-import { reduceArray } from 'helper/helper';
 import { type Pokemon } from 'models/models';
 import React, { useContext, useState } from 'react';
+import { Loader } from './Loader';
 
 export const PokemonDataGrid = (): React.JSX.Element => {
 	const { pokemonList } = useContext(PokemonListContext);
@@ -20,10 +20,10 @@ export const PokemonDataGrid = (): React.JSX.Element => {
 
 	const pokemon = useFetchPokemon({ pokemonList, setIsLoadingPokemon });
 
-	const abilities = reduceArray(pokemon.map(mon => mon.abilities));
+	const abilities = reduceArray(pokemon.map(mon => mon.abilities)) as string[];
 	const abilitiesWithDescriptions = useFetchAbilityDescriptions({ abilities, setIsLoadingAbilityDescriptions });
 
-	const typesList = reduceArray(pokemon.map(mon => mon.types));
+	const typesList = reduceArray(pokemon.map(mon => mon.types)) as string[];
 	const types = useFetchTypes({ typesList, setIsLoadingTypes });
 
 	const columns: GridColDef[] = getDataGridColumns({ abilitiesWithDescriptions, types });
@@ -56,17 +56,7 @@ export const PokemonDataGrid = (): React.JSX.Element => {
 					</Box>
 				</Paper>
 			) : (
-				<Box display='flex' justifyContent='center' m={3}>
-					<CardMedia
-						component='video'
-						src={loader}
-						autoPlay
-						loop
-						muted
-						width='800px'
-						height='600px'
-					/>
-				</Box>
+				<Loader />
 			)}
 		</>
 	);

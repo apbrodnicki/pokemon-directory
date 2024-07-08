@@ -29,7 +29,8 @@ export const useFetchAbilityDescriptions = (
 		};
 
 		void fetchData();
-	}, [abilities.join(',')]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [abilities.join(','), setIsLoadingAbilityDescriptions]); // abilities needs to be converted to a primitive type to avoid infinite calls
 
 	return descriptions;
 };

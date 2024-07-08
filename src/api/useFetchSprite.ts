@@ -1,7 +1,7 @@
-import { fetchPokemon } from 'api/fetchPokemon';
 import { getSprite } from 'helper/filterApiData';
 import { type GenericPokemon } from 'models/genericModels';
 import { useEffect, useState } from 'react';
+import { fetchPokemon } from './fetchPokemon';
 
 export const useFetchSprite = (name: string): string => {
 	const [sprite, setSprite] = useState<string>('');

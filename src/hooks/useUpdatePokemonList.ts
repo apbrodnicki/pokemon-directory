@@ -1,20 +1,21 @@
 import { PokemonListContext } from 'contexts/PokemonListContext';
 import { SnackbarContext } from 'contexts/SnackbarContext';
+import { formatPokemonName } from 'helper/helper';
 import type React from 'react';
 import { useContext } from 'react';
 
-export interface updatePokemonProps {
+export interface updatePokemonListProps {
 	action: 'add' | 'remove',
 	pokemonInput: string[],
 	setPokemonInput: React.Dispatch<React.SetStateAction<string[]>>
 }
 
-export const useUpdatePokemon = (): ({ action, pokemonInput, setPokemonInput }: updatePokemonProps) => void => {
+export const useUpdatePokemonList = (): ({ action, pokemonInput, setPokemonInput }: updatePokemonListProps) => void => {
 	const { setSnackbarOpen, setSnackbarMessage, setSnackbarColor } = useContext(SnackbarContext);
 	const { pokemonList, setPokemonList } = useContext(PokemonListContext);
 
-	const updatePokemon = (
-		{ action, pokemonInput, setPokemonInput }: updatePokemonProps
+	const updatePokemonList = (
+		{ action, pokemonInput, setPokemonInput }: updatePokemonListProps
 	): void => {
 		if (pokemonInput.length < 1) {
 			setSnackbarMessage('Error: Input value is empty.');
@@ -27,7 +28,7 @@ export const useUpdatePokemon = (): ({ action, pokemonInput, setPokemonInput }: 
 		if (action === 'add') {
 			for (const name of pokemonInput) {
 				if (pokemonList.includes(name)) {
-					setSnackbarMessage(`Error: ${name} has already been added.`);
+					setSnackbarMessage(`Error: ${formatPokemonName(name)} has already been added.`);
 					setSnackbarColor('error');
 					setSnackbarOpen(true);
 
@@ -51,5 +52,5 @@ export const useUpdatePokemon = (): ({ action, pokemonInput, setPokemonInput }: 
 		setPokemonInput([]);
 	};
 
-	return updatePokemon;
+	return updatePokemonList;
 };

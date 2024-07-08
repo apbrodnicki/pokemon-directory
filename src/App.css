@@ -1,15 +1,17 @@
-body {
-	background-color: #4F6367;
-	margin: 0;
-}
-
-#root {
+#pokemon-directory {
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
+	background-color: #4F6367;
+}
+
+div > .MuiAutocomplete-listbox {
+	padding: 0px;
+	max-height: 50vh;
 }
 
 /* theme:
 '#4F6367'
 '#7A9E9F'
-'#B8D8D8' */
+'#B8D8D8'
+'#DDEDED' */

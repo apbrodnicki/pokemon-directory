@@ -2,23 +2,23 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import { Box, Link as MuiLink, Paper, Typography } from '@mui/material';
 import { useFetchSprite } from 'api/useFetchSprite';
 import pokeApiLogo from 'assets/pokeapi-logo.svg';
+import { CustomTooltip } from 'components/custom/CustomTooltip';
 import { PokemonListContext } from 'contexts/PokemonListContext';
-import { useUpdatePokemon, type updatePokemonProps } from 'helper/useUpdatePokemon';
+import { useUpdatePokemonList, type updatePokemonListProps } from 'hooks/useUpdatePokemonList';
 import React, { useContext } from 'react';
-import { CustomTooltip } from './custom/CustomTooltip';
 
 export const Footer = (): React.JSX.Element => {
 	const { pokemonList } = useContext(PokemonListContext);
 
-	const updatePokemon = useUpdatePokemon();
+	const updatePokemonList = useUpdatePokemonList();
 
 	const onClick = (name: string): void => {
-		let action: updatePokemonProps['action'] = 'add';
+		let action: updatePokemonListProps['action'] = 'add';
 		if (pokemonList.includes(name)) {
 			action = 'remove';
 		}
 
-		updatePokemon({ action, pokemonInput: [name], setPokemonInput: () => {} });
+		updatePokemonList({ action, pokemonInput: [name], setPokemonInput: () => { } });
 	};
 
 	return (
@@ -57,7 +57,7 @@ export const Footer = (): React.JSX.Element => {
 					</Box>
 					<Box display='flex' alignItems='center' justifyContent='center'>
 						<Typography variant='subtitle2' mx={1}>
-								Data provided by PokéApi
+							Data provided by PokéApi
 						</Typography>
 						<MuiLink href='https://pokeapi.co/' target='_blank' underline='hover' color='black' mx={1}>
 							<CustomTooltip title='PokéApi Website'>

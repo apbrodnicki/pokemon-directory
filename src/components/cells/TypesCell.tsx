@@ -1,6 +1,6 @@
 import { Box, Grid, Paper, Typography } from '@mui/material';
 import { typeColors } from 'data';
-import { capitalizeFirstLetter } from 'helper/helper';
+import { capitalizeFirstLetter } from 'helper';
 import PopupState, { bindHover, bindPopover } from 'material-ui-popup-state';
 import HoverPopover from 'material-ui-popup-state/HoverPopover';
 import type { DamageRelation, Type, Types } from 'models/models';
@@ -100,7 +100,7 @@ export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Ele
 			if (damageRelation.halfDamageFrom.includes(immuneType)) {
 				damageRelation.halfDamageFrom = damageRelation.halfDamageFrom.filter((type) => type !== immuneType);
 			}
-			if ( damageRelation.quarterDamageFrom !== undefined && damageRelation.quarterDamageFrom.includes(immuneType)) {
+			if (damageRelation.quarterDamageFrom !== undefined && damageRelation.quarterDamageFrom.includes(immuneType)) {
 				damageRelation.quarterDamageFrom = damageRelation.quarterDamageFrom.filter((type) => type !== immuneType);
 			}
 		}

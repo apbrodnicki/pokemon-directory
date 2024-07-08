@@ -1,8 +1,8 @@
-import { fetchPokemon } from 'api/fetchPokemon';
 import { filterPokemonData } from 'helper/filterApiData';
 import { type Pokemon } from 'models/models';
 import type React from 'react';
 import { useEffect, useState } from 'react';
+import { fetchPokemon } from './fetchPokemon';
 
 interface useFetchPokemonProps {
 	pokemonList: string[],
@@ -29,7 +29,7 @@ export const useFetchPokemon = (
 		};
 
 		void fetchData();
-	}, [pokemonList]);
+	}, [pokemonList, setIsLoadingPokemon]);
 
 	return pokemon;
 };

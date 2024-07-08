@@ -1,22 +1,22 @@
 import { Box, Paper, Typography } from '@mui/material';
 import { useFetchSprite } from 'api/useFetchSprite';
+import { CustomTooltip } from 'components/custom/CustomTooltip';
 import { PokemonListContext } from 'contexts/PokemonListContext';
-import { useUpdatePokemon, type updatePokemonProps } from 'helper/useUpdatePokemon';
+import { useUpdatePokemonList, type updatePokemonListProps } from 'hooks/useUpdatePokemonList';
 import React, { useContext } from 'react';
-import { CustomTooltip } from './custom/CustomTooltip';
 
 export const Header = (): React.JSX.Element => {
 	const { pokemonList } = useContext(PokemonListContext);
 
-	const updatePokemon = useUpdatePokemon();
+	const updatePokemonList = useUpdatePokemonList();
 
 	const onClick = (name: string): void => {
-		let action: updatePokemonProps['action'] = 'add';
+		let action: updatePokemonListProps['action'] = 'add';
 		if (pokemonList.includes(name)) {
 			action = 'remove';
 		}
 
-		updatePokemon({ action, pokemonInput: [name], setPokemonInput: () => {} });
+		updatePokemonList({ action, pokemonInput: [name], setPokemonInput: () => { } });
 	};
 
 	return (

@@ -12,7 +12,8 @@ export const UpdatePokemon = (): React.JSX.Element => {
 
 	const [pokemonInput, setPokemonInput] = useState<string[]>([]);
 	const [autocompleteKey, setAutocompleteKey] = useState<string>('');
-	const [inputValue, setInputValue] = useState<string>('');
+	const [addInputValue, setAddInputValue] = useState<string>('');
+	const [removeInputValue, setRemoveInputValue] = useState<string>('');
 	const [isLoadingAddAutocompleteItems, setIsLoadingAddAutocompleteItems] = useState<boolean>(true);
 	const [isLoadingRemoveAutocompleteItems, setIsLoadingRemoveAutocompleteItems] = useState<boolean>(true);
 	const isLoading = isLoadingAddAutocompleteItems || isLoadingRemoveAutocompleteItems;
@@ -72,29 +73,33 @@ export const UpdatePokemon = (): React.JSX.Element => {
 								isOptionEqualToValue={(option, value) => (option as PokemonAutocompleteItem).name === (value as PokemonAutocompleteItem).name}
 								getOptionLabel={(option) => (option as PokemonAutocompleteItem).name}
 								onChange={(_, value) => { onAutocompleteChange((value as PokemonAutocompleteItem[])); }}
-								inputValue={inputValue}
+								inputValue={addInputValue}
 								onInputChange={(event, value, reason) => {
 									if (event !== null && event.type === 'blur') {
-										setInputValue('');
+										setAddInputValue('');
 									} else if (reason !== 'reset') {
-										setInputValue(value);
+										setAddInputValue(value);
 									}
 								}}
-								renderOption={(props, option) => (
-									<StyledOptionListItem {...props}>
-										<Typography mr={3}>#{(option as PokemonAutocompleteItem).pokedexNumber}</Typography>
-										<Typography flexGrow={1}>{formatPokemonName((option as PokemonAutocompleteItem).name)}</Typography>
-										<Box
-											minWidth={100}
-											minHeight={100}
-											display='flex'
-											alignItems='center'
-											justifyContent='center'
-										>
-											<Box component='img' src={(option as PokemonAutocompleteItem).sprite} loading='lazy' alt='sprite' mr={1} />
-										</Box>
-									</StyledOptionListItem>
-								)}
+								renderOption={(props, option) => {
+									const { key, ...remainingProps } = props;
+
+									return (
+										<StyledOptionListItem {...remainingProps}>
+											<Typography mr={3}>#{(option as PokemonAutocompleteItem).pokedexNumber}</Typography>
+											<Typography flexGrow={1}>{formatPokemonName((option as PokemonAutocompleteItem).name)}</Typography>
+											<Box
+												minWidth={100}
+												minHeight={100}
+												display='flex'
+												alignItems='center'
+												justifyContent='center'
+											>
+												<Box component='img' src={(option as PokemonAutocompleteItem).sprite} loading='lazy' alt='sprite' mr={1} />
+											</Box>
+										</StyledOptionListItem>
+									);
+								}}
 								renderInput={(params) => (
 									<>
 										<TextField
@@ -112,16 +117,24 @@ export const UpdatePokemon = (): React.JSX.Element => {
 										</Button>
 									</>
 								)}
-								renderGroup={(params) => (
-									<StyledGroupListItem key={params.key}>
-										<Box sx={{ width: '100%', backgroundColor: '#7A9E9F' }}>
-											<Typography align='center'>
-												{params.group}
-											</Typography>
-										</Box>
-										<List sx={{ width: '100%', padding: 0 }}>{params.children}</List>
-									</StyledGroupListItem>
-								)}
+								renderGroup={(params) => {
+									const childrenArray = Array.isArray(params.children) ? params.children : [params.children];
+
+									return (
+										<StyledGroupListItem key={params.key}>
+											<Box sx={{ width: '100%', backgroundColor: '#7A9E9F' }}>
+												<Typography align='center'>
+													{params.group}
+												</Typography>
+											</Box>
+											<List sx={{ width: '100%', padding: 0 }}>
+												{childrenArray.map((child: React.ReactNode, index: number) => (
+													<Box key={`child-${index}`}>{child}</Box>
+												))}
+											</List>
+										</StyledGroupListItem>
+									);
+								}}
 							/>
 						</Paper>
 					</Grid>
@@ -136,29 +149,33 @@ export const UpdatePokemon = (): React.JSX.Element => {
 								isOptionEqualToValue={(option, value) => option.name === value.name}
 								getOptionLabel={(option) => option.name}
 								onChange={(_, value) => { onAutocompleteChange(value); }}
-								inputValue={inputValue}
+								inputValue={removeInputValue}
 								onInputChange={(event, value, reason) => {
 									if (event !== null && event.type === 'blur') {
-										setInputValue('');
+										setRemoveInputValue('');
 									} else if (reason !== 'reset') {
-										setInputValue(value);
+										setRemoveInputValue(value);
 									}
 								}}
-								renderOption={(props, option) => (
-									<StyledOptionListItem {...props}>
-										<Typography mr={3}>#{option.pokedexNumber}</Typography>
-										<Typography flexGrow={1}>{formatPokemonName(option.name)}</Typography>
-										<Box
-											minWidth={100}
-											minHeight={100}
-											display='flex'
-											alignItems='center'
-											justifyContent='center'
-										>
-											<Box component='img' src={option.sprite} loading='lazy' alt='sprite' mr={1} />
-										</Box>
-									</StyledOptionListItem>
-								)}
+								renderOption={(props, option) => {
+									const { key, ...remainingProps } = props;
+
+									return (
+										<StyledOptionListItem {...remainingProps}>
+											<Typography mr={3}>#{option.pokedexNumber}</Typography>
+											<Typography flexGrow={1}>{formatPokemonName(option.name)}</Typography>
+											<Box
+												minWidth={100}
+												minHeight={100}
+												display='flex'
+												alignItems='center'
+												justifyContent='center'
+											>
+												<Box component='img' src={option.sprite} loading='lazy' alt='sprite' mr={1} />
+											</Box>
+										</StyledOptionListItem>
+									);
+								}}
 								renderInput={(params) => (
 									<>
 										<TextField
@@ -176,16 +193,24 @@ export const UpdatePokemon = (): React.JSX.Element => {
 										</Button>
 									</>
 								)}
-								renderGroup={(params) => (
-									<StyledGroupListItem key={params.key}>
-										<Box sx={{ width: '100%', backgroundColor: '#7A9E9F' }}>
-											<Typography align='center'>
-												{params.group}
-											</Typography>
-										</Box>
-										<List sx={{ width: '100%', padding: 0 }}>{params.children}</List>
-									</StyledGroupListItem>
-								)}
+								renderGroup={(params) => {
+									const childrenArray = Array.isArray(params.children) ? params.children : [params.children];
+
+									return (
+										<StyledGroupListItem key={params.key}>
+											<Box sx={{ width: '100%', backgroundColor: '#7A9E9F' }}>
+												<Typography align='center'>
+													{params.group}
+												</Typography>
+											</Box>
+											<List sx={{ width: '100%', padding: 0 }}>
+												{childrenArray.map((child: React.ReactNode, index: number) => (
+													<Box key={`child-${index}`}>{child}</Box>
+												))}
+											</List>
+										</StyledGroupListItem>
+									);
+								}}
 							/>
 						</Paper>
 					</Grid>

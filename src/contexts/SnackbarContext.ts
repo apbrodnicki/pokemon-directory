@@ -15,6 +15,6 @@ export const SnackbarContext = createContext<SnackContextProps>({
 	setSnackbarOpen: () => {},
 	snackbarMessage: '',
 	setSnackbarMessage: () => {},
-	snackbarColor: 'success',
+	snackbarColor: 'info',
 	setSnackbarColor: () => {}
 });

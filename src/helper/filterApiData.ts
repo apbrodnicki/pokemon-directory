@@ -45,7 +45,7 @@ export const filterPokemonData = (pokemon: GenericPokemon): Pokemon => {
 	return {
 		name,
 		originalName: pokemon.name,
-		sprite: pokemon.sprites.versions['generation-v']['black-white'].animated.front_default ?? pokemon.sprites.front_default, // choose gif over png
+		sprite: getSprite(pokemon),
 		types,
 		abilities,
 		...convertedStats,

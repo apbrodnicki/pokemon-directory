@@ -59,7 +59,8 @@
 			{
 				"allowConstantExport": true
 			}
-		]
+		],
+		"react/prop-types": "off"
 	},
 	"settings": {
 		"react": {

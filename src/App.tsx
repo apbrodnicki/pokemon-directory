@@ -12,7 +12,7 @@ import './App.css';
 export const App = (): React.JSX.Element => {
 	const [snackbarOpen, setSnackbarOpen] = useState<boolean>(false);
 	const [snackbarMessage, setSnackbarMessage] = useState<string>('');
-	const [snackbarColor, setSnackbarColor] = useState<'success' | 'info' | 'warning' | 'error'>('success');
+	const [snackbarColor, setSnackbarColor] = useState<'success' | 'info' | 'warning' | 'error'>('info');
 
 	const [pokemonList, setPokemonList] = useState<string[]>(() => {
 		const list = localStorage.getItem('pokemon-directory-list');
@@ -48,7 +48,7 @@ export const App = (): React.JSX.Element => {
 										}}>
 										<Box p={5}>
 											<Typography align='center'>
-												Add some Pokémon to learn more about them!
+												Add Pokémon to learn more about them!
 											</Typography>
 										</Box>
 									</Paper>

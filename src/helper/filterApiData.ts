@@ -22,8 +22,6 @@ export const filterPokemonData = (pokemon: GenericPokemon): Pokemon => {
 		speed: 0,
 	};
 
-	const name = formatPokemonName(pokemon.name);
-
 	for (const type of pokemon.types) {
 		types.push(type.type.name);
 	}
@@ -43,7 +41,7 @@ export const filterPokemonData = (pokemon: GenericPokemon): Pokemon => {
 	};
 
 	return {
-		name,
+		name: formatPokemonName(pokemon.name),
 		originalName: pokemon.name,
 		sprite: getSprite(pokemon),
 		types,
@@ -54,7 +52,8 @@ export const filterPokemonData = (pokemon: GenericPokemon): Pokemon => {
 
 export const getPokemonAutocompleteItem = (pokemon: GenericPokemon): PokemonAutocompleteItem => ({
 	pokedexNumber: pokemon.id,
-	name: pokemon.name,
+	name: formatPokemonName(pokemon.name),
+	originalName: pokemon.name,
 	sprite: getSprite(pokemon),
 	generation: getGeneration(pokemon.id)
 });

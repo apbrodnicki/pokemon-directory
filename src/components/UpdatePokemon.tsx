@@ -20,13 +20,13 @@ export const UpdatePokemon = (): React.JSX.Element => {
 
 	const updatePokemonList = useUpdatePokemonList();
 
-	const names = useFetchAllPokemonNames();
+	const allPokemonNames = useFetchAllPokemonNames();
 
-	const addAutocompleteOptions = useFetchPokemonAutocompleteItems({ pokemonList: names, setIsLoadingPokemonAutocompleteItems: setIsLoadingAddAutocompleteItems });
+	const addAutocompleteOptions = useFetchPokemonAutocompleteItems({ pokemonList: allPokemonNames, setIsLoadingPokemonAutocompleteItems: setIsLoadingAddAutocompleteItems });
 	const removeAutocompleteOptions = useFetchPokemonAutocompleteItems({ pokemonList, setIsLoadingPokemonAutocompleteItems: setIsLoadingRemoveAutocompleteItems });
 
 	const onAutocompleteChange = (value: PokemonAutocompleteItem[]): void => {
-		const names = (value).map((item) => item.name);
+		const names = (value).map((item) => item.originalName);
 		setPokemonInput(names);
 	};
 

@@ -112,3 +112,28 @@ export const filterTypeData = (type: GenericType): Type => {
 export const getAllPokemonNames = (allPokemon: GenericAllPokemon): string[] => {
 	return allPokemon.results.map((pokemon) => pokemon.name);
 };
+
+export const getContactMoves = (contactMovesHtml: string): string[] => {
+	const contactMovesArray: string[] = [];
+	const contactMovesSection = contactMovesHtml.match(
+		/id="Moves_that_make_contact"(?<contactMovesSectionCaptureGroup>[\s\S]*)id="Shadow_moves"/
+	);
+
+	if (contactMovesSection?.groups?.contactMovesSectionCaptureGroup !== undefined) {
+		const contactMoves = [...contactMovesSection.groups.contactMovesSectionCaptureGroup.matchAll(
+			/<td style="text-align:left"><a href="[^"]*" title="[^"]*"><span style="color:#000000;">(?<contactMoveCaptureGroup>[^<]*)/g
+		)];
+
+		const filteredContactMoves = contactMoves.map((contactMove) => {
+			if (contactMove?.groups?.contactMoveCaptureGroup !== undefined) {
+				return contactMove?.groups?.contactMoveCaptureGroup;
+			} else {
+				return contactMove[1];
+			}
+		});
+
+		contactMovesArray.push(...filteredContactMoves);
+	}
+
+	return contactMovesArray;
+};

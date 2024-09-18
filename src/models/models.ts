@@ -57,3 +57,32 @@ export interface PokemonAutocompleteItem {
 	sprite: string,
 	generation: string
 }
+
+export interface Move {
+	accuracy: number,
+	ailment: string,
+	damageClass: 'status' | 'physical' | 'special',
+	effectChance: number,
+	description: string,
+	category: string,
+	critRate: number,
+	drain: number,
+	flinchChance: number,
+	healing: number,
+	isContact: boolean,
+	maxHits: number,
+	maxTurns: number,
+	minHits: number,
+	minTurns: number,
+	statChangeChance: number,
+	name: string,
+	power: number,
+	powerPoints: number,
+	priority: number,
+	statChanges: Array<{
+		change: number,
+		stat: keyof Stats
+	}>,
+	target: string,
+	type: string
+}

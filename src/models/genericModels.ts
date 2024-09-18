@@ -2,19 +2,19 @@ export interface GenericPokemon {
 	name: string,
 	types: [{
 		type: {
-			name: string,
-		},
+			name: string
+		}
 	}],
 	abilities: [{
 		ability: {
-			name: string,
-		},
+			name: string
+		}
 	}],
 	stats: [{
 		base_stat: number,
 		stat: {
-			name: 'hp' | 'attack' | 'defense' | 'special-attack' | 'special-defense' | 'speed',
-		},
+			name: keyof GenericStats
+		}
 	}],
 	sprites: {
 		front_default: string,
@@ -22,46 +22,55 @@ export interface GenericPokemon {
 			'generation-v' : {
 				'black-white': {
 					animated: {
-						front_default: string,
+						front_default: string
 					}
 				}
 			}
-		},
+		}
 	},
 	id: number,
-	[key: string]: unknown,
+	[key: string]: unknown
+}
+
+export interface GenericStats {
+	hp: string,
+	attack: string,
+	defense: string,
+	'special-attack': string,
+	'special-defense': string,
+	speed: string
 }
 
 export interface GenericAllPokemon {
 	results: [{
 		name: string,
-		url: string,
+		url: string
 	}],
-	[key: string]: unknown,
+	[key: string]: unknown
 }
 
 export interface GenericAbility {
 	name: string,
 	effect_entries: [{
-		short_effect: string,
+		effect: string,
 		language: {
-			name: string,
+			name: string
 		}
 	}],
 	flavor_text_entries: [{
 		flavor_text: string,
 		language: {
-			name: string,
+			name: string
 		}
-	}]
-	[key: string]: unknown,
+	}],
+	[key: string]: unknown
 }
 
 export interface GenericAbilities {
 	results: [{
-		name: string,
+		name: string
 	}],
-	[key: string]: unknown,
+	[key: string]: unknown
 }
 
 export interface GenericType {
@@ -84,9 +93,9 @@ export interface GenericType {
 		}],
 		double_damage_to: [{
 			name: string
-		}],
+		}]
 	},
-	[key: string]: unknown,
+	[key: string]: unknown
 }
 
 export interface GenericDamageRelation {
@@ -95,5 +104,53 @@ export interface GenericDamageRelation {
 	half_damage_from: string[],
 	half_damage_to: string[],
 	double_damage_from: string[],
-	double_damage_to: string[],
+	double_damage_to: string[]
+}
+
+export interface GenericMove {
+	accuracy: number,
+	damage_class: {
+		name: 'status' | 'physical' | 'special'
+	},
+	effect_chance: number,
+	effect_entries: [{
+		effect: string,
+		language: {
+			name: string
+		}
+	}],
+	meta: {
+		ailment: {
+			name: string
+		},
+		category: {
+			name: string
+		},
+		crit_rate: number,
+		drain: number,
+		flinch_chance: number,
+		healing: number,
+		max_hits: number,
+		max_turns: number,
+		min_hits: number,
+		min_turns: number,
+		stat_chance: number
+	}
+	name: string,
+	power: number,
+	pp: number,
+	priority: number,
+	stat_changes: [{
+		change: number,
+		stat: {
+			name: keyof GenericStats
+		}
+	}],
+	target: {
+		name: string
+	},
+	type: {
+		name: string
+	},
+	[key: string]: unknown
 }

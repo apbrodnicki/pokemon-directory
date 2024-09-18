@@ -1,6 +1,7 @@
 import { Box, Grid, Paper, Typography } from '@mui/material';
 import { Footer } from 'components/Footer';
 import { Header } from 'components/Header';
+import { MoveLookup } from 'components/MoveLookup';
 import { PokemonDataGrid } from 'components/PokemonDataGrid';
 import { UpdatePokemon } from 'components/UpdatePokemon';
 import { CustomSnackbar } from 'components/custom/CustomSnackbar';
@@ -33,8 +34,15 @@ export const App = (): React.JSX.Element => {
 						display='flex'
 						flexDirection='column'
 						justifyContent='center'
-						flex={1}>
-						<UpdatePokemon />
+						flex={1}
+					>
+						<Box
+							display='flex'
+							alignItems='center'
+						>
+							<UpdatePokemon />
+							<MoveLookup />
+						</Box>
 						{pokemonList.length > 0 ? (
 							<PokemonDataGrid />
 						) : (
@@ -48,7 +56,7 @@ export const App = (): React.JSX.Element => {
 										}}>
 										<Box p={5}>
 											<Typography align='center'>
-												Add Pokémon to learn more about them!
+													Add Pokémon to learn more about them!
 											</Typography>
 										</Box>
 									</Paper>

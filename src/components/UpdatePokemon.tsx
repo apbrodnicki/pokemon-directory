@@ -2,7 +2,7 @@ import { Autocomplete, Box, Button, Grid, List, ListItem, Paper, TextField, Typo
 import { useFetchAllPokemonNames } from 'api/useFetchAllPokemonNames';
 import { useFetchPokemonAutocompleteItems } from 'api/useFetchPokemonAutocompleteItems';
 import { PokemonListContext } from 'contexts/PokemonListContext';
-import { formatPokemonName } from 'helper/helper';
+import { formatName } from 'helper/helper';
 import { useUpdatePokemonList } from 'hooks/useUpdatePokemonList';
 import type { PokemonAutocompleteItem } from 'models/models';
 import React, { useContext, useState } from 'react';
@@ -87,7 +87,7 @@ export const UpdatePokemon = (): React.JSX.Element => {
 									return (
 										<StyledOptionListItem {...remainingProps}>
 											<Typography mr={3}>#{(option as PokemonAutocompleteItem).pokedexNumber}</Typography>
-											<Typography flexGrow={1}>{formatPokemonName((option as PokemonAutocompleteItem).name)}</Typography>
+											<Typography flexGrow={1}>{formatName((option as PokemonAutocompleteItem).name)}</Typography>
 											<Box
 												minWidth={100}
 												minHeight={100}
@@ -163,7 +163,7 @@ export const UpdatePokemon = (): React.JSX.Element => {
 									return (
 										<StyledOptionListItem {...remainingProps}>
 											<Typography mr={3}>#{option.pokedexNumber}</Typography>
-											<Typography flexGrow={1}>{formatPokemonName(option.name)}</Typography>
+											<Typography flexGrow={1}>{formatName(option.name)}</Typography>
 											<Box
 												minWidth={100}
 												minHeight={100}

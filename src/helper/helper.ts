@@ -32,7 +32,7 @@ export const formatAbilityName = (name: string): string => {
 	return updatedNameArray.join(' ');
 };
 
-export const formatPokemonName = (name: string): string => {
+export const formatName = (name: string): string => {
 	let updatedName: string = '';
 
 	if (name.includes('-')) {
@@ -49,7 +49,7 @@ export const formatPokemonName = (name: string): string => {
 		updatedName = capitalizeFirstLetter(name);
 	}
 
-	return updatedName;
+	return updatedName.trim();
 };
 
 export const getProgressColor = (progressValue: number): string => {

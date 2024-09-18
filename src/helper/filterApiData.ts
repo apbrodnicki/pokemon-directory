@@ -1,6 +1,6 @@
-import { formatPokemonName, getGeneration } from 'helper/helper';
-import type { GenericAbility, GenericAllPokemon, GenericDamageRelation, GenericPokemon, GenericType } from 'models/genericModels';
-import type { Ability, DamageRelation, Pokemon, PokemonAutocompleteItem, Stats, Type } from 'models/models';
+import { formatName, getGeneration } from 'helper/helper';
+import type { GenericAbility, GenericAllPokemon, GenericDamageRelation, GenericMove, GenericPokemon, GenericType } from 'models/genericModels';
+import type { Ability, DamageRelation, Move, Pokemon, PokemonAutocompleteItem, Stats, Type } from 'models/models';
 
 export const getSprite = (pokemon: GenericPokemon): string => {
 	return pokemon.sprites.versions['generation-v']['black-white'].animated.front_default ?? pokemon.sprites.front_default; // choose gif over png
@@ -41,7 +41,7 @@ export const filterPokemonData = (pokemon: GenericPokemon): Pokemon => {
 	};
 
 	return {
-		name: formatPokemonName(pokemon.name),
+		name: formatName(pokemon.name),
 		originalName: pokemon.name,
 		sprite: getSprite(pokemon),
 		types,
@@ -52,7 +52,7 @@ export const filterPokemonData = (pokemon: GenericPokemon): Pokemon => {
 
 export const getPokemonAutocompleteItem = (pokemon: GenericPokemon): PokemonAutocompleteItem => ({
 	pokedexNumber: pokemon.id,
-	name: formatPokemonName(pokemon.name),
+	name: formatName(pokemon.name),
 	originalName: pokemon.name,
 	sprite: getSprite(pokemon),
 	generation: getGeneration(pokemon.id)
@@ -65,7 +65,7 @@ export const getAbilityDescription = (ability: GenericAbility): Ability => {
 	if (ability.effect_entries.length > 0) {
 		for (const entry of ability.effect_entries) {
 			if (entry.language.name === 'en') {
-				description = entry.short_effect;
+				description = entry.effect;
 				updatedAbility = { [ability.name]: description };
 			}
 		}
@@ -136,4 +136,57 @@ export const getContactMoves = (contactMovesHtml: string): string[] => {
 	}
 
 	return contactMovesArray;
+};
+
+export const filterMoveData = (move: GenericMove, contactMoves: string[]): Move => {
+	let description: string = '';
+	const statChanges: Array<{
+		change: number,
+		stat: keyof Stats
+	}> = [];
+
+	for (const entry of move.effect_entries) {
+		if (entry.language.name === 'en') {
+			description = entry.effect;
+		}
+	}
+
+	const name = formatName(move.name);
+
+	if (move.stat_changes.length > 0) {
+		for (const statChange of move.stat_changes) {
+			statChanges.push({
+				change: statChange.change,
+				stat: statChange.stat.name.replace(/special-(a|d)/, (_match, captureGroup) => {
+					return captureGroup === 'a' ? 'specialAttack' : 'specialDefense';
+				}) as keyof Stats
+			});
+		}
+	}
+
+	return {
+		accuracy: move.accuracy,
+		ailment: move.meta.ailment.name,
+		damageClass: move.damage_class.name,
+		effectChance: move.effect_chance,
+		description,
+		category: move.meta.category.name,
+		critRate: move.meta.crit_rate,
+		drain: move.meta.drain,
+		flinchChance: move.meta.flinch_chance,
+		healing: move.meta.healing,
+		isContact: contactMoves.includes(name),
+		maxHits: move.meta.max_hits,
+		maxTurns: move.meta.max_turns,
+		minHits: move.meta.min_hits,
+		minTurns: move.meta.min_turns,
+		statChangeChance: move.meta.stat_chance,
+		name,
+		power: move.power,
+		powerPoints: move.pp,
+		priority: move.priority,
+		statChanges,
+		target: move.target.name,
+		type: move.type.name
+	};
 };

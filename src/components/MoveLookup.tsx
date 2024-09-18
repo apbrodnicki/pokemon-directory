@@ -2,6 +2,7 @@ import { Button, Paper, TextField, Typography } from '@mui/material';
 import { useFetchContactMovesHtml } from 'api/useFetchContactMovesHtml';
 import { useFetchMove } from 'api/useFetchMove';
 import { MoveDialogContext } from 'contexts/MoveDialogContext';
+import { formatNameForApi } from 'helper/helper';
 import React, { useState } from 'react';
 import { MoveDialog } from './MoveDialog';
 
@@ -18,7 +19,7 @@ export const MoveLookup = (): React.JSX.Element => {
 
 	const onSubmit = (): void => {
 		if (moveInput.length > 0) {
-			fetchMoveRequest(moveInput, contactMoves);
+			fetchMoveRequest(formatNameForApi(moveInput), contactMoves);
 			setIsMoveDialogOpen(true);
 		}
 	};

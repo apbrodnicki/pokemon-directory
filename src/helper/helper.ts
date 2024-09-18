@@ -52,6 +52,10 @@ export const formatName = (name: string): string => {
 	return updatedName.trim();
 };
 
+export const formatNameForApi = (name: string): string => {
+	return name.trim().replace(/\s+/g, '-').toLowerCase();
+};
+
 export const getProgressColor = (progressValue: number): string => {
 	const colorRanges = [
 		{ max: 10, color: '#B30000' },

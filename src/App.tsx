@@ -1,7 +1,7 @@
 import { Box, Grid, Paper, Typography } from '@mui/material';
 import { Footer } from 'components/Footer';
 import { Header } from 'components/Header';
-import { MoveLookup } from 'components/MoveLookup';
+// import { MoveLookup } from 'components/MoveLookup';
 import { PokemonDataGrid } from 'components/PokemonDataGrid';
 import { UpdatePokemon } from 'components/UpdatePokemon';
 import { CustomSnackbar } from 'components/custom/CustomSnackbar';
@@ -41,7 +41,7 @@ export const App = (): React.JSX.Element => {
 							alignItems='center'
 						>
 							<UpdatePokemon />
-							<MoveLookup />
+							{/* <MoveLookup /> */}
 						</Box>
 						{pokemonList.length > 0 ? (
 							<PokemonDataGrid />

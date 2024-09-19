@@ -1,5 +1,5 @@
 import { Autocomplete, Box, Button, Grid, List, ListItem, Paper, TextField, Typography, createFilterOptions, styled } from '@mui/material';
-import { useFetchAllPokemonNames } from 'api/useFetchAllPokemonNames';
+import { useFetchAllPokemonNames } from 'api/pokemon/useFetchAllPokemonNames';
 import { useFetchPokemonAutocompleteItems } from 'api/useFetchPokemonAutocompleteItems';
 import { PokemonListContext } from 'contexts/PokemonListContext';
 import { formatName } from 'helper/helper';

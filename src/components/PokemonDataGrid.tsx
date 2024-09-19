@@ -1,8 +1,8 @@
 import { Box, Paper } from '@mui/material';
 import { DataGrid, type GridColDef } from '@mui/x-data-grid';
-import { useFetchAbilityDescriptions } from 'api/useFetchAbilityDescriptions';
-import { useFetchPokemon } from 'api/useFetchPokemon';
-import { useFetchTypes } from 'api/useFetchTypes';
+import { useFetchAbilityDescriptions } from 'api/abilities/useFetchAbilityDescriptions';
+import { useFetchPokemon } from 'api/pokemon/useFetchPokemon';
+import { useFetchTypes } from 'api/types/useFetchTypes';
 import { PokemonListContext } from 'contexts/PokemonListContext';
 import { getDataGridColumns } from 'helper/getDataGridColumns';
 import { reduceArray } from 'helper/helper';

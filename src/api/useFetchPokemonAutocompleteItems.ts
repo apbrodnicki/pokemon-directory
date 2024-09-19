@@ -2,7 +2,7 @@ import { getPokemonAutocompleteItem } from 'helper/filterApiData';
 import { type PokemonAutocompleteItem } from 'models/models';
 import type React from 'react';
 import { useEffect, useState } from 'react';
-import { fetchPokemon } from './fetchPokemon';
+import { fetchPokemon } from './pokemon/fetchPokemon';
 
 interface useFetchPokemonAutocompleteItemsProps {
 	pokemonList: string[],

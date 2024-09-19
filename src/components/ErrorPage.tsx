@@ -20,25 +20,32 @@ export const ErrorPage = (): React.JSX.Element => {
 	}
 
 	return (
-		<>
+		<Box id="error-page">
 			<Header />
-			<Grid container justifyContent='center'>
-				<Grid item maxWidth='50%'>
-					<Paper
-						elevation={3}
-						sx={{
-							m: 5,
-							backgroundColor: '#B8D8D8'
-						}}>
-						<Box p={5}>
-							<Typography align='center'>
-								{errorMessage}
-							</Typography>
-						</Box>
-					</Paper>
+			<Box
+				display='flex'
+				flexDirection='column'
+				justifyContent='center'
+				flex={1}
+			>
+				<Grid container justifyContent='center'>
+					<Grid item maxWidth='50%'>
+						<Paper
+							elevation={3}
+							sx={{
+								m: 5,
+								backgroundColor: '#B8D8D8'
+							}}>
+							<Box p={5}>
+								<Typography align='center'>
+									{errorMessage}
+								</Typography>
+							</Box>
+						</Paper>
+					</Grid>
 				</Grid>
-			</Grid>
+			</Box>
 			<Footer />
-		</>
+		</Box>
 	);
 };

@@ -1,6 +1,6 @@
 import { formatName, getGeneration } from 'helper/helper';
-import type { GenericAbility, GenericAllPokemon, GenericDamageRelation, GenericMove, GenericPokemon, GenericType } from 'models/genericModels';
-import type { Ability, DamageRelation, Move, Pokemon, PokemonAutocompleteItem, Stats, Type } from 'models/models';
+import type { GenericAbility, GenericAllPokemon, GenericDamageRelation, GenericItem, GenericMove, GenericPokemon, GenericType } from 'models/genericModels';
+import type { Ability, DamageRelation, Item, Move, Pokemon, PokemonAutocompleteItem, Stats, Type } from 'models/models';
 
 export const getSprite = (pokemon: GenericPokemon): string => {
 	return pokemon.sprites.versions['generation-v']['black-white'].animated.front_default ?? pokemon.sprites.front_default; // choose gif over png
@@ -136,6 +136,24 @@ export const getContactMoves = (contactMovesHtml: string): string[] => {
 	}
 
 	return contactMovesArray;
+};
+
+export const filterItemData = (item: GenericItem): Item => {
+	let description: string = '';
+
+	for (const entry of item.effect_entries) {
+		if (entry.language.name === 'en') {
+			description = entry.effect;
+		}
+	}
+
+	return {
+		description,
+		flingEffect: item.fling_effect?.name ?? null,
+		flingPower: item.fling_power,
+		name: item.name,
+		sprite: item.sprites.default
+	};
 };
 
 export const filterMoveData = (move: GenericMove, contactMoves: string[]): Move => {

@@ -1,6 +1,7 @@
 import { Box } from '@mui/material';
 import React from 'react';
 import { AbilityLookup } from './ability/AbilityLookup';
+import { ItemLookup } from './item/ItemLookup';
 import { MoveLookup } from './move/MoveLookup';
 
 export const Lookup = (): React.JSX.Element => {
@@ -12,6 +13,7 @@ export const Lookup = (): React.JSX.Element => {
 			flex={1}
 		>
 			<AbilityLookup />
+			<ItemLookup />
 			<MoveLookup />
 		</Box>
 	);

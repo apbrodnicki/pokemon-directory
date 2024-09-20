@@ -107,6 +107,24 @@ export interface GenericDamageRelation {
 	double_damage_to: string[]
 }
 
+export interface GenericItem {
+	effect_entries: [{
+		effect: string,
+		language: {
+			name: string
+		}
+	}],
+	fling_effect: {
+		name?: string
+	},
+	fling_power: number,
+	name: string,
+	sprites: {
+		default: string
+	},
+	[key: string]: unknown
+}
+
 export interface GenericMove {
 	accuracy: number,
 	damage_class: {

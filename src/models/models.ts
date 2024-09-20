@@ -58,6 +58,14 @@ export interface PokemonAutocompleteItem {
 	generation: string
 }
 
+export interface Item {
+	description: string,
+	flingEffect: string | null,
+	flingPower: number,
+	name: string,
+	sprite: string
+}
+
 export interface Move {
 	accuracy: number,
 	ailment: string,

@@ -1,4 +1,4 @@
-import { type Ability, type Move, type Types } from 'models/models';
+import { type Ability, type Item, type Move, type Types } from 'models/models';
 
 export const typeColors: Types = {
 	normal: '#A8A878',
@@ -23,6 +23,14 @@ export const typeColors: Types = {
 
 export const defaultAbility: Ability = {
 	'name': 'description'
+};
+
+export const defaultItem: Item = {
+	description: '',
+	flingEffect: '',
+	flingPower: 0,
+	name: '',
+	sprite: ''
 };
 
 export const defaultMove: Move = {

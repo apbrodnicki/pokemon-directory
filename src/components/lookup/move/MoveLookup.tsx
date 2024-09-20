@@ -1,6 +1,7 @@
 import { Button, Paper, TextField, Typography } from '@mui/material';
 import { useFetchContactMovesHtml } from 'api/moves/useFetchContactMovesHtml';
 import { useFetchMove } from 'api/moves/useFetchMove';
+import { LookupDialogContext } from 'contexts/LookupDialogContext';
 import { MoveDialogContext } from 'contexts/MoveDialogContext';
 import { SnackbarContext } from 'contexts/SnackbarContext';
 import { defaultMove } from 'data';
@@ -10,9 +11,9 @@ import { MoveDialog } from './MoveDialog';
 
 export const MoveLookup = (): React.JSX.Element => {
 	const { setSnackbarOpen, setSnackbarMessage, setSnackbarColor } = useContext(SnackbarContext);
+	const { setIsLookupDialogOpen } = useContext(LookupDialogContext);
 
 	const [moveInput, setMoveInput] = useState<string>('');
-	const [isMoveDialogOpen, setIsMoveDialogOpen] = useState<boolean>(false);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [isError, setIsError] = useState<boolean>(false);
 
@@ -44,14 +45,14 @@ export const MoveLookup = (): React.JSX.Element => {
 		}
 
 		if (move !== defaultMove) {
-			setIsMoveDialogOpen(true);
+			setIsLookupDialogOpen(true);
 		}
 
 		setIsError(false);
-	}, [isError, move, setSnackbarColor, setSnackbarMessage, setSnackbarOpen]);
+	}, [isError, move, setIsLookupDialogOpen, setSnackbarColor, setSnackbarMessage, setSnackbarOpen]);
 
 	return (
-		<MoveDialogContext.Provider value={{ move, setMove, isMoveDialogOpen, setIsMoveDialogOpen }}>
+		<MoveDialogContext.Provider value={{ move, setMove }}>
 			<Paper elevation={3} sx={{ m: 5, backgroundColor: '#B8D8D8' }}>
 				{!isLoading ? (
 					<>
@@ -67,8 +68,8 @@ export const MoveLookup = (): React.JSX.Element => {
 						loading
 					</Typography>
 				)}
-				<MoveDialog />
 			</Paper>
+			<MoveDialog />
 		</MoveDialogContext.Provider>
 	);
 };

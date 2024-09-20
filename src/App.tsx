@@ -28,16 +28,16 @@ export const App = (): React.JSX.Element => {
 
 	return (
 		<Box id="pokemon-directory">
-			{outlet ?? (
-				<SnackbarContext.Provider value={{ snackbarOpen, setSnackbarOpen, snackbarMessage, setSnackbarMessage, snackbarColor, setSnackbarColor }}>
-					<PokemonListContext.Provider value={{ pokemonList, setPokemonList }}>
-						<Header />
+			<SnackbarContext.Provider value={{ snackbarOpen, setSnackbarOpen, snackbarMessage, setSnackbarMessage, snackbarColor, setSnackbarColor }}>
+				<PokemonListContext.Provider value={{ pokemonList, setPokemonList }}>
+					<Header />
+					{outlet ?? (
 						<Home />
-						<CustomSnackbar />
-						<Footer />
-					</PokemonListContext.Provider>
-				</SnackbarContext.Provider>
-			)}
+					)}
+					<CustomSnackbar />
+					<Footer />
+				</PokemonListContext.Provider>
+			</SnackbarContext.Provider>
 		</Box>
 	);
 };

@@ -43,6 +43,11 @@ export const MoveDialog = (): React.JSX.Element => {
 					<Typography>
 						class: {move.damageClass}
 					</Typography>
+					<Box
+						component='img'
+						src={`src/assets/damage-class/${move.damageClass}.png`}
+						alt='type'
+					/>
 				</ListItem>
 				<ListItem>
 					<Typography>

@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import React from 'react';
-import { MoveLookup } from './MoveLookup';
+import { MoveLookup } from './move/MoveLookup';
 
 export const Lookup = (): React.JSX.Element => {
 	return (

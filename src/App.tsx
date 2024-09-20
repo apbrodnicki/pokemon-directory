@@ -1,16 +1,17 @@
-import { Box, Grid, Paper, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import { Footer } from 'components/Footer';
 import { Header } from 'components/Header';
-// import { MoveLookup } from 'components/MoveLookup';
-import { PokemonDataGrid } from 'components/PokemonDataGrid';
-import { UpdatePokemon } from 'components/UpdatePokemon';
+import { Home } from 'components/Home';
 import { CustomSnackbar } from 'components/custom/CustomSnackbar';
 import { PokemonListContext } from 'contexts/PokemonListContext';
 import { SnackbarContext } from 'contexts/SnackbarContext';
 import React, { useEffect, useState } from 'react';
+import { useOutlet } from 'react-router-dom';
 import './App.css';
 
 export const App = (): React.JSX.Element => {
+	const outlet = useOutlet();
+
 	const [snackbarOpen, setSnackbarOpen] = useState<boolean>(false);
 	const [snackbarMessage, setSnackbarMessage] = useState<string>('');
 	const [snackbarColor, setSnackbarColor] = useState<'success' | 'info' | 'warning' | 'error'>('info');
@@ -27,47 +28,16 @@ export const App = (): React.JSX.Element => {
 
 	return (
 		<Box id="pokemon-directory">
-			<SnackbarContext.Provider value={{ snackbarOpen, setSnackbarOpen, snackbarMessage, setSnackbarMessage, snackbarColor, setSnackbarColor }}>
-				<PokemonListContext.Provider value={{ pokemonList, setPokemonList }}>
-					<Header />
-					<Box
-						display='flex'
-						flexDirection='column'
-						justifyContent='center'
-						flex={1}
-					>
-						<Box
-							display='flex'
-							alignItems='center'
-						>
-							<UpdatePokemon />
-							{/* <MoveLookup /> */}
-						</Box>
-						{pokemonList.length > 0 ? (
-							<PokemonDataGrid />
-						) : (
-							<Grid container justifyContent='center'>
-								<Grid item maxWidth='90%'>
-									<Paper
-										elevation={3}
-										sx={{
-											m: 5,
-											backgroundColor: '#B8D8D8'
-										}}>
-										<Box p={5}>
-											<Typography align='center'>
-													Add Pokémon to learn more about them!
-											</Typography>
-										</Box>
-									</Paper>
-								</Grid>
-							</Grid>
-						)}
-					</Box>
-					<CustomSnackbar />
-					<Footer />
-				</PokemonListContext.Provider>
-			</SnackbarContext.Provider>
+			{outlet ?? (
+				<SnackbarContext.Provider value={{ snackbarOpen, setSnackbarOpen, snackbarMessage, setSnackbarMessage, snackbarColor, setSnackbarColor }}>
+					<PokemonListContext.Provider value={{ pokemonList, setPokemonList }}>
+						<Header />
+						<Home />
+						<CustomSnackbar />
+						<Footer />
+					</PokemonListContext.Provider>
+				</SnackbarContext.Provider>
+			)}
 		</Box>
 	);
 };

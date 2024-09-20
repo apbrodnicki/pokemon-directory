@@ -1,5 +1,6 @@
 import { App } from 'App';
 import { ErrorPage } from 'components/ErrorPage';
+import { Lookup } from 'components/Lookup';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -8,7 +9,11 @@ const router = createBrowserRouter([
 	{
 		path: '/',
 		element: <App />,
-		errorElement: <ErrorPage />,
+		children: [{
+			path: 'lookup',
+			element: <Lookup />
+		}],
+		errorElement: <ErrorPage />
 	},
 ]);
 

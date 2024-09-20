@@ -1,21 +1,26 @@
 import { Box, Dialog, DialogTitle, List, ListItem, Typography } from '@mui/material';
-import { LookupDialogContext } from 'contexts/LookupDialogContext';
-import { MoveDialogContext } from 'contexts/MoveDialogContext';
 import { defaultMove } from 'data';
-import React, { useContext } from 'react';
+import type { Move } from 'models/models';
+import React from 'react';
 
-export const MoveDialog = (): React.JSX.Element => {
-	const { isLookupDialogOpen, setIsLookupDialogOpen } = useContext(LookupDialogContext);
-	const { move, setMove } = useContext(MoveDialogContext);
+interface MoveDialogProps {
+	move: Move,
+	setMove: React.Dispatch<React.SetStateAction<Move>>,
+	isMoveDialogOpen: boolean,
+	setIsMoveDialogOpen: React.Dispatch<React.SetStateAction<boolean>>
+}
 
+export const MoveDialog = (
+	{ move, setMove, isMoveDialogOpen, setIsMoveDialogOpen }: MoveDialogProps
+): React.JSX.Element => {
 	const onClose = (): void => {
 		// TODO: fix flashing default move dialog on close
-		setIsLookupDialogOpen(false);
+		setIsMoveDialogOpen(false);
 		setMove(defaultMove);
 	};
 
 	return (
-		<Dialog open={isLookupDialogOpen} onClose={onClose} sx={{ p: 3 }}>
+		<Dialog open={isMoveDialogOpen} onClose={onClose} sx={{ p: 3 }}>
 			<DialogTitle>
 				<Typography>
 					{move.name}

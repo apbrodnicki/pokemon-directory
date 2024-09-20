@@ -1,4 +1,4 @@
-import { type Move, type Types } from 'models/models';
+import { type Ability, type Move, type Types } from 'models/models';
 
 export const typeColors: Types = {
 	normal: '#A8A878',
@@ -19,6 +19,10 @@ export const typeColors: Types = {
 	dark: '#705848',
 	steel: '#B8B8D0',
 	fairy: '#EE99AC',
+};
+
+export const defaultAbility: Ability = {
+	'name': 'description'
 };
 
 export const defaultMove: Move = {

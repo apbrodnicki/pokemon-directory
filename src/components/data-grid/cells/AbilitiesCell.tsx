@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import { CustomTooltip } from 'components/custom/CustomTooltip';
-import { formatAbilityName } from 'helper/helper';
+import { formatName } from 'helper/helper';
 import type { Ability } from 'models/models';
 import React from 'react';
 
@@ -19,7 +19,7 @@ export const AbilitiesCell = ({ abilityStrings, abilities }: AbilitiesCellProps)
 					title={(title !== undefined) ? title[ability] : ''}
 					key={index}
 				>
-					<Typography my={1} align='center'>{formatAbilityName(ability)}</Typography>
+					<Typography my={1} align='center'>{formatName(ability)}</Typography>
 				</CustomTooltip>
 			);
 		})}

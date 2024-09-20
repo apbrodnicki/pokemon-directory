@@ -17,21 +17,6 @@ export const reduceArray = (array: unknown[][]): unknown[] => {
 	);
 };
 
-/**
- * Converts an ability string for cleaner output, dry-skin -> Dry Skin
- * @param {string} name - A dash separated ability string.
- * @returns {string} A space separated/capitalized ability string.
- */
-export const formatAbilityName = (name: string): string => {
-	const updatedNameArray: string[] = [];
-
-	for (const item of name.split('-')) {
-		updatedNameArray.push(capitalizeFirstLetter(item));
-	}
-
-	return updatedNameArray.join(' ');
-};
-
 export const formatName = (name: string): string => {
 	let updatedName: string = '';
 

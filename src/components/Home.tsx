@@ -1,7 +1,7 @@
 import { Box, Grid, Paper, Typography } from '@mui/material';
 import { PokemonListContext } from 'contexts/PokemonListContext';
 import React, { useContext } from 'react';
-import { PokemonDataGrid } from './PokemonDataGrid';
+import { PokemonDataGrid } from './data-grid/PokemonDataGrid';
 import { UpdatePokemon } from './UpdatePokemon';
 
 export const Home = (): React.JSX.Element => {

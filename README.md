@@ -5,7 +5,6 @@ The user can add or remove any existing Pokémon they want and will have their d
 
 They can also research information about moves, abilities, and items.
 
-
 The backend data is supplied by [PokéApi](https://pokeapi.co/).
 
 Assets are supplied by [Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/Main_Page).

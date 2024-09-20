@@ -32,14 +32,14 @@ export const Footer = (): React.JSX.Element => {
 			>
 				<Box display={{ sm: 'block', xs: 'none' }}>
 					<CustomTooltip
-						title='Rampardos - Click to add or remove.'
+						title='Aerodactyl - Click to add or remove.'
 						haveCursor
-						onClick={() => { onClick('rampardos'); }}
+						onClick={() => { onClick('aerodactyl'); }}
 					>
 						<Box
 							component='img'
-							src={useFetchSprite('rampardos')}
-							alt='rampardos'
+							src={useFetchSprite('aerodactyl')}
+							alt='aerodactyl'
 							mx={2}
 						/>
 					</CustomTooltip>
@@ -74,14 +74,14 @@ export const Footer = (): React.JSX.Element => {
 				</Box>
 				<Box display={{ sm: 'block', xs: 'none' }}>
 					<CustomTooltip
-						title='Omastar - Click to add or remove.'
+						title='Aurorus - Click to add or remove.'
 						haveCursor
-						onClick={() => { onClick('omastar'); }}
+						onClick={() => { onClick('aurorus'); }}
 					>
 						<Box
 							component='img'
-							src={useFetchSprite('omastar')}
-							alt='omastar'
+							src={useFetchSprite('aurorus')}
+							alt='aurorus'
 							mx={2}
 						/>
 					</CustomTooltip>

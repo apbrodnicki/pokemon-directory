@@ -29,14 +29,14 @@ export const Header = (): React.JSX.Element => {
 				}}
 			>
 				<CustomTooltip
-					title='Bastiodon - Click to add or remove.'
+					title='Tyrantrum - Click to add or remove.'
 					haveCursor
-					onClick={() => { onClick('bastiodon'); }}
+					onClick={() => { onClick('tyrantrum'); }}
 				>
 					<Box
 						component='img'
-						src={useFetchSprite('bastiodon')}
-						alt='aurorus'
+						src={useFetchSprite('tyrantrum')}
+						alt='tyrantrum'
 						mx={2}
 					/>
 				</CustomTooltip>
@@ -53,14 +53,14 @@ export const Header = (): React.JSX.Element => {
 					Pokémon Directory
 				</Typography>
 				<CustomTooltip
-					title='Cradily - Click to add or remove.'
+					title='Armaldo - Click to add or remove.'
 					haveCursor
-					onClick={() => { onClick('cradily'); }}
+					onClick={() => { onClick('armaldo'); }}
 				>
 					<Box
 						component='img'
-						src={useFetchSprite('cradily')}
-						alt='cradily'
+						src={useFetchSprite('armaldo')}
+						alt='armaldo'
 						mx={2}
 					/>
 				</CustomTooltip>

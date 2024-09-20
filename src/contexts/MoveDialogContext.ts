@@ -5,12 +5,14 @@ import { createContext } from 'react';
 
 interface MoveDialogContextProps {
 	move: Move,
-	isOpen: boolean,
-	setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+	setMove: React.Dispatch<React.SetStateAction<Move>>,
+	isMoveDialogOpen: boolean,
+	setIsMoveDialogOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const MoveDialogContext = createContext<MoveDialogContextProps>({
 	move: defaultMove,
-	isOpen: false,
-	setIsOpen: () => {}
+	setMove: () => {},
+	isMoveDialogOpen: false,
+	setIsMoveDialogOpen: () => {}
 });

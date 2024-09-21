@@ -1,4 +1,4 @@
-import { Button, Paper, TextField, Typography } from '@mui/material';
+import { Box, Button, Paper, TextField, Typography } from '@mui/material';
 import { useFetchContactMovesHtml } from 'api/moves/useFetchContactMovesHtml';
 import { useFetchMove } from 'api/moves/useFetchMove';
 import { SnackbarContext } from 'contexts/SnackbarContext';
@@ -52,14 +52,14 @@ export const MoveLookup = (): React.JSX.Element => {
 	return (
 		<Paper elevation={3} sx={{ m: 5, backgroundColor: '#B8D8D8' }}>
 			{!isLoading ? (
-				<>
+				<Box component='form' onSubmit={onSubmit}>
 					<TextField label='Search a move' onChange={onChange} />
-					<Button onClick={onSubmit}>
+					<Button type='submit'>
 						<Typography variant='body1'>
 								Submit
 						</Typography>
 					</Button>
-				</>
+				</Box>
 			) : (
 				<Typography>
 						loading

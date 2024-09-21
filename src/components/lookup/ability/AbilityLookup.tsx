@@ -1,4 +1,4 @@
-import { Button, Paper, TextField, Typography } from '@mui/material';
+import { Box, Button, Paper, TextField, Typography } from '@mui/material';
 import { useFetchAbility } from 'api/abilities/useFetchAbility';
 import { SnackbarContext } from 'contexts/SnackbarContext';
 import { defaultAbility } from 'data';
@@ -50,17 +50,17 @@ export const AbilityLookup = (): React.JSX.Element => {
 	return (
 		<Paper elevation={3} sx={{ m: 5, backgroundColor: '#B8D8D8' }}>
 			{!isLoading ? (
-				<>
+				<Box component='form' onSubmit={onSubmit}>
 					<TextField label='Search an ability' onChange={onChange} />
-					<Button onClick={onSubmit}>
+					<Button type='submit'>
 						<Typography variant='body1'>
 							Submit
 						</Typography>
 					</Button>
-				</>
+				</Box>
 			) : (
 				<Typography>
-						loading
+					loading
 				</Typography>
 			)}
 			<AbilityDialog ability={ability} setAbility={setAbility} isAbilityDialogOpen={isAbilityDialogOpen} setIsAbilityDialogOpen={setIsAbilityDialogOpen} />

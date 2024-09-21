@@ -1,6 +1,5 @@
 import { PokemonListContext } from 'contexts/PokemonListContext';
 import { SnackbarContext } from 'contexts/SnackbarContext';
-import { formatName } from 'helper/helper';
 import type React from 'react';
 import { useContext } from 'react';
 
@@ -26,14 +25,22 @@ export const useUpdatePokemonList = (): ({ action, pokemonInput, setPokemonInput
 		}
 
 		if (action === 'add') {
+			const duplicateArray: string[] = [];
+
 			for (const name of pokemonInput) {
 				if (pokemonList.includes(name)) {
-					setSnackbarMessage(`Error: ${formatName(name)} has already been added.`);
-					setSnackbarColor('error');
-					setSnackbarOpen(true);
-
-					return;
+					duplicateArray.push(name);
 				}
+			}
+
+			pokemonInput = pokemonInput.filter((name) => !duplicateArray.includes(name));
+
+			if (pokemonInput.length === 0) {
+				setSnackbarMessage('Error: Attempting to add existing Pokémon.');
+				setSnackbarColor('error');
+				setSnackbarOpen(true);
+
+				return;
 			}
 
 			setPokemonList([...pokemonList, ...pokemonInput]);

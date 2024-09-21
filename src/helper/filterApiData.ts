@@ -176,7 +176,7 @@ export const filterMoveData = (move: GenericMove, contactMoves: string[]): Move 
 			statChanges.push({
 				change: statChange.change,
 				stat: statChange.stat.name.replace(/special-(a|d)/, (_match, captureGroup) => {
-					return captureGroup === 'a' ? 'specialAttack' : 'specialDefense';
+					return captureGroup === 'a' ? 'specialA' : 'specialD';
 				}) as keyof Stats
 			});
 		}

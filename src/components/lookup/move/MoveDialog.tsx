@@ -1,6 +1,7 @@
 import { Box, Dialog, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import { ImagesDamageClasses, ImagesTypes } from 'assets/index.ts';
 import { defaultMove } from 'data';
-import type { Move } from 'models/models';
+import type { Move, Types } from 'models/models';
 import React from 'react';
 
 interface MoveDialogProps {
@@ -34,8 +35,8 @@ export const MoveDialog = (
 				{move.name}
 				<Box
 					component='img'
-					src={`src/assets/types/${move.type}.png`}
-					alt='type'
+					src={`src/assets/types/${ImagesTypes[move.type as keyof Types]}.png`}
+					alt={move.type}
 				/>
 			</DialogTitle>
 			<DialogContent>
@@ -44,8 +45,8 @@ export const MoveDialog = (
 						{move.damageClass}
 						<Box
 							component='img'
-							src={`src/assets/damage-class/${move.damageClass}.png`}
-							alt='type'
+							src={`src/assets/damage-class/${ImagesDamageClasses[move.damageClass]}.png`}
+							alt={move.damageClass}
 						/>
 					</DialogContentText>
 					<DialogContentText>
@@ -92,7 +93,7 @@ export const MoveDialog = (
 				<DialogContent>
 					{move.statChanges.map((statChange, index) => (
 						<DialogContentText key={index}>
-						stat change | {statChange.stat}: {statChange.change}
+							stat change | {statChange.stat}: {statChange.change}
 						</DialogContentText>
 					))}
 					<DialogContentText>

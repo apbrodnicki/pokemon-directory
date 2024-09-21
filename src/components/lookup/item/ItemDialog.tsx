@@ -36,7 +36,7 @@ export const ItemDialog = (
 				<Box
 					component='img'
 					src={item.sprite}
-					alt='type'
+					alt='sprite'
 				/>
 			</DialogTitle>
 			<DialogContent>

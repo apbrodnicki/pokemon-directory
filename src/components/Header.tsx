@@ -3,6 +3,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Box, Button, Paper, Typography } from '@mui/material';
 import { useFetchSprite } from 'api/useFetchSprite';
 import { PokemonListContext } from 'contexts/PokemonListContext';
+import { capitalizeFirstLetter } from 'helper/helper';
 import { useUpdatePokemonList, type updatePokemonListProps } from 'hooks/useUpdatePokemonList';
 import React, { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
@@ -78,13 +79,18 @@ export const Header = (): React.JSX.Element => {
 					<Button>
 						{path === '/' ? (
 							<>
-								<Typography>
-									{route}
+								<Typography color='black'>
+									{capitalizeFirstLetter(route)}
 								</Typography>
 								<NavigateNextIcon />
 							</>
 						) : (
-							<NavigateBeforeIcon />
+							<>
+								<Typography color='black'>
+									Home
+								</Typography>
+								<NavigateBeforeIcon />
+							</>
 						)}
 					</Button>
 				</Link>

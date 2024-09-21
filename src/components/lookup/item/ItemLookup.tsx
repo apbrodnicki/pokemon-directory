@@ -1,5 +1,6 @@
 import { Box, Button, Paper, TextField, Typography } from '@mui/material';
 import { useFetchItem } from 'api/items/useFetchItem';
+import { PokeballLoader } from 'components/loaders/PokeballLoader';
 import { SnackbarContext } from 'contexts/SnackbarContext';
 import { defaultItem } from 'data';
 import { formatNameForApi } from 'helper/helper';
@@ -51,22 +52,22 @@ export const ItemLookup = (): React.JSX.Element => {
 	}, [isError, item, setSnackbarColor, setSnackbarMessage, setSnackbarOpen]);
 
 	return (
-		<Paper elevation={3} sx={{ m: 5, backgroundColor: '#B8D8D8' }}>
+		<>
 			{!isLoading ? (
-				<Box component='form' onSubmit={onSubmit}>
-					<TextField label='Search an item' onChange={onChange} />
-					<Button type='submit'>
-						<Typography variant='body1'>
+				<Paper elevation={3} sx={{ m: 5, backgroundColor: '#B8D8D8' }}>
+					<Box component='form' onSubmit={onSubmit}>
+						<TextField label='Search an item' onChange={onChange} />
+						<Button type='submit'>
+							<Typography variant='body1'>
 							Submit
-						</Typography>
-					</Button>
-				</Box>
+							</Typography>
+						</Button>
+					</Box>
+					<ItemDialog item={item} setItem={setItem} isItemDialogOpen={isItemDialogOpen} setIsItemDialogOpen={setIsItemDialogOpen} />
+				</Paper>
 			) : (
-				<Typography>
-					loading
-				</Typography>
+				<PokeballLoader />
 			)}
-			<ItemDialog item={item} setItem={setItem} isItemDialogOpen={isItemDialogOpen} setIsItemDialogOpen={setIsItemDialogOpen} />
-		</Paper>
+		</>
 	);
 };

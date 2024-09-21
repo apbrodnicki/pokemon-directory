@@ -8,7 +8,7 @@ import { getDataGridColumns } from 'helper/getDataGridColumns';
 import { reduceArray } from 'helper/helper';
 import { type Pokemon } from 'models/models';
 import React, { useContext, useState } from 'react';
-import { Loader } from '../Loader';
+import { DataGridLoader } from '../loaders/DataGridLoader';
 
 export const PokemonDataGrid = (): React.JSX.Element => {
 	const { pokemonList } = useContext(PokemonListContext);
@@ -56,7 +56,7 @@ export const PokemonDataGrid = (): React.JSX.Element => {
 					</Box>
 				</Paper>
 			) : (
-				<Loader />
+				<DataGridLoader />
 			)}
 		</>
 	);

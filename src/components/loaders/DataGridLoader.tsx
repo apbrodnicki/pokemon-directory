@@ -2,7 +2,7 @@ import { Box, CardMedia } from '@mui/material';
 import loader from 'assets/loader.webm';
 import React from 'react';
 
-export const Loader = (): React.JSX.Element => (
+export const DataGridLoader = (): React.JSX.Element => (
 	<Box display='flex' justifyContent='center' m={3}>
 		<CardMedia
 			component='video'

@@ -5,9 +5,9 @@ import { Home } from 'components/Home';
 import { CustomSnackbar } from 'components/custom/CustomSnackbar';
 import { PokemonListContext } from 'contexts/PokemonListContext';
 import { SnackbarContext } from 'contexts/SnackbarContext';
+import 'css/App.css';
 import React, { useEffect, useState } from 'react';
 import { useOutlet } from 'react-router-dom';
-import './App.css';
 
 export const App = (): React.JSX.Element => {
 	const outlet = useOutlet();

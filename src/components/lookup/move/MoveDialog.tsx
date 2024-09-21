@@ -35,7 +35,7 @@ export const MoveDialog = (
 				{move.name}
 				<Box
 					component='img'
-					src={`src/assets/types/${ImagesTypes[move.type as keyof Types]}.png`}
+					src={ImagesTypes[move.type as keyof Types]}
 					alt={move.type}
 				/>
 			</DialogTitle>
@@ -45,7 +45,7 @@ export const MoveDialog = (
 						{move.damageClass}
 						<Box
 							component='img'
-							src={`src/assets/damage-class/${ImagesDamageClasses[move.damageClass]}.png`}
+							src={ImagesDamageClasses[move.damageClass]}
 							alt={move.damageClass}
 						/>
 					</DialogContentText>

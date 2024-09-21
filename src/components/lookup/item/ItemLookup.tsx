@@ -54,17 +54,19 @@ export const ItemLookup = (): React.JSX.Element => {
 	return (
 		<>
 			{!isLoading ? (
-				<Paper elevation={3} sx={{ m: 5, backgroundColor: '#B8D8D8' }}>
-					<Box component='form' onSubmit={onSubmit}>
-						<TextField label='Search an item' onChange={onChange} />
-						<Button type='submit'>
-							<Typography variant='body1'>
+				<>
+					<Paper elevation={3} sx={{ m: 5, backgroundColor: '#B8D8D8' }}>
+						<Box component='form' onSubmit={onSubmit}>
+							<TextField label='Search an item' onChange={onChange} />
+							<Button type='submit'>
+								<Typography variant='body1'>
 							Submit
-							</Typography>
-						</Button>
-					</Box>
+								</Typography>
+							</Button>
+						</Box>
+					</Paper>
 					<ItemDialog item={item} setItem={setItem} isItemDialogOpen={isItemDialogOpen} setIsItemDialogOpen={setIsItemDialogOpen} />
-				</Paper>
+				</>
 			) : (
 				<PokeballLoader />
 			)}

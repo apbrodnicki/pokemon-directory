@@ -1,4 +1,4 @@
-import { Dialog, DialogTitle, Typography } from '@mui/material';
+import { Dialog, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import { defaultAbility } from 'data';
 import { formatName } from 'helper/helper';
 import type { Ability } from 'models/models';
@@ -21,12 +21,24 @@ export const AbilityDialog = (
 	};
 
 	return (
-		<Dialog open={isAbilityDialogOpen} onClose={onClose} sx={{ p: 3 }}>
+		<Dialog
+			open={isAbilityDialogOpen}
+			onClose={onClose}
+			sx={{
+				p: 3,
+				'& .MuiDialog-paper': {
+					backgroundColor: '#B8D8D8'
+				}
+			}}
+		>
 			<DialogTitle>
-				<Typography>
-					{formatName(Object.keys(ability)[0])}: {Object.values(ability)}
-				</Typography>
+				{formatName(Object.keys(ability)[0])}
 			</DialogTitle>
+			<DialogContent>
+				<DialogContentText>
+					{Object.values(ability)}
+				</DialogContentText>
+			</DialogContent>
 		</Dialog>
 	);
 };

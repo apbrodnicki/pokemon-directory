@@ -1,4 +1,4 @@
-import { Dialog, DialogTitle, Typography } from '@mui/material';
+import { Box, Dialog, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import { defaultItem } from 'data';
 import { formatName } from 'helper/helper';
 import type { Item } from 'models/models';
@@ -21,12 +21,37 @@ export const ItemDialog = (
 	};
 
 	return (
-		<Dialog open={isItemDialogOpen} onClose={onClose} sx={{ p: 3 }}>
+		<Dialog
+			open={isItemDialogOpen}
+			onClose={onClose}
+			sx={{
+				p: 3,
+				'& .MuiDialog-paper': {
+					backgroundColor: '#B8D8D8'
+				}
+			}}
+		>
 			<DialogTitle>
-				<Typography>
-					{formatName(item.name)}: {item.description}
-				</Typography>
+				{formatName(item.name)}
+				<Box
+					component='img'
+					src={item.sprite}
+					alt='type'
+				/>
 			</DialogTitle>
+			<DialogContent>
+				<DialogContentText>
+					{item.description}
+				</DialogContentText>
+			</DialogContent>
+			<DialogContent>
+				<DialogContentText>
+					Fling Power: {item.flingPower}
+				</DialogContentText>
+				<DialogContentText>
+					Fling Effect: {item.flingEffect ?? 'None'}
+				</DialogContentText>
+			</DialogContent>
 		</Dialog>
 	);
 };

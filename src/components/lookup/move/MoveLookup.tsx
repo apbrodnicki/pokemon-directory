@@ -56,17 +56,19 @@ export const MoveLookup = (): React.JSX.Element => {
 	return (
 		<>
 			{!isLoading ? (
-				<Paper elevation={3} sx={{ m: 5, backgroundColor: '#B8D8D8' }}>
-					<Box component='form' onSubmit={onSubmit}>
-						<TextField label='Search a move' onChange={onChange} />
-						<Button type='submit'>
-							<Typography variant='body1'>
+				<>
+					<Paper elevation={3} sx={{ m: 5, backgroundColor: '#B8D8D8' }}>
+						<Box component='form' onSubmit={onSubmit}>
+							<TextField label='Search a move' onChange={onChange} />
+							<Button type='submit'>
+								<Typography variant='body1'>
 								Submit
-							</Typography>
-						</Button>
-					</Box>
+								</Typography>
+							</Button>
+						</Box>
+					</Paper>
 					<MoveDialog move={move} setMove={setMove} isMoveDialogOpen={isMoveDialogOpen} setIsMoveDialogOpen={setIsMoveDialogOpen} />
-				</Paper>
+				</>
 			) : (
 				<PokeballLoader />
 			)}

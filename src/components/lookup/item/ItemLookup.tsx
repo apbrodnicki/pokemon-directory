@@ -20,7 +20,9 @@ export const ItemLookup = (): React.JSX.Element => {
 		setItemInput(event.target.value);
 	};
 
-	const onSubmit = (): void => {
+	const onSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+		event.preventDefault();
+
 		if (itemInput.length < 1) {
 			setSnackbarMessage('Error: Input value is empty.');
 			setSnackbarColor('error');
@@ -45,6 +47,7 @@ export const ItemLookup = (): React.JSX.Element => {
 		}
 
 		setIsError(false);
+		setItemInput('');
 	}, [isError, item, setSnackbarColor, setSnackbarMessage, setSnackbarOpen]);
 
 	return (

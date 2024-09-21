@@ -20,7 +20,9 @@ export const AbilityLookup = (): React.JSX.Element => {
 		setAbilityInput(event.target.value);
 	};
 
-	const onSubmit = (): void => {
+	const onSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+		event.preventDefault();
+
 		if (abilityInput.length < 1) {
 			setSnackbarMessage('Error: Input value is empty.');
 			setSnackbarColor('error');
@@ -45,6 +47,7 @@ export const AbilityLookup = (): React.JSX.Element => {
 		}
 
 		setIsError(false);
+		setAbilityInput('');
 	}, [ability, isError, setSnackbarColor, setSnackbarMessage, setSnackbarOpen]);
 
 	return (

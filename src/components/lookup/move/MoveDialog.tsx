@@ -15,15 +15,14 @@ export const MoveDialog = (
 	{ move, setMove, isMoveDialogOpen, setIsMoveDialogOpen }: MoveDialogProps
 ): React.JSX.Element => {
 	const onClose = (): void => {
-		// TODO: fix flashing default move dialog on close
 		setIsMoveDialogOpen(false);
-		setMove(defaultMove);
 	};
 
 	return (
 		<Dialog
 			open={isMoveDialogOpen}
 			onClose={onClose}
+			onTransitionExited={() => { setMove(defaultMove); }}
 			sx={{
 				p: 3,
 				'& .MuiDialog-paper': {

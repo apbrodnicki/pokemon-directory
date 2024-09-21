@@ -15,15 +15,14 @@ export const AbilityDialog = (
 	{ ability, setAbility, isAbilityDialogOpen, setIsAbilityDialogOpen }: AbilityDialogProps
 ): React.JSX.Element => {
 	const onClose = (): void => {
-		// TODO: fix flashing default ability dialog on close
 		setIsAbilityDialogOpen(false);
-		setAbility(defaultAbility);
 	};
 
 	return (
 		<Dialog
 			open={isAbilityDialogOpen}
 			onClose={onClose}
+			onTransitionExited={() => { setAbility(defaultAbility); }}
 			sx={{
 				p: 3,
 				'& .MuiDialog-paper': {

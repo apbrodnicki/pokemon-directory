@@ -15,15 +15,14 @@ export const ItemDialog = (
 	{ item, setItem, isItemDialogOpen, setIsItemDialogOpen }: ItemDialogProps
 ): React.JSX.Element => {
 	const onClose = (): void => {
-		// TODO: fix flashing default item dialog on close
 		setIsItemDialogOpen(false);
-		setItem(defaultItem);
 	};
 
 	return (
 		<Dialog
 			open={isItemDialogOpen}
 			onClose={onClose}
+			onTransitionExited={() => { setItem(defaultItem); }}
 			sx={{
 				p: 3,
 				'& .MuiDialog-paper': {

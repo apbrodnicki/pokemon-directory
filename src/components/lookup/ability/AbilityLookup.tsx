@@ -1,10 +1,10 @@
-import { Box, Button, Paper, TextField, Typography } from '@mui/material';
 import { useFetchAbility } from 'api/abilities/useFetchAbility';
 import { PokeballLoader } from 'components/loaders/PokeballLoader';
 import { SnackbarContext } from 'contexts/SnackbarContext';
 import { defaultAbility } from 'data';
 import { formatNameForApi } from 'helper/helper';
 import React, { useContext, useEffect, useState } from 'react';
+import { LookupForm } from '../LookupForm';
 import { AbilityDialog } from './AbilityDialog';
 
 export const AbilityLookup = (): React.JSX.Element => {
@@ -55,16 +55,7 @@ export const AbilityLookup = (): React.JSX.Element => {
 		<>
 			{!isLoading ? (
 				<>
-					<Paper elevation={3} sx={{ m: 5, backgroundColor: '#B8D8D8' }}>
-						<Box component='form' onSubmit={onSubmit}>
-							<TextField label='Search an ability' onChange={onChange} />
-							<Button type='submit'>
-								<Typography variant='body1'>
-								Submit
-								</Typography>
-							</Button>
-						</Box>
-					</Paper>
+					<LookupForm label='Search for an ability' onSubmit={onSubmit} onChange={onChange} />
 					<AbilityDialog ability={ability} setAbility={setAbility} isAbilityDialogOpen={isAbilityDialogOpen} setIsAbilityDialogOpen={setIsAbilityDialogOpen} />
 				</>
 			) : (

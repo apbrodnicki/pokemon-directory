@@ -1,10 +1,10 @@
-import { Box, Button, Paper, TextField, Typography } from '@mui/material';
 import { useFetchItem } from 'api/items/useFetchItem';
 import { PokeballLoader } from 'components/loaders/PokeballLoader';
 import { SnackbarContext } from 'contexts/SnackbarContext';
 import { defaultItem } from 'data';
 import { formatNameForApi } from 'helper/helper';
 import React, { useContext, useEffect, useState } from 'react';
+import { LookupForm } from '../LookupForm';
 import { ItemDialog } from './ItemDialog';
 
 export const ItemLookup = (): React.JSX.Element => {
@@ -55,16 +55,7 @@ export const ItemLookup = (): React.JSX.Element => {
 		<>
 			{!isLoading ? (
 				<>
-					<Paper elevation={3} sx={{ m: 5, backgroundColor: '#B8D8D8' }}>
-						<Box component='form' onSubmit={onSubmit}>
-							<TextField label='Search an item' onChange={onChange} />
-							<Button type='submit'>
-								<Typography variant='body1'>
-							Submit
-								</Typography>
-							</Button>
-						</Box>
-					</Paper>
+					<LookupForm label='Search for an item' onSubmit={onSubmit} onChange={onChange} />
 					<ItemDialog item={item} setItem={setItem} isItemDialogOpen={isItemDialogOpen} setIsItemDialogOpen={setIsItemDialogOpen} />
 				</>
 			) : (

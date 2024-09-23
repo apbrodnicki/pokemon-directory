@@ -40,7 +40,7 @@ export const Header = (): React.JSX.Element => {
 
 	return (
 		<Box id="header">
-			<Paper elevation={3} sx={{ m: 2, p: 4, backgroundColor: '#7A9E9f' }}>
+			<Paper elevation={3} sx={{ m: 2, p: 1, backgroundColor: '#7A9E9f' }}>
 				<Box
 					sx={{
 						display: 'flex',

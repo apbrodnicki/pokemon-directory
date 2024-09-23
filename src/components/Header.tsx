@@ -1,21 +1,20 @@
-import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import { Box, Button, Paper, Typography } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import { Box, Button, Menu, MenuItem, Paper, Typography } from '@mui/material';
 import { useFetchSprite } from 'api/useFetchSprite';
 import { PokemonListContext } from 'contexts/PokemonListContext';
-import { capitalizeFirstLetter } from 'helper/helper';
 import { useUpdatePokemonList, type updatePokemonListProps } from 'hooks/useUpdatePokemonList';
 import React, { useContext } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { CustomTooltip } from './custom/CustomTooltip';
 
 export const Header = (): React.JSX.Element => {
 	const { pokemonList } = useContext(PokemonListContext);
-	const path = useLocation().pathname;
-
+	const navigate = useNavigate();
 	const updatePokemonList = useUpdatePokemonList();
 
-	const route = path === '/' ? 'lookup' : '/';
+	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+
+	const open = Boolean(anchorEl);
 
 	const onClick = (name: string): void => {
 		let action: updatePokemonListProps['action'] = 'add';
@@ -24,6 +23,19 @@ export const Header = (): React.JSX.Element => {
 		}
 
 		updatePokemonList({ action, pokemonInput: [name], setPokemonInput: () => { } });
+	};
+
+	const openMenu = (event: React.MouseEvent<HTMLButtonElement>): void => {
+		setAnchorEl(event.currentTarget);
+	};
+
+	const closeMenu = (): void => {
+		setAnchorEl(null);
+	};
+
+	const handleNavigation = (route: string): void => {
+		setAnchorEl(null);
+		navigate(route);
 	};
 
 	return (
@@ -75,25 +87,17 @@ export const Header = (): React.JSX.Element => {
 				</Box>
 			</Paper>
 			<Box id="path-button">
-				<Link to={route}>
-					<Button>
-						{path === '/' ? (
-							<>
-								<Typography color='black'>
-									{capitalizeFirstLetter(route)}
-								</Typography>
-								<NavigateNextIcon />
-							</>
-						) : (
-							<>
-								<Typography color='black'>
-									Home
-								</Typography>
-								<NavigateBeforeIcon />
-							</>
-						)}
-					</Button>
-				</Link>
+				<Button onClick={openMenu}>
+					<MenuIcon />
+				</Button>
+				<Menu
+					open={open}
+					onClose={closeMenu}
+					anchorEl={anchorEl}
+				>
+					<MenuItem onClick={() => { handleNavigation('/'); }}>Home</MenuItem>
+					<MenuItem onClick={() => { handleNavigation('/lookup'); }}>Lookup</MenuItem>
+				</Menu>
 			</Box>
 		</Box>
 	);

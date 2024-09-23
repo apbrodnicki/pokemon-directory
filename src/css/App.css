@@ -15,8 +15,8 @@ body {
 
 #path-button {
 	position: absolute;
-	top: 130px;
-	right: 25px;
+	top: 25px;
+	right: 20px;
 }
 
 div > .MuiAutocomplete-listbox {

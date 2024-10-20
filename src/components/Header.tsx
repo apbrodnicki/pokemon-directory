@@ -1,20 +1,13 @@
-import MenuIcon from '@mui/icons-material/Menu';
-import { Box, Button, Menu, MenuItem, Paper, Typography } from '@mui/material';
+import { Box, Paper, Typography } from '@mui/material';
 import { useFetchSprite } from 'api/useFetchSprite';
 import { PokemonListContext } from 'contexts/PokemonListContext';
 import { useUpdatePokemonList, type updatePokemonListProps } from 'hooks/useUpdatePokemonList';
 import React, { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { CustomTooltip } from './custom/CustomTooltip';
 
 export const Header = (): React.JSX.Element => {
 	const { pokemonList } = useContext(PokemonListContext);
-	const navigate = useNavigate();
 	const updatePokemonList = useUpdatePokemonList();
-
-	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-
-	const open = Boolean(anchorEl);
 
 	const onClick = (name: string): void => {
 		let action: updatePokemonListProps['action'] = 'add';
@@ -23,19 +16,6 @@ export const Header = (): React.JSX.Element => {
 		}
 
 		updatePokemonList({ action, pokemonInput: [name], setPokemonInput: () => { } });
-	};
-
-	const openMenu = (event: React.MouseEvent<HTMLButtonElement>): void => {
-		setAnchorEl(event.currentTarget);
-	};
-
-	const closeMenu = (): void => {
-		setAnchorEl(null);
-	};
-
-	const handleNavigation = (route: string): void => {
-		setAnchorEl(null);
-		navigate(route);
 	};
 
 	return (
@@ -86,19 +66,6 @@ export const Header = (): React.JSX.Element => {
 					</CustomTooltip>
 				</Box>
 			</Paper>
-			<Box id="path-button">
-				<Button onClick={openMenu}>
-					<MenuIcon />
-				</Button>
-				<Menu
-					open={open}
-					onClose={closeMenu}
-					anchorEl={anchorEl}
-				>
-					<MenuItem onClick={() => { handleNavigation('/'); }}>Home</MenuItem>
-					<MenuItem onClick={() => { handleNavigation('/lookup'); }}>Lookup</MenuItem>
-				</Menu>
-			</Box>
 		</Box>
 	);
 };

@@ -94,3 +94,7 @@ export interface Move {
 	target: string,
 	type: string
 }
+
+export interface LookupType {
+	lookupType: 'ability' | 'item' | 'move'
+}

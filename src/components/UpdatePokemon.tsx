@@ -58,7 +58,11 @@ export const UpdatePokemon = (): React.JSX.Element => {
 	}));
 
 	return (
-		<Grid container justifyContent='center'>
+		<Grid
+			container
+			justifyContent='center'
+			flex='0 0 65%'
+		>
 			{!isLoading && (
 				<>
 					<Grid item xs={12} lg={5} mx={3}>

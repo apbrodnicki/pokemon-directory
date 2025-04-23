@@ -50,7 +50,7 @@ export const getDataGridColumns = ({ abilitiesWithDescriptions, types }: getData
 		{
 			field: 'types',
 			headerName: 'Types',
-			type: 'array',
+			type: 'string',
 			width: 200,
 			headerAlign: 'center',
 			headerClassName: 'header',
@@ -60,7 +60,7 @@ export const getDataGridColumns = ({ abilitiesWithDescriptions, types }: getData
 		{
 			field: 'abilities',
 			headerName: 'Abilities',
-			type: 'array',
+			type: 'string',
 			width: 150,
 			headerAlign: 'center',
 			headerClassName: 'header',

@@ -41,6 +41,15 @@ export interface GenericStats {
 	speed: string
 }
 
+export interface GenericDefaultStats {
+	hp: number,
+	attack: number,
+	defense: number,
+	'special-attack': number,
+	'special-defense': number,
+	speed: number
+}
+
 export interface GenericAllPokemon {
 	results: [{
 		name: string,

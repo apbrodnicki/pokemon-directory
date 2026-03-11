@@ -1,5 +1,5 @@
 import { formatName, getGeneration } from 'helper/helper';
-import type { GenericAbility, GenericAllPokemon, GenericDamageRelation, GenericItem, GenericMove, GenericPokemon, GenericType } from 'models/genericModels';
+import type { GenericAbility, GenericAllPokemon, GenericDamageRelation, GenericDefaultStats, GenericItem, GenericMove, GenericPokemon, GenericType } from 'models/genericModels';
 import type { Ability, DamageRelation, Item, Move, Pokemon, PokemonAutocompleteItem, Stats, Type } from 'models/models';
 
 export const getSprite = (pokemon: GenericPokemon): string => {
@@ -13,7 +13,7 @@ export const getPokedexNumber = (pokemon: GenericPokemon): number => {
 export const filterPokemonData = (pokemon: GenericPokemon): Pokemon => {
 	const types: string[] = [];
 	const abilities: string[] = [];
-	const stats = {
+	const stats: GenericDefaultStats = {
 		hp: 0,
 		attack: 0,
 		defense: 0,

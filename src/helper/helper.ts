@@ -61,7 +61,7 @@ export const getProgressColor = (progressValue: number): string => {
 		}
 	}
 
-	return 'primary';
+	return '#6600B3';
 };
 
 export const getGeneration = (pokedexNumber: number): string => {

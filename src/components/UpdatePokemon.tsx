@@ -61,7 +61,7 @@ export const UpdatePokemon = (): React.JSX.Element => {
 		<Grid
 			container
 			justifyContent='center'
-			flex='0 0 65%'
+			flex='0 0 67%'
 		>
 			{!isLoading && (
 				<>

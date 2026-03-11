@@ -1,4 +1,4 @@
-import { Tooltip, Zoom } from '@mui/material';
+import { Box, Tooltip, Zoom } from '@mui/material';
 import React from 'react';
 
 interface CustomTooltipProps {
@@ -10,7 +10,7 @@ interface CustomTooltipProps {
 
 export const CustomTooltip = ({ title, haveCursor, onClick, children }: CustomTooltipProps): React.JSX.Element => (
 	<Tooltip
-		title={title}
+		title={<Box style={{ fontSize: '16px' }}>{title}</Box>}
 		TransitionComponent={Zoom}
 		placement='top'
 		leaveDelay={100}

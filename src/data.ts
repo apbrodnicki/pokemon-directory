@@ -65,3 +65,8 @@ export const runnerPokemon: RunnerItems = {
 	bottomLeft: 'Aurorus',
 	bottomRight: 'Cradily'
 };
+
+export const statValues = {
+	maxIndividualStat: 255,
+	maxTotalStat: 780
+};

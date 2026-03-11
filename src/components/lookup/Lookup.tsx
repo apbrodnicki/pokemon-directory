@@ -64,7 +64,6 @@ export const Lookup = (): React.JSX.Element => {
 			case 'move':
 				fetchMoveRequest({ moveName: formatNameForApi(input), contactMoves, setIsLoading, setIsError });
 				break;
-
 		}
 	};
 

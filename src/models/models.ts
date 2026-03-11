@@ -13,6 +13,7 @@ export interface Stats {
 	specialAttack: number,
 	specialDefense: number,
 	speed: number,
+	total: number
 }
 
 export interface Type extends DamageRelation {

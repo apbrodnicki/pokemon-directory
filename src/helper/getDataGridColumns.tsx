@@ -4,6 +4,7 @@ import { AbilitiesCell } from 'components/data-grid/cells/AbilitiesCell';
 import { RemoveCell } from 'components/data-grid/cells/RemoveCell';
 import { RemoveCellHeader } from 'components/data-grid/cells/RemoveCellHeader';
 import { StatCell } from 'components/data-grid/cells/StatCell';
+import { TotalCell } from 'components/data-grid/cells/TotalCell';
 import { TypesCell } from 'components/data-grid/cells/TypesCell';
 import type { Ability, Type } from 'models/models';
 
@@ -127,5 +128,15 @@ export const getDataGridColumns = ({ abilitiesWithDescriptions, types }: getData
 			align: 'center',
 			renderCell: (param) => <StatCell statValue={param.value} />
 		},
+		{
+			field: 'total',
+			headerName: 'Total',
+			type: 'number',
+			width: 100,
+			headerAlign: 'center',
+			headerClassName: 'header',
+			align: 'center',
+			renderCell: (param) => <TotalCell totalValue={param.value} />
+		}
 	];
 };

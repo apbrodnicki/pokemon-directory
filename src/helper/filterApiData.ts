@@ -37,6 +37,7 @@ export const filterPokemonData = (pokemon: GenericPokemon): Pokemon => {
 	const convertedStats: Stats = {
 		specialAttack: stats['special-attack'],
 		specialDefense: stats['special-defense'],
+		total: stats.hp + stats.attack + stats.defense + stats['special-attack'] + stats['special-defense'] + stats.speed,
 		...stats
 	};
 

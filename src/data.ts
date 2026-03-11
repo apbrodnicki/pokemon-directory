@@ -1,4 +1,4 @@
-import { type Ability, type Item, type Move, type Types } from 'models/models';
+import { type Ability, type Item, type Move, type RunnerItems, type Types } from 'models/models';
 
 export const typeColors: Types = {
 	normal: '#A8A878',
@@ -57,4 +57,11 @@ export const defaultMove: Move = {
 	statChanges: [],
 	target: '',
 	type: ''
+};
+
+export const runnerPokemon: RunnerItems = {
+	topLeft: 'Cranidos',
+	topRight: 'Archen',
+	bottomLeft: 'Aurorus',
+	bottomRight: 'Cradily'
 };

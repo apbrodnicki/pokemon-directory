@@ -4,7 +4,7 @@ import React from 'react';
 interface CustomTooltipProps {
 	title: string,
 	haveCursor?: boolean,
-	onClick?: React.MouseEventHandler<HTMLDivElement>
+	onClick?: React.MouseEventHandler<HTMLDivElement>,
 	children: React.PropsWithChildren<React.JSX.Element>
 }
 

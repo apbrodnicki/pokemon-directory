@@ -98,3 +98,10 @@ export interface Move {
 export interface LookupType {
 	lookupType: 'ability' | 'item' | 'move'
 }
+
+export interface RunnerItems {
+	topLeft: string,
+	topRight: string,
+	bottomLeft: string,
+	bottomRight: string
+}

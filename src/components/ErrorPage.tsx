@@ -1,8 +1,10 @@
 import { Box, Grid, Paper, Typography } from '@mui/material';
+import { runnerPokemon } from 'data';
 import React from 'react';
 import { isRouteErrorResponse, useRouteError } from 'react-router-dom';
 import { Footer } from './Footer';
 import { Header } from './Header';
+import { Runner } from './Runner';
 
 export const ErrorPage = (): React.JSX.Element => {
 	const error = useRouteError();
@@ -21,7 +23,9 @@ export const ErrorPage = (): React.JSX.Element => {
 
 	return (
 		<Box id="error-page">
-			<Header />
+			<Runner leftPokemon={runnerPokemon.topLeft} rightPokemon={runnerPokemon.topRight}>
+				<Header />
+			</Runner>
 			<Box
 				display='flex'
 				flexDirection='column'
@@ -45,7 +49,9 @@ export const ErrorPage = (): React.JSX.Element => {
 					</Grid>
 				</Grid>
 			</Box>
-			<Footer />
+			<Runner leftPokemon={runnerPokemon.bottomLeft} rightPokemon={runnerPokemon.bottomRight}>
+				<Footer />
+			</Runner>
 		</Box>
 	);
 };

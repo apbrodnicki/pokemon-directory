@@ -1,4 +1,4 @@
-import { Box, Grid, Paper, Typography } from '@mui/material';
+import { Box, Paper, Typography } from '@mui/material';
 import { runnerPokemon } from 'data';
 import React from 'react';
 import { isRouteErrorResponse, useRouteError } from 'react-router-dom';
@@ -22,7 +22,7 @@ export const ErrorPage = (): React.JSX.Element => {
 	}
 
 	return (
-		<Box id="error-page">
+		<Box id='error-page'>
 			<Runner leftPokemon={runnerPokemon.topLeft} rightPokemon={runnerPokemon.topRight}>
 				<Header />
 			</Runner>
@@ -30,24 +30,25 @@ export const ErrorPage = (): React.JSX.Element => {
 				display='flex'
 				flexDirection='column'
 				justifyContent='center'
+				alignItems='center'
 				flex={1}
 			>
-				<Grid container justifyContent='center'>
-					<Grid item maxWidth='50%'>
-						<Paper
-							elevation={3}
-							sx={{
-								m: 5,
-								backgroundColor: '#B8D8D8'
-							}}>
-							<Box p={5}>
-								<Typography align='center'>
-									{errorMessage}
-								</Typography>
-							</Box>
-						</Paper>
-					</Grid>
-				</Grid>
+				<Paper
+					elevation={3}
+					sx={{
+						m: 5,
+						width: '33%',
+						backgroundColor: '#B8D8D8',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center'
+					}}>
+					<Box p={5}>
+						<Typography align='center'>
+							{errorMessage}
+						</Typography>
+					</Box>
+				</Paper>
 			</Box>
 			<Runner leftPokemon={runnerPokemon.bottomLeft} rightPokemon={runnerPokemon.bottomRight}>
 				<Footer />

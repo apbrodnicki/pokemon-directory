@@ -10,10 +10,10 @@ export const RemoveCellHeader = (): React.JSX.Element => {
 	const { setPokemonList } = useContext(PokemonListContext);
 
 	const onIconClick = (): void => {
+		setPokemonList([]);
 		setSnackbarMessage('Success: Every Pokémon has been removed.');
 		setSnackbarColor('success');
 		setSnackbarOpen(true);
-		setPokemonList([]);
 	};
 
 	return (

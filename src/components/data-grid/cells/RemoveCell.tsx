@@ -6,7 +6,7 @@ import { SnackbarContext } from 'contexts/SnackbarContext';
 import React, { useContext } from 'react';
 
 interface RemoveCellProps {
-	name: string,
+	name: string;
 }
 
 export const RemoveCell = ({ name }: RemoveCellProps): React.JSX.Element => {
@@ -14,10 +14,10 @@ export const RemoveCell = ({ name }: RemoveCellProps): React.JSX.Element => {
 	const { pokemonList, setPokemonList } = useContext(PokemonListContext);
 
 	const onIconClick = (): void => {
+		setPokemonList(pokemonList.filter((pokemon) => pokemon !== name));
 		setSnackbarMessage('Success: Pokémon removed.');
 		setSnackbarColor('success');
 		setSnackbarOpen(true);
-		setPokemonList(pokemonList.filter((pokemon) => pokemon !== name));
 	};
 
 	return (

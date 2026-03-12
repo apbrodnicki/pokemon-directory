@@ -1,4 +1,4 @@
-import { Box, Grid, Paper, Typography } from '@mui/material';
+import { Box, Paper, Typography } from '@mui/material';
 import { typeColors } from 'data';
 import { capitalizeFirstLetter } from 'helper/helper';
 import PopupState, { bindHover, bindPopover } from 'material-ui-popup-state';
@@ -7,19 +7,15 @@ import type { DamageRelation, Type, Types } from 'models/models';
 import React from 'react';
 
 interface TypesCellProps {
-	typeStrings: Array<keyof Types>,
-	types: Type[]
+	typeStrings: Array<keyof Types>;
+	types: Type[];
 }
 
 export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Element => {
-	const HoverGridItem = (type: string, index: number): React.JSX.Element => (
-		<Grid
-			item
+	const HoverItem = (type: string, index: number): React.JSX.Element => (
+		<Box
 			key={index}
-			xs={3}
-			sx={{
-				backgroundColor: typeColors[type as keyof Types]
-			}}
+			bgcolor={typeColors[type as keyof Types]}
 		>
 			<Typography
 				component='div'
@@ -33,7 +29,7 @@ export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Ele
 					{capitalizeFirstLetter(type)}
 				</Box>
 			</Typography>
-		</Grid>
+		</Box>
 	);
 
 	if (typeStrings.length > 1) {
@@ -65,7 +61,12 @@ export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Ele
 							damageRelation.doubleDamageFrom.push(currentType);
 						} else {
 							damageRelation.doubleDamageFrom = damageRelation.doubleDamageFrom.filter((type) => type !== currentType);
-							damageRelation.quadrupleDamageFrom !== undefined ? damageRelation.quadrupleDamageFrom.push(currentType) : damageRelation.quadrupleDamageFrom = [];
+
+							if (damageRelation.quadrupleDamageFrom !== undefined) {
+								damageRelation.quadrupleDamageFrom.push(currentType);
+							} else {
+								damageRelation.quadrupleDamageFrom = [];
+							}
 						}
 					}
 
@@ -74,7 +75,12 @@ export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Ele
 							damageRelation.halfDamageFrom.push(currentType);
 						} else {
 							damageRelation.halfDamageFrom = damageRelation.halfDamageFrom.filter((type) => type !== currentType);
-							damageRelation.quarterDamageFrom !== undefined ? damageRelation.quarterDamageFrom.push(currentType) : damageRelation.quarterDamageFrom = [];
+
+							if (damageRelation.quarterDamageFrom !== undefined) {
+								damageRelation.quarterDamageFrom.push(currentType);
+							} else {
+								damageRelation.quarterDamageFrom = [];
+							}
 						}
 					}
 
@@ -135,11 +141,11 @@ export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Ele
 												Immune to (0x):
 											</Box>
 										</Typography>
-										<Grid container py={.5}>
+										<Box py={.5}>
 											{damageRelation.noDamageFrom.map((type: string, index: number) => (
-												HoverGridItem(type, index)
+												HoverItem(type, index)
 											))}
-										</Grid>
+										</Box>
 									</>
 								)}
 								{damageRelation.quarterDamageFrom !== undefined && damageRelation.quarterDamageFrom.length > 0 && (
@@ -149,11 +155,11 @@ export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Ele
 												Strongly resists (.25x):
 											</Box>
 										</Typography>
-										<Grid container py={.5}>
+										<Box py={.5}>
 											{damageRelation.quarterDamageFrom?.map((type: string, index: number) => (
-												HoverGridItem(type, index)
+												HoverItem(type, index)
 											))}
-										</Grid>
+										</Box>
 									</>
 								)}
 								{damageRelation.halfDamageFrom.length > 0 && (
@@ -163,11 +169,11 @@ export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Ele
 												Resists (.5x):
 											</Box>
 										</Typography>
-										<Grid container py={.5}>
+										<Box py={.5}>
 											{damageRelation.halfDamageFrom.map((type: string, index: number) => (
-												HoverGridItem(type, index)
+												HoverItem(type, index)
 											))}
-										</Grid>
+										</Box>
 									</>
 								)}
 								{damageRelation.doubleDamageFrom.length > 0 && (
@@ -177,11 +183,11 @@ export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Ele
 												Weak to (2x):
 											</Box>
 										</Typography>
-										<Grid container py={.5}>
+										<Box py={.5}>
 											{damageRelation.doubleDamageFrom.map((type: string, index: number) => (
-												HoverGridItem(type, index)
+												HoverItem(type, index)
 											))}
-										</Grid>
+										</Box>
 									</>
 								)}
 								{damageRelation.quadrupleDamageFrom !== undefined && damageRelation.quadrupleDamageFrom.length > 0 && (
@@ -191,11 +197,11 @@ export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Ele
 												Very weak to (4x):
 											</Box>
 										</Typography>
-										<Grid container py={.5}>
+										<Box py={.5}>
 											{damageRelation.quadrupleDamageFrom?.map((type: string, index: number) => (
-												HoverGridItem(type, index)
+												HoverItem(type, index)
 											))}
-										</Grid>
+										</Box>
 									</>
 								)}
 							</Paper>
@@ -259,11 +265,11 @@ export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Ele
 												Immune to (0x):
 											</Box>
 										</Typography>
-										<Grid container py={.5}>
+										<Box py={.5}>
 											{damageRelation.noDamageFrom.map((type: string, index: number) => (
-												HoverGridItem(type, index)
+												HoverItem(type, index)
 											))}
-										</Grid>
+										</Box>
 									</>
 								)}
 								{damageRelation.halfDamageFrom.length > 0 && (
@@ -273,11 +279,11 @@ export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Ele
 												Resists (.5x):
 											</Box>
 										</Typography>
-										<Grid container py={.5}>
+										<Box py={.5}>
 											{damageRelation.halfDamageFrom.map((type: string, index: number) => (
-												HoverGridItem(type, index)
+												HoverItem(type, index)
 											))}
-										</Grid>
+										</Box>
 									</>
 								)}
 								{damageRelation.doubleDamageFrom.length > 0 && (
@@ -287,11 +293,11 @@ export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Ele
 												Weak to (2x):
 											</Box>
 										</Typography>
-										<Grid container py={.5}>
+										<Box py={.5}>
 											{damageRelation.doubleDamageFrom.map((type: string, index: number) => (
-												HoverGridItem(type, index)
+												HoverItem(type, index)
 											))}
-										</Grid>
+										</Box>
 									</>
 								)}
 							</Paper>

@@ -5,8 +5,8 @@ import { useEffect, useState } from 'react';
 import { fetchPokemon } from './fetchPokemon';
 
 interface useFetchPokemonProps {
-	pokemonList: string[],
-	setIsLoadingPokemon: React.Dispatch<React.SetStateAction<boolean>>
+	pokemonList: string[];
+	setIsLoadingPokemon: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const useFetchPokemon = (

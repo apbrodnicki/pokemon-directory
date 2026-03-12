@@ -5,8 +5,8 @@ import { useEffect, useState } from 'react';
 import { fetchType } from './fetchType';
 
 interface useFetchTypesProps {
-	typesList: string[],
-	setIsLoadingTypes: React.Dispatch<React.SetStateAction<boolean>>
+	typesList: string[];
+	setIsLoadingTypes: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const useFetchTypes = (

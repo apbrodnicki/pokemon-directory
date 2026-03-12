@@ -6,9 +6,9 @@ import React, { useContext } from 'react';
 import { CustomTooltip } from './custom/CustomTooltip';
 
 interface RunnerProps {
-	leftPokemon: string,
-	rightPokemon: string,
-	children: React.PropsWithChildren<React.JSX.Element>
+	leftPokemon: string;
+	rightPokemon: string;
+	children: React.PropsWithChildren<React.JSX.Element>;
 }
 
 export const Runner = ({ leftPokemon, rightPokemon, children }: RunnerProps): React.JSX.Element => {
@@ -25,7 +25,7 @@ export const Runner = ({ leftPokemon, rightPokemon, children }: RunnerProps): Re
 	};
 
 	return (
-		<Box id="runner">
+		<Box id='runner'>
 			<Paper elevation={3} sx={{ m: 2, p: 1, backgroundColor: '#7A9E9f' }}>
 				<Box
 					sx={{

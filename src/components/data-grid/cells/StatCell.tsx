@@ -4,7 +4,7 @@ import { getProgressColor } from 'helper/helper';
 import React from 'react';
 
 interface StatCellProps {
-	statValue: number
+	statValue: number;
 }
 
 export const StatCell = (

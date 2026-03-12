@@ -2,10 +2,10 @@ import { Box, Tooltip, Zoom } from '@mui/material';
 import React from 'react';
 
 interface CustomTooltipProps {
-	title: string,
-	haveCursor?: boolean,
-	onClick?: React.MouseEventHandler<HTMLDivElement>,
-	children: React.PropsWithChildren<React.JSX.Element>
+	title: string;
+	haveCursor?: boolean;
+	onClick?: React.MouseEventHandler<HTMLDivElement>;
+	children: React.PropsWithChildren<React.JSX.Element>;
 }
 
 export const CustomTooltip = ({ title, haveCursor, onClick, children }: CustomTooltipProps): React.JSX.Element => (

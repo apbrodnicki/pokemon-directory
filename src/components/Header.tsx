@@ -14,7 +14,7 @@ export const Header = (): React.JSX.Element => {
 					}
 				}}
 			>
-					Pokémon Directory
+				Pokémon Directory
 			</Typography>
 		</Box>
 	);

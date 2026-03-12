@@ -1,4 +1,4 @@
-import { Box, Grid, Paper, Typography } from '@mui/material';
+import { Box, Paper, Typography } from '@mui/material';
 import { PokemonListContext } from 'contexts/PokemonListContext';
 import React, { useContext } from 'react';
 import { PokemonDataGrid } from './data-grid/PokemonDataGrid';
@@ -13,36 +13,38 @@ export const Home = (): React.JSX.Element => {
 			display='flex'
 			flexDirection='column'
 			justifyContent='center'
+			alignItems='center'
 			flex={1}
 		>
 			<Box
 				display='flex'
 				alignItems='center'
-				flexDirection={{ xs: 'column', lg: 'row' }}
-				m={3}
+				flexDirection='column'
+				m={5}
+				width='100%'
 			>
-				<UpdatePokemon />
 				<Lookup />
+				<UpdatePokemon />
 			</Box>
 			{pokemonList.length > 0 ? (
 				<PokemonDataGrid />
 			) : (
-				<Grid container justifyContent='center'>
-					<Grid item maxWidth='90%'>
-						<Paper
-							elevation={3}
-							sx={{
-								m: 5,
-								backgroundColor: '#B8D8D8'
-							}}>
-							<Box p={5}>
-								<Typography align='center'>
-									Add Pokémon to learn more about them or lookup information about abilities/items/moves!
-								</Typography>
-							</Box>
-						</Paper>
-					</Grid>
-				</Grid>
+				<Paper
+					elevation={3}
+					sx={{
+						m: 5,
+						width: '33%',
+						backgroundColor: '#B8D8D8',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center'
+					}}>
+					<Box p={5}>
+						<Typography align='center'>
+							Add Pokémon to learn more about them or lookup information about abilities/items/moves!
+						</Typography>
+					</Box>
+				</Paper>
 			)}
 		</Box>
 	);

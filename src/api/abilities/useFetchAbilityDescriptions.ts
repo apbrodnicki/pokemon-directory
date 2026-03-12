@@ -5,8 +5,8 @@ import { useEffect, useState } from 'react';
 import { fetchAbility } from './fetchAbility';
 
 interface useFetchAbilityDescriptionsProps {
-	abilities: string[],
-	setIsLoadingAbilityDescriptions: React.Dispatch<React.SetStateAction<boolean>>
+	abilities: string[];
+	setIsLoadingAbilityDescriptions: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const useFetchAbilityDescriptions = (

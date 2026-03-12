@@ -160,8 +160,8 @@ export const filterItemData = (item: GenericItem): Item => {
 export const filterMoveData = (move: GenericMove, contactMoves: string[]): Move => {
 	let description: string = '';
 	const statChanges: Array<{
-		change: number,
-		stat: keyof Stats
+		change: number;
+		stat: keyof Stats;
 	}> = [];
 
 	for (const entry of move.effect_entries) {

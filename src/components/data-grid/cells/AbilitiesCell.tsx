@@ -5,8 +5,8 @@ import type { Ability } from 'models/models';
 import React from 'react';
 
 interface AbilitiesCellProps {
-	abilityStrings: string[],
-	abilities: Ability[]
+	abilityStrings: string[];
+	abilities: Ability[];
 }
 
 export const AbilitiesCell = ({ abilityStrings, abilities }: AbilitiesCellProps): React.JSX.Element => (

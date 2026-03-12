@@ -9,7 +9,7 @@ export const Footer = (): React.JSX.Element => {
 		<Box id='footer'>
 			<Box display='flex' alignItems='center' justifyContent='center'>
 				<Typography variant='subtitle2' mx={1}>
-							Created by Alex Brodnicki
+					Created by Alex Brodnicki
 				</Typography>
 				<MuiLink href='https://github.com/apbrodnicki' target='_blank' mx={1}>
 					<CustomTooltip title='My GitHub'>
@@ -19,7 +19,7 @@ export const Footer = (): React.JSX.Element => {
 			</Box>
 			<Box display='flex' alignItems='center' justifyContent='center'>
 				<Typography variant='subtitle2' mx={1}>
-							Data provided by PokéApi
+					Data provided by PokéApi
 				</Typography>
 				<MuiLink href='https://pokeapi.co/' target='_blank' underline='hover' color='black' mx={1}>
 					<CustomTooltip title='PokéApi Website'>

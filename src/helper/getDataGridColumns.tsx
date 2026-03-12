@@ -9,8 +9,8 @@ import { TypesCell } from 'components/data-grid/cells/TypesCell';
 import type { Ability, Type } from 'models/models';
 
 interface getDataGridColumnsProps {
-	abilitiesWithDescriptions: Ability[],
-	types: Type[]
+	abilitiesWithDescriptions: Ability[];
+	types: Type[];
 }
 
 export const getDataGridColumns = ({ abilitiesWithDescriptions, types }: getDataGridColumnsProps): GridColDef[] => {

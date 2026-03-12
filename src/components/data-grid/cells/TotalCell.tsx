@@ -4,7 +4,7 @@ import { getProgressColor } from 'helper/helper';
 import React from 'react';
 
 interface TotalCellProps {
-	totalValue: number
+	totalValue: number;
 }
 
 export const TotalCell = ({ totalValue }: TotalCellProps): React.JSX.Element => (

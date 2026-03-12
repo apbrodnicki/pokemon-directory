@@ -5,8 +5,8 @@ import { useEffect, useState } from 'react';
 import { fetchPokemon } from './pokemon/fetchPokemon';
 
 interface useFetchPokemonAutocompleteItemsProps {
-	pokemonList: string[],
-	setIsLoadingPokemonAutocompleteItems: React.Dispatch<React.SetStateAction<boolean>>
+	pokemonList: string[];
+	setIsLoadingPokemonAutocompleteItems: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const useFetchPokemonAutocompleteItems = (

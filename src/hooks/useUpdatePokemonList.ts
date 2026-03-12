@@ -4,9 +4,9 @@ import type React from 'react';
 import { useContext } from 'react';
 
 export interface updatePokemonListProps {
-	action: 'add' | 'remove',
-	pokemonInput: string[],
-	setPokemonInput: React.Dispatch<React.SetStateAction<string[]>>
+	action: 'add' | 'remove';
+	pokemonInput: string[];
+	setPokemonInput: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 export const useUpdatePokemonList = (): ({ action, pokemonInput, setPokemonInput }: updatePokemonListProps) => void => {

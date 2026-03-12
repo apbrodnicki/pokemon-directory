@@ -87,3 +87,7 @@ export const getGeneration = (pokedexNumber: number): string => {
 		return 'Other';
 	}
 };
+
+export const generateKey = (): string => {
+	return `key-${Math.random().toString(36).substring(2, 11)}`;
+};

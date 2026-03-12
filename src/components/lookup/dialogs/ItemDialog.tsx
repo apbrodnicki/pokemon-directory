@@ -5,17 +5,16 @@ import type { Item } from 'models/models';
 import React from 'react';
 
 interface ItemDialogProps {
-	item: Item,
-	setItem: React.Dispatch<React.SetStateAction<Item>>,
-	isItemDialogOpen: boolean,
-	setIsItemDialogOpen: React.Dispatch<React.SetStateAction<boolean>>
+	item: Item;
+	setItem: React.Dispatch<React.SetStateAction<Item>>;
+	isItemDialogOpen: boolean;
 }
 
 export const ItemDialog = (
-	{ item, setItem, isItemDialogOpen, setIsItemDialogOpen }: ItemDialogProps
+	{ item, setItem, isItemDialogOpen }: ItemDialogProps
 ): React.JSX.Element => {
 	const onClose = (): void => {
-		setIsItemDialogOpen(false);
+		setItem(defaultItem);
 	};
 
 	return (

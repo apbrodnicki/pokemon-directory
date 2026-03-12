@@ -5,17 +5,16 @@ import type { Ability } from 'models/models';
 import React from 'react';
 
 interface AbilityDialogProps {
-	ability: Ability,
-	setAbility: React.Dispatch<React.SetStateAction<Ability>>,
-	isAbilityDialogOpen: boolean,
-	setIsAbilityDialogOpen: React.Dispatch<React.SetStateAction<boolean>>
+	ability: Ability;
+	setAbility: React.Dispatch<React.SetStateAction<Ability>>;
+	isAbilityDialogOpen: boolean;
 }
 
 export const AbilityDialog = (
-	{ ability, setAbility, isAbilityDialogOpen, setIsAbilityDialogOpen }: AbilityDialogProps
+	{ ability, setAbility, isAbilityDialogOpen }: AbilityDialogProps
 ): React.JSX.Element => {
 	const onClose = (): void => {
-		setIsAbilityDialogOpen(false);
+		setAbility(defaultAbility);
 	};
 
 	return (

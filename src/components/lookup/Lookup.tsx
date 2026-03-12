@@ -9,7 +9,7 @@ import 'css/PokeballLoader.css';
 import { defaultAbility, defaultItem, defaultMove } from 'data';
 import { formatNameForApi } from 'helper/helper';
 import type { LookupType } from 'models/models';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { AbilityDialog } from './dialogs/AbilityDialog';
 import { ItemDialog } from './dialogs/ItemDialog';
 import { MoveDialog } from './dialogs/MoveDialog';
@@ -21,17 +21,16 @@ export const Lookup = (): React.JSX.Element => {
 	const [input, setInput] = useState<string>('');
 	const [lookupType, setLookupType] = useState<LookupType['lookupType']>('ability');
 
-	const [isAbilityDialogOpen, setIsAbilityDialogOpen] = useState<boolean>(false);
-	const [isItemDialogOpen, setIsItemDialogOpen] = useState<boolean>(false);
-	const [isMoveDialogOpen, setIsMoveDialogOpen] = useState<boolean>(false);
-
 	const [isLoading, setIsLoading] = useState<boolean>(false);
-	const [isError, setIsError] = useState<boolean>(false);
 
 	const { fetchAbilityRequest, ability, setAbility } = useFetchAbility();
 	const { fetchItemRequest, item, setItem } = useFetchItem();
 	const { fetchMoveRequest, move, setMove } = useFetchMove();
 	const contactMoves = useFetchContactMovesHtml();
+
+	const isAbilityDialogOpen = ability !== defaultAbility;
+	const isItemDialogOpen = item !== defaultItem;
+	const isMoveDialogOpen = move !== defaultMove;
 
 	const onLookupInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
 		setInput(event.target.value);
@@ -56,39 +55,18 @@ export const Lookup = (): React.JSX.Element => {
 
 		switch (lookupType) {
 			case 'ability':
-				fetchAbilityRequest({ abilityName: formatNameForApi(input), setIsLoading, setIsError });
+				fetchAbilityRequest({ abilityName: formatNameForApi(input), setIsLoading });
 				break;
 			case 'item':
-				fetchItemRequest({ itemName: formatNameForApi(input), setIsLoading, setIsError });
+				fetchItemRequest({ itemName: formatNameForApi(input), setIsLoading });
 				break;
 			case 'move':
-				fetchMoveRequest({ moveName: formatNameForApi(input), contactMoves, setIsLoading, setIsError });
+				fetchMoveRequest({ moveName: formatNameForApi(input), contactMoves, setIsLoading });
 				break;
 		}
-	};
 
-	useEffect(() => {
-		if (isError) {
-			setSnackbarMessage('Error: Invalid input value.');
-			setSnackbarColor('error');
-			setSnackbarOpen(true);
-		}
-
-		if (ability !== defaultAbility) {
-			setIsAbilityDialogOpen(true);
-		}
-
-		if (item !== defaultItem) {
-			setIsItemDialogOpen(true);
-		}
-
-		if (move !== defaultMove) {
-			setIsMoveDialogOpen(true);
-		}
-
-		setIsError(false);
 		setInput('');
-	}, [ability, item, move, isError, setSnackbarColor, setSnackbarMessage, setSnackbarOpen]);
+	};
 
 	return (
 		<Box
@@ -96,13 +74,13 @@ export const Lookup = (): React.JSX.Element => {
 			flexDirection='column'
 			alignItems='center'
 			flex='1'
-			mx={3}
+			m={5}
 		>
 			{!isLoading ? (
 				<>
 					<LookupForm label='Lookup' onSubmit={onSubmit} onChange={onLookupInputChange} />
 					<RadioGroup
-						defaultValue='ability'
+						value={lookupType}
 						row
 						onChange={onRadioGroupChange}
 						sx={{
@@ -113,9 +91,9 @@ export const Lookup = (): React.JSX.Element => {
 						<FormControlLabel value='item' control={<Radio />} label='Item' />
 						<FormControlLabel value='move' control={<Radio />} label='Move' />
 					</RadioGroup>
-					<AbilityDialog ability={ability} setAbility={setAbility} isAbilityDialogOpen={isAbilityDialogOpen} setIsAbilityDialogOpen={setIsAbilityDialogOpen} />
-					<ItemDialog item={item} setItem={setItem} isItemDialogOpen={isItemDialogOpen} setIsItemDialogOpen={setIsItemDialogOpen} />
-					<MoveDialog move={move} setMove={setMove} isMoveDialogOpen={isMoveDialogOpen} setIsMoveDialogOpen={setIsMoveDialogOpen} />
+					<AbilityDialog ability={ability} setAbility={setAbility} isAbilityDialogOpen={isAbilityDialogOpen} />
+					<ItemDialog item={item} setItem={setItem} isItemDialogOpen={isItemDialogOpen} />
+					<MoveDialog move={move} setMove={setMove} isMoveDialogOpen={isMoveDialogOpen} />
 				</>
 			) : (
 				<PokeballLoader />

@@ -5,17 +5,16 @@ import type { Move, Types } from 'models/models';
 import React from 'react';
 
 interface MoveDialogProps {
-	move: Move,
-	setMove: React.Dispatch<React.SetStateAction<Move>>,
-	isMoveDialogOpen: boolean,
-	setIsMoveDialogOpen: React.Dispatch<React.SetStateAction<boolean>>
+	move: Move;
+	setMove: React.Dispatch<React.SetStateAction<Move>>;
+	isMoveDialogOpen: boolean;
 }
 
 export const MoveDialog = (
-	{ move, setMove, isMoveDialogOpen, setIsMoveDialogOpen }: MoveDialogProps
+	{ move, setMove, isMoveDialogOpen }: MoveDialogProps
 ): React.JSX.Element => {
 	const onClose = (): void => {
-		setIsMoveDialogOpen(false);
+		setMove(defaultMove);
 	};
 
 	return (
@@ -49,44 +48,44 @@ export const MoveDialog = (
 						/>
 					</DialogContentText>
 					<DialogContentText>
-					power: {move.power}
+						power: {move.power}
 					</DialogContentText>
 					<DialogContentText>
-					accuracy: {move.accuracy}
-					</DialogContentText>
-				</DialogContent>
-				<DialogContent>
-					<DialogContentText>
-					description: {move.description}
+						accuracy: {move.accuracy}
 					</DialogContentText>
 				</DialogContent>
 				<DialogContent>
 					<DialogContentText>
-					ailment: {move.ailment}
+						description: {move.description}
+					</DialogContentText>
+				</DialogContent>
+				<DialogContent>
+					<DialogContentText>
+						ailment: {move.ailment}
 					</DialogContentText>
 					<DialogContentText>
-					effect chance: {move.effectChance}
+						effect chance: {move.effectChance}
 					</DialogContentText>
 					<DialogContentText>
-					category: {move.category}
+						category: {move.category}
 					</DialogContentText>
 					<DialogContentText>
-					crit rate: {move.critRate}
+						crit rate: {move.critRate}
 					</DialogContentText>
 					<DialogContentText>
-					flinch chance: {move.flinchChance}
+						flinch chance: {move.flinchChance}
 					</DialogContentText>
 					<DialogContentText>
-					is contact: {move.isContact ? 'yes' : 'no'}
+						is contact: {move.isContact ? 'yes' : 'no'}
 					</DialogContentText>
 					<DialogContentText>
-					target: {move.target}
+						target: {move.target}
 					</DialogContentText>
 					<DialogContentText>
-					priority: {move.priority}
+						priority: {move.priority}
 					</DialogContentText>
 					<DialogContentText>
-					pp: {move.powerPoints}
+						pp: {move.powerPoints}
 					</DialogContentText>
 				</DialogContent>
 				<DialogContent>
@@ -96,29 +95,29 @@ export const MoveDialog = (
 						</DialogContentText>
 					))}
 					<DialogContentText>
-					stat change chance: {move.statChangeChance}
+						stat change chance: {move.statChangeChance}
 					</DialogContentText>
 				</DialogContent>
 				<DialogContent>
 					<DialogContentText>
-					drain: {move.drain}
+						drain: {move.drain}
 					</DialogContentText>
 					<DialogContentText>
-					healing: {move.healing}
+						healing: {move.healing}
 					</DialogContentText>
 				</DialogContent>
 				<DialogContent>
 					<DialogContentText>
-					max hits: {move.maxHits}
+						max hits: {move.maxHits}
 					</DialogContentText>
 					<DialogContentText>
-					min hits: {move.minHits}
+						min hits: {move.minHits}
 					</DialogContentText>
 					<DialogContentText>
-					max turns: {move.maxTurns}
+						max turns: {move.maxTurns}
 					</DialogContentText>
 					<DialogContentText>
-					min turns: {move.minTurns}
+						min turns: {move.minTurns}
 					</DialogContentText>
 				</DialogContent>
 			</DialogContent>

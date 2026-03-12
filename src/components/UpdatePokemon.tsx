@@ -61,28 +61,30 @@ export const UpdatePokemon = (): React.JSX.Element => {
 							getOptionLabel={(option) => (option as PokemonAutocompleteItem).name}
 							onChange={(_, value) => { onAutocompleteChange((value as PokemonAutocompleteItem[])); }}
 							inputValue={addInputValue}
-							onInputChange={(event, value, reason) => {
-								if (event !== null && event.type === 'blur') {
-									setAddInputValue('');
-								} else if (reason !== 'reset') {
+							onInputChange={(_event, value, reason) => {
+								if (reason !== 'reset' && reason !== 'selectOption') {
 									setAddInputValue(value);
 								}
 							}}
-							renderOption={(props, option) => (
-								<StyledOptionListItem {...props}>
-									<Typography mr={3}>#{(option as PokemonAutocompleteItem).pokedexNumber}</Typography>
-									<Typography flexGrow={1}>{formatName((option as PokemonAutocompleteItem).name)}</Typography>
-									<Box
-										minWidth={100}
-										minHeight={100}
-										display='flex'
-										alignItems='center'
-										justifyContent='center'
-									>
-										<Box component='img' src={(option as PokemonAutocompleteItem).sprite} loading='lazy' alt='sprite' mr={1} />
-									</Box>
-								</StyledOptionListItem>
-							)}
+							renderOption={(props, option) => {
+								const { key, ...remainingProps } = props;
+
+								return (
+									<StyledOptionListItem key={key} {...remainingProps}>
+										<Typography mr={3}>#{(option as PokemonAutocompleteItem).pokedexNumber}</Typography>
+										<Typography flexGrow={1}>{formatName((option as PokemonAutocompleteItem).name)}</Typography>
+										<Box
+											minWidth={100}
+											minHeight={100}
+											display='flex'
+											alignItems='center'
+											justifyContent='center'
+										>
+											<Box component='img' src={(option as PokemonAutocompleteItem).sprite} loading='lazy' alt='sprite' mr={1} />
+										</Box>
+									</StyledOptionListItem>
+								);
+							}}
 							renderInput={(params) => (
 								<>
 									<TextField
@@ -131,28 +133,30 @@ export const UpdatePokemon = (): React.JSX.Element => {
 							getOptionLabel={(option) => option.name}
 							onChange={(_, value) => { onAutocompleteChange(value); }}
 							inputValue={removeInputValue}
-							onInputChange={(event, value, reason) => {
-								if (event !== null && event.type === 'blur') {
-									setRemoveInputValue('');
-								} else if (reason !== 'reset') {
+							onInputChange={(_event, value, reason) => {
+								if (reason !== 'reset' && reason !== 'selectOption') {
 									setRemoveInputValue(value);
 								}
 							}}
-							renderOption={(props, option) => (
-								<StyledOptionListItem {...props}>
-									<Typography mr={3}>#{option.pokedexNumber}</Typography>
-									<Typography flexGrow={1}>{formatName(option.name)}</Typography>
-									<Box
-										minWidth={100}
-										minHeight={100}
-										display='flex'
-										alignItems='center'
-										justifyContent='center'
-									>
-										<Box component='img' src={option.sprite} loading='lazy' alt='sprite' mr={1} />
-									</Box>
-								</StyledOptionListItem>
-							)}
+							renderOption={(props, option) => {
+								const { key, ...remainingProps } = props;
+
+								return (
+									<StyledOptionListItem key={key} {...remainingProps}>
+										<Typography mr={3}>#{option.pokedexNumber}</Typography>
+										<Typography flexGrow={1}>{formatName(option.name)}</Typography>
+										<Box
+											minWidth={100}
+											minHeight={100}
+											display='flex'
+											alignItems='center'
+											justifyContent='center'
+										>
+											<Box component='img' src={option.sprite} loading='lazy' alt='sprite' mr={1} />
+										</Box>
+									</StyledOptionListItem>
+								);
+							}}
 							renderInput={(params) => (
 								<>
 									<TextField

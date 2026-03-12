@@ -15,6 +15,9 @@ export const Runner = ({ leftPokemon, rightPokemon, children }: RunnerProps): Re
 	const { pokemonList } = useContext(PokemonListContext);
 	const updatePokemonList = useUpdatePokemonList();
 
+	const leftSprite = useFetchSprite(leftPokemon);
+	const rightSprite = useFetchSprite(rightPokemon);
+
 	const onClick = (name: string): void => {
 		let action: updatePokemonListProps['action'] = 'add';
 		if (pokemonList.includes(name)) {
@@ -35,33 +38,37 @@ export const Runner = ({ leftPokemon, rightPokemon, children }: RunnerProps): Re
 					}}
 				>
 					<Box display={{ sm: 'block', xs: 'none' }}>
-						<CustomTooltip
-							title={`${leftPokemon} - Click to add or remove.`}
-							haveCursor
-							onClick={() => { onClick(leftPokemon); }}
-						>
-							<Box
-								component='img'
-								src={useFetchSprite(leftPokemon)}
-								alt={`${leftPokemon}`}
-								mx={2}
-							/>
-						</CustomTooltip>
+						{leftSprite !== '' && (
+							<CustomTooltip
+								title={`${leftPokemon} - Click to add or remove.`}
+								haveCursor
+								onClick={() => { onClick(leftPokemon); }}
+							>
+								<Box
+									component='img'
+									src={leftSprite}
+									alt={`${leftPokemon}`}
+									mx={2}
+								/>
+							</CustomTooltip>
+						)}
 					</Box>
 					{children}
 					<Box display={{ sm: 'block', xs: 'none' }}>
-						<CustomTooltip
-							title={`${rightPokemon} - Click to add or remove.`}
-							haveCursor
-							onClick={() => { onClick(rightPokemon); }}
-						>
-							<Box
-								component='img'
-								src={useFetchSprite(rightPokemon)}
-								alt={`${rightPokemon}`}
-								mx={2}
-							/>
-						</CustomTooltip>
+						{rightSprite !== '' && (
+							<CustomTooltip
+								title={`${rightPokemon} - Click to add or remove.`}
+								haveCursor
+								onClick={() => { onClick(rightPokemon); }}
+							>
+								<Box
+									component='img'
+									src={rightSprite}
+									alt={`${rightPokemon}`}
+									mx={2}
+								/>
+							</CustomTooltip>
+						)}
 					</Box>
 				</Box>
 			</Paper>

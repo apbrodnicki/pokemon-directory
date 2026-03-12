@@ -1,4 +1,4 @@
-import { Box, Paper } from '@mui/material';
+import { Box } from '@mui/material';
 import { DataGrid, type GridColDef } from '@mui/x-data-grid';
 import { useFetchAbilityDescriptions } from 'api/abilities/useFetchAbilityDescriptions';
 import { useFetchPokemon } from 'api/pokemon/useFetchPokemon';
@@ -31,30 +31,37 @@ export const PokemonDataGrid = (): React.JSX.Element => {
 	return (
 		<>
 			{!isLoading ? (
-				<Paper elevation={3} sx={{ m: 5, backgroundColor: '#B8D8D8' }}>
-					<Box height={700} sx={{
-						'& .header': {
-							backgroundColor: '#7A9E9f'
-						}
-					}}>
-						<DataGrid
-							getRowId={(row: Pokemon) => row.name + row.sprite}
-							rows={pokemon}
-							columns={columns}
-							initialState={{
-								pagination: {
-									paginationModel: {
-										page: 0,
-										pageSize: 30,
-									},
+				<Box m={5} height={700} width='95%'>
+					<DataGrid
+						getRowId={(row: Pokemon) => row.name + row.sprite}
+						rows={pokemon}
+						columns={columns}
+						initialState={{
+							pagination: {
+								paginationModel: {
+									page: 0,
+									pageSize: 30,
 								},
-							}}
-							pageSizeOptions={[10, 20, 30, 40, 50]}
-							hideFooterSelectedRowCount
-							rowHeight={100}
-						/>
-					</Box>
-				</Paper>
+							},
+						}}
+						pageSizeOptions={[10, 20, 30, 40, 50]}
+						hideFooterSelectedRowCount
+						rowHeight={100}
+						getRowClassName={() => 'datagrid-row'}
+						sx={{
+							backgroundColor: '#B8D8D8',
+							'& .MuiDataGrid-columnHeader': {
+								backgroundColor: '#7A9E9F'
+							},
+							'& .MuiDataGrid-row': {
+								backgroundColor: '#B8D8D8'
+							},
+							'& .MuiDataGrid-row:hover': {
+								backgroundColor: '#DDEDED'
+							}
+						}}
+					/>
+				</Box>
 			) : (
 				<DataGridLoader />
 			)}

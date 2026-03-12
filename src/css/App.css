@@ -9,10 +9,6 @@ body {
 	background-color: #4F6367;
 }
 
-#runner {
-	position: relative;
-}
-
 #path-button {
 	position: absolute;
 	top: 25px;

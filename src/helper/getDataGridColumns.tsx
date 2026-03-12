@@ -34,7 +34,8 @@ export const getDataGridColumns = ({ abilitiesWithDescriptions, types }: getData
 			width: 250,
 			headerAlign: 'center',
 			align: 'center',
-			renderCell: (param) => <Typography>{param.value}</Typography>
+			display: 'flex',
+			renderCell: (param) => <Box><Typography>{param.value}</Typography></Box>
 		},
 		{
 			field: 'sprite',
@@ -43,6 +44,7 @@ export const getDataGridColumns = ({ abilitiesWithDescriptions, types }: getData
 			width: 125,
 			headerAlign: 'center',
 			align: 'center',
+			display: 'flex',
 			renderCell: (param) => <Box component='img' src={param.value} alt='sprite' />
 		},
 		{
@@ -52,6 +54,7 @@ export const getDataGridColumns = ({ abilitiesWithDescriptions, types }: getData
 			width: 200,
 			headerAlign: 'center',
 			align: 'center',
+			display: 'flex',
 			renderCell: (param) => <TypesCell typeStrings={param.value} types={types} />
 		},
 		{
@@ -61,6 +64,7 @@ export const getDataGridColumns = ({ abilitiesWithDescriptions, types }: getData
 			width: 150,
 			headerAlign: 'center',
 			align: 'center',
+			display: 'flex',
 			renderCell: (param) => <AbilitiesCell abilityStrings={param.value} abilities={abilitiesWithDescriptions} />
 		},
 		{
@@ -70,6 +74,7 @@ export const getDataGridColumns = ({ abilitiesWithDescriptions, types }: getData
 			width: 165,
 			headerAlign: 'center',
 			align: 'center',
+			display: 'flex',
 			renderCell: (param) => <StatCell statValue={param.value} />
 		},
 		{
@@ -79,6 +84,7 @@ export const getDataGridColumns = ({ abilitiesWithDescriptions, types }: getData
 			width: 165,
 			headerAlign: 'center',
 			align: 'center',
+			display: 'flex',
 			renderCell: (param) => <StatCell statValue={param.value} />
 		},
 		{
@@ -88,6 +94,7 @@ export const getDataGridColumns = ({ abilitiesWithDescriptions, types }: getData
 			width: 165,
 			headerAlign: 'center',
 			align: 'center',
+			display: 'flex',
 			renderCell: (param) => <StatCell statValue={param.value} />
 		},
 		{
@@ -97,6 +104,7 @@ export const getDataGridColumns = ({ abilitiesWithDescriptions, types }: getData
 			width: 165,
 			headerAlign: 'center',
 			align: 'center',
+			display: 'flex',
 			renderCell: (param) => <StatCell statValue={param.value} />
 		},
 		{
@@ -106,6 +114,7 @@ export const getDataGridColumns = ({ abilitiesWithDescriptions, types }: getData
 			width: 165,
 			headerAlign: 'center',
 			align: 'center',
+			display: 'flex',
 			renderCell: (param) => <StatCell statValue={param.value} />
 		},
 		{
@@ -115,6 +124,7 @@ export const getDataGridColumns = ({ abilitiesWithDescriptions, types }: getData
 			width: 165,
 			headerAlign: 'center',
 			align: 'center',
+			display: 'flex',
 			renderCell: (param) => <StatCell statValue={param.value} />
 		},
 		{
@@ -124,6 +134,7 @@ export const getDataGridColumns = ({ abilitiesWithDescriptions, types }: getData
 			width: 100,
 			headerAlign: 'center',
 			align: 'center',
+			display: 'flex',
 			renderCell: (param) => <TotalCell totalValue={param.value} />
 		}
 	];

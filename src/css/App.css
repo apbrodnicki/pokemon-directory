@@ -9,12 +9,6 @@ body {
 	background-color: #4F6367;
 }
 
-#path-button {
-	position: absolute;
-	top: 25px;
-	right: 20px;
-}
-
 div > .MuiAutocomplete-listbox {
 	padding: 0px;
 	max-height: 50vh;

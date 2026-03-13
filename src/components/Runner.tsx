@@ -37,7 +37,7 @@ export const Runner = ({ leftPokemon, rightPokemon, children }: RunnerProps): Re
 						justifyContent: 'center',
 					}}
 				>
-					<Box display={{ sm: 'block', xs: 'none' }}>
+					<Box display={{ xs: 'none', sm: 'block' }}>
 						{leftSprite !== '' && (
 							<CustomTooltip
 								title={`${leftPokemon} - Click to add or remove.`}
@@ -54,7 +54,7 @@ export const Runner = ({ leftPokemon, rightPokemon, children }: RunnerProps): Re
 						)}
 					</Box>
 					{children}
-					<Box display={{ sm: 'block', xs: 'none' }}>
+					<Box display={{ xs: 'none', sm: 'block' }}>
 						{rightSprite !== '' && (
 							<CustomTooltip
 								title={`${rightPokemon} - Click to add or remove.`}

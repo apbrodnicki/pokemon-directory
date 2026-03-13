@@ -152,7 +152,7 @@ export const filterItemData = (item: GenericItem): Item => {
 		description,
 		flingEffect: item.fling_effect?.name ?? null,
 		flingPower: item.fling_power,
-		name: item.name,
+		name: formatName(item.name),
 		sprite: item.sprites.default
 	};
 };
@@ -166,7 +166,7 @@ export const filterMoveData = (move: GenericMove, contactMoves: string[]): Move 
 
 	for (const entry of move.effect_entries) {
 		if (entry.language.name === 'en') {
-			description = entry.effect;
+			description = entry.effect.replace(/\$effect_chance%/, move.effect_chance.toString() + '%');
 		}
 	}
 

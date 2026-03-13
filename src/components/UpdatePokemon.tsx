@@ -2,7 +2,7 @@ import { Autocomplete, Box, Button, List, TextField, Typography, createFilterOpt
 import { useFetchAllPokemonNames } from 'api/pokemon/useFetchAllPokemonNames';
 import { useFetchPokemonAutocompleteItems } from 'api/useFetchPokemonAutocompleteItems';
 import { PokemonListContext } from 'contexts/PokemonListContext';
-import { formatName, generateKey, sortPokemonAutocompleteItemArrayByGeneration } from 'helper/helper';
+import { generateKey, sortPokemonAutocompleteItemArrayByGeneration } from 'helper/helper';
 import { useUpdatePokemonList } from 'hooks/useUpdatePokemonList';
 import type { PokemonAutocompleteItem } from 'models/models';
 import React, { useContext, useState } from 'react';
@@ -23,8 +23,14 @@ export const UpdatePokemon = (): React.JSX.Element => {
 
 	const allPokemonNames = useFetchAllPokemonNames();
 
-	const addAutocompleteOptions = useFetchPokemonAutocompleteItems({ pokemonList: allPokemonNames, setIsLoadingPokemonAutocompleteItems: setIsLoadingAddAutocompleteItems });
-	const removeAutocompleteOptions = useFetchPokemonAutocompleteItems({ pokemonList, setIsLoadingPokemonAutocompleteItems: setIsLoadingRemoveAutocompleteItems });
+	const addAutocompleteOptions = useFetchPokemonAutocompleteItems({
+		pokemonList: allPokemonNames,
+		setIsLoadingPokemonAutocompleteItems: setIsLoadingAddAutocompleteItems
+	});
+	const removeAutocompleteOptions = useFetchPokemonAutocompleteItems({
+		pokemonList,
+		setIsLoadingPokemonAutocompleteItems: setIsLoadingRemoveAutocompleteItems
+	});
 
 	const sortedRemoveAutocompleteOptions = sortPokemonAutocompleteItemArrayByGeneration(removeAutocompleteOptions);
 
@@ -75,7 +81,7 @@ export const UpdatePokemon = (): React.JSX.Element => {
 					return (
 						<StyledOptionListItem key={key} {...remainingProps}>
 							<Typography mr={3}>#{option.pokedexNumber}</Typography>
-							<Typography flexGrow={1}>{formatName(option.name)}</Typography>
+							<Typography flexGrow={1}>{option.name}</Typography>
 							<Box
 								minWidth={100}
 								minHeight={100}

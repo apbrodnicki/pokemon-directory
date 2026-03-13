@@ -20,7 +20,7 @@ export const Home = (): React.JSX.Element => {
 				display='flex'
 				alignItems='center'
 				flexDirection='column'
-				m={5}
+				mb={5}
 				width='100%'
 			>
 				<Lookup />

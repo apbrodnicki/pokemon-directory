@@ -33,7 +33,7 @@ export const useFetchMove = (): useFetchMoveReturn => {
 			.then((response: GenericMove) => response)
 			.then((result: GenericMove) => { setMove(filterMoveData(result, contactMoves)); })
 			.catch(() => {
-				setSnackbarMessage('Error: Invalid input value.');
+				setSnackbarMessage('Error: Invalid input value. Make sure you selected the correct Lookup category.');
 				setSnackbarColor('error');
 				setSnackbarOpen(true);
 			})

@@ -32,7 +32,7 @@ export const useFetchItem = (): useFetchItemReturn => {
 			.then((response: GenericItem) => response)
 			.then((result: GenericItem) => { setItem(filterItemData(result)); })
 			.catch(() => {
-				setSnackbarMessage('Error: Invalid input value.');
+				setSnackbarMessage('Error: Invalid input value. Make sure you selected the correct Lookup category.');
 				setSnackbarColor('error');
 				setSnackbarOpen(true);
 			})

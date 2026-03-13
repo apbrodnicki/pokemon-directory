@@ -12,28 +12,74 @@ interface TypesCellProps {
 }
 
 export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Element => {
-	const HoverItem = (type: string, index: number): React.JSX.Element => (
-		<Box
-			key={index}
-			bgcolor={typeColors[type as keyof Types]}
-		>
-			<Typography
-				component='div'
-				mx={3}
-				my={1}
-				display='flex'
-				alignItems='center'
-				justifyContent='center'
-			>
-				<Box fontWeight='regular'>
-					{capitalizeFirstLetter(type)}
+	const DamageRelationElement = (title: string, damageRelationTypes: string[]): React.JSX.Element => (
+		<>
+			<Typography component='div'>
+				<Box fontWeight='medium'>
+					{title}
 				</Box>
 			</Typography>
-		</Box>
+			<Box display='flex' py={.5}>
+				{damageRelationTypes.map((type: string, index: number) => (
+					<Box
+						key={index}
+						bgcolor={typeColors[type as keyof Types]}
+					>
+						<Typography
+							component='div'
+							mx={3}
+							my={1}
+							display='flex'
+							alignItems='center'
+							justifyContent='center'
+						>
+							<Box fontWeight='regular'>
+								{capitalizeFirstLetter(type)}
+							</Box>
+						</Typography>
+					</Box>
+				))}
+			</Box>
+		</>
+	);
+
+	const DamageRelationContent = (damageRelation: DamageRelation): React.JSX.Element => (
+		<Paper
+			elevation={5}
+			sx={{
+				backgroundColor: '#B8D8D8',
+				p: 2,
+				minWidth: '350px',
+			}}
+		>
+			{damageRelation.noDamageFrom.length > 0 && (
+				DamageRelationElement('Immune to (0x):', damageRelation.noDamageFrom)
+			)}
+			{damageRelation.quarterDamageFrom !== undefined && damageRelation.quarterDamageFrom.length > 0 && (
+				DamageRelationElement('Strongly resists (.25x):', damageRelation.quarterDamageFrom)
+			)}
+			{damageRelation.halfDamageFrom.length > 0 && (
+				DamageRelationElement('Resists (.5x):', damageRelation.halfDamageFrom)
+			)}
+			{damageRelation.doubleDamageFrom.length > 0 && (
+				DamageRelationElement('Weak to (2x):', damageRelation.doubleDamageFrom)
+			)}
+			{damageRelation.quadrupleDamageFrom !== undefined && damageRelation.quadrupleDamageFrom.length > 0 && (
+				DamageRelationElement('Very weak to (4x):', damageRelation.quadrupleDamageFrom)
+			)}
+		</Paper>
 	);
 
 	if (typeStrings.length > 1) {
-		const typeBoxes = typeStrings.map((typeName: keyof Types, index: number) => (
+		const damageRelation: DamageRelation = {
+			noDamageFrom: [],
+			quarterDamageFrom: [],
+			halfDamageFrom: [],
+			doubleDamageFrom: [],
+			quadrupleDamageFrom: [],
+		};
+
+		const TypeBoxes = typeStrings.map((typeName: keyof Types, index: number) => (
 			<Box
 				sx={{
 					width: '40%',
@@ -44,14 +90,6 @@ export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Ele
 				<Typography my={1} align='center'>{capitalizeFirstLetter(typeName)}</Typography>
 			</Box>
 		));
-
-		const damageRelation: DamageRelation = {
-			noDamageFrom: [],
-			quarterDamageFrom: [],
-			halfDamageFrom: [],
-			doubleDamageFrom: [],
-			quadrupleDamageFrom: [],
-		};
 
 		for (const typeName of typeStrings) {
 			for (const item of types) {
@@ -126,85 +164,7 @@ export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Ele
 								horizontal: 'center',
 							}}
 						>
-							<Paper
-								elevation={5}
-								sx={{
-									backgroundColor: '#B8D8D8',
-									p: 2,
-									minWidth: '350px',
-								}}
-							>
-								{damageRelation.noDamageFrom.length > 0 && (
-									<>
-										<Typography component='div'>
-											<Box fontWeight='medium'>
-												Immune to (0x):
-											</Box>
-										</Typography>
-										<Box py={.5}>
-											{damageRelation.noDamageFrom.map((type: string, index: number) => (
-												HoverItem(type, index)
-											))}
-										</Box>
-									</>
-								)}
-								{damageRelation.quarterDamageFrom !== undefined && damageRelation.quarterDamageFrom.length > 0 && (
-									<>
-										<Typography component='div'>
-											<Box fontWeight='medium'>
-												Strongly resists (.25x):
-											</Box>
-										</Typography>
-										<Box py={.5}>
-											{damageRelation.quarterDamageFrom?.map((type: string, index: number) => (
-												HoverItem(type, index)
-											))}
-										</Box>
-									</>
-								)}
-								{damageRelation.halfDamageFrom.length > 0 && (
-									<>
-										<Typography component='div'>
-											<Box fontWeight='medium'>
-												Resists (.5x):
-											</Box>
-										</Typography>
-										<Box py={.5}>
-											{damageRelation.halfDamageFrom.map((type: string, index: number) => (
-												HoverItem(type, index)
-											))}
-										</Box>
-									</>
-								)}
-								{damageRelation.doubleDamageFrom.length > 0 && (
-									<>
-										<Typography component='div'>
-											<Box fontWeight='medium'>
-												Weak to (2x):
-											</Box>
-										</Typography>
-										<Box py={.5}>
-											{damageRelation.doubleDamageFrom.map((type: string, index: number) => (
-												HoverItem(type, index)
-											))}
-										</Box>
-									</>
-								)}
-								{damageRelation.quadrupleDamageFrom !== undefined && damageRelation.quadrupleDamageFrom.length > 0 && (
-									<>
-										<Typography component='div'>
-											<Box fontWeight='medium'>
-												Very weak to (4x):
-											</Box>
-										</Typography>
-										<Box py={.5}>
-											{damageRelation.quadrupleDamageFrom?.map((type: string, index: number) => (
-												HoverItem(type, index)
-											))}
-										</Box>
-									</>
-								)}
-							</Paper>
+							{DamageRelationContent(damageRelation)}
 						</HoverPopover>
 						<Box
 							{...bindHover(popupState)}
@@ -215,7 +175,7 @@ export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Ele
 								width: '100%',
 							}}
 						>
-							{typeBoxes}
+							{TypeBoxes}
 						</Box>
 					</>
 				)}
@@ -229,9 +189,9 @@ export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Ele
 			doubleDamageFrom: [],
 		};
 
-		for (const item of types) {
-			if (item.name === typeName) {
-				damageRelation = item;
+		for (const currentType of types) {
+			if (currentType.name === typeName) {
+				damageRelation = currentType;
 			}
 		}
 
@@ -250,57 +210,7 @@ export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Ele
 								horizontal: 'center',
 							}}
 						>
-							<Paper
-								elevation={5}
-								sx={{
-									backgroundColor: '#B8D8D8',
-									p: 2,
-									minWidth: '350px',
-								}}
-							>
-								{damageRelation.noDamageFrom.length > 0 && (
-									<>
-										<Typography component='div'>
-											<Box fontWeight='medium'>
-												Immune to (0x):
-											</Box>
-										</Typography>
-										<Box py={.5}>
-											{damageRelation.noDamageFrom.map((type: string, index: number) => (
-												HoverItem(type, index)
-											))}
-										</Box>
-									</>
-								)}
-								{damageRelation.halfDamageFrom.length > 0 && (
-									<>
-										<Typography component='div'>
-											<Box fontWeight='medium'>
-												Resists (.5x):
-											</Box>
-										</Typography>
-										<Box py={.5}>
-											{damageRelation.halfDamageFrom.map((type: string, index: number) => (
-												HoverItem(type, index)
-											))}
-										</Box>
-									</>
-								)}
-								{damageRelation.doubleDamageFrom.length > 0 && (
-									<>
-										<Typography component='div'>
-											<Box fontWeight='medium'>
-												Weak to (2x):
-											</Box>
-										</Typography>
-										<Box py={.5}>
-											{damageRelation.doubleDamageFrom.map((type: string, index: number) => (
-												HoverItem(type, index)
-											))}
-										</Box>
-									</>
-								)}
-							</Paper>
+							{DamageRelationContent(damageRelation)}
 						</HoverPopover>
 						<Box
 							{...bindHover(popupState)}

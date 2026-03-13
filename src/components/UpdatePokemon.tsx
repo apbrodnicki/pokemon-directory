@@ -48,7 +48,7 @@ export const UpdatePokemon = (): React.JSX.Element => {
 	});
 
 	const AutoCompleteElement = (isAddAutocomplete: boolean) => (
-		<StyledPaper elevation={3}>
+		<StyledPaper elevation={3} sx={{ width: { xs: '50%', md: '33%' } }}>
 			<Autocomplete
 				multiple
 				disableCloseOnSelect
@@ -128,7 +128,7 @@ export const UpdatePokemon = (): React.JSX.Element => {
 	);
 
 	return (
-		<Box display='flex' justifyContent='center' width='100%'>
+		<Box display='flex' justifyContent='center' alignItems='center' width='100%' flexDirection={{ xs: 'column', md: 'row' }}>
 			{!isLoading && AutoCompleteElement(true)}
 			{!isLoading && AutoCompleteElement(false)}
 		</Box>

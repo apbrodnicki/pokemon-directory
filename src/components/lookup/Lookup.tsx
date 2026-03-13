@@ -75,10 +75,10 @@ export const Lookup = (): React.JSX.Element => {
 			alignItems='center'
 			flex='1'
 			m={5}
+			width='100%'
 		>
 			{!isLoading ? (
 				<>
-					<LookupForm label='Lookup' onSubmit={onSubmit} onChange={onLookupInputChange} />
 					<RadioGroup
 						value={lookupType}
 						row
@@ -91,6 +91,7 @@ export const Lookup = (): React.JSX.Element => {
 						<FormControlLabel value='item' control={<Radio />} label='Item' />
 						<FormControlLabel value='move' control={<Radio />} label='Move' />
 					</RadioGroup>
+					<LookupForm label='Lookup' onSubmit={onSubmit} onChange={onLookupInputChange} />
 					<AbilityDialog ability={ability} setAbility={setAbility} isAbilityDialogOpen={isAbilityDialogOpen} />
 					<ItemDialog item={item} setItem={setItem} isItemDialogOpen={isItemDialogOpen} />
 					<MoveDialog move={move} setMove={setMove} isMoveDialogOpen={isMoveDialogOpen} />

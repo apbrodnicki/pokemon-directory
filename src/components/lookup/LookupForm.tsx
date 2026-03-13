@@ -10,9 +10,9 @@ interface LookupFormProps {
 export const LookupForm = (
 	{ label, onSubmit, onChange }: LookupFormProps
 ): React.JSX.Element => (
-	<Paper elevation={3} sx={{ backgroundColor: '#B8D8D8' }}>
-		<Box component='form' onSubmit={onSubmit} display='flex'>
-			<TextField label={label} onChange={onChange} />
+	<Paper elevation={3} sx={{ width: '33%', backgroundColor: '#B8D8D8' }}>
+		<Box component='form' onSubmit={onSubmit} display='flex' flexDirection='column'>
+			<TextField label={label} onChange={onChange} variant='filled' />
 			<Button type='submit'>
 				<Typography variant='body1'>
 					Submit

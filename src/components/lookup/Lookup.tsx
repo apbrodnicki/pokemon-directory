@@ -40,7 +40,7 @@ export const Lookup = (): React.JSX.Element => {
 		setLookupType(event.target.value as LookupType['lookupType']);
 	};
 
-	const onSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+	const onSubmit = (event: React.SubmitEvent): void => {
 		event.preventDefault();
 
 		if (input.length < 1) {

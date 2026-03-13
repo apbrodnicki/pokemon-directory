@@ -3,7 +3,7 @@ import React from 'react';
 
 interface LookupFormProps {
 	label: string;
-	onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+	onSubmit: (event: React.SubmitEvent) => void;
 	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 

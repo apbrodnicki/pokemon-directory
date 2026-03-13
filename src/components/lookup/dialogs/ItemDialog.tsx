@@ -1,6 +1,6 @@
-import { Box, Dialog, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import { Box, DialogContent, DialogContentText, DialogTitle, Divider, Typography } from '@mui/material';
+import { StyledDialog } from 'components/custom/Styles';
 import { defaultItem } from 'data';
-import { formatName } from 'helper/helper';
 import type { Item } from 'models/models';
 import React from 'react';
 
@@ -18,38 +18,40 @@ export const ItemDialog = (
 	};
 
 	return (
-		<Dialog
+		<StyledDialog
 			open={isItemDialogOpen}
 			onClose={onClose}
 			onTransitionExited={() => { setItem(defaultItem); }}
-			sx={{
-				p: 3,
-				'& .MuiDialog-paper': {
-					backgroundColor: '#B8D8D8'
-				}
-			}}
 		>
-			<DialogTitle>
-				{formatName(item.name)}
+			<Box display='flex' justifyContent='center' alignItems='center'>
+				<DialogTitle textAlign='center'>
+					{item.name} (Item)
+				</DialogTitle>
 				<Box
 					component='img'
 					src={item.sprite}
 					alt='sprite'
 				/>
-			</DialogTitle>
+			</Box>
+			<Divider textAlign='left'>
+				<Typography variant='body1'>Description</Typography>
+			</Divider>
 			<DialogContent>
 				<DialogContentText>
 					{item.description}
 				</DialogContentText>
 			</DialogContent>
+			<Divider textAlign='left'>
+				<Typography variant='body1'>Fling</Typography>
+			</Divider>
 			<DialogContent>
 				<DialogContentText>
-					Fling Power: {item.flingPower}
+					Power: {item.flingPower}
 				</DialogContentText>
 				<DialogContentText>
-					Fling Effect: {item.flingEffect ?? 'None'}
+					Effect: {item.flingEffect ?? 'None'}
 				</DialogContentText>
 			</DialogContent>
-		</Dialog>
+		</StyledDialog>
 	);
 };

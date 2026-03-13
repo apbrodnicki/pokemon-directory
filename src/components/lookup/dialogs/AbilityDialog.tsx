@@ -1,4 +1,5 @@
-import { Dialog, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import { DialogContent, DialogContentText, DialogTitle, Divider, Typography } from '@mui/material';
+import { StyledDialog } from 'components/custom/Styles';
 import { defaultAbility } from 'data';
 import { formatName } from 'helper/helper';
 import type { Ability } from 'models/models';
@@ -18,25 +19,22 @@ export const AbilityDialog = (
 	};
 
 	return (
-		<Dialog
+		<StyledDialog
 			open={isAbilityDialogOpen}
 			onClose={onClose}
 			onTransitionExited={() => { setAbility(defaultAbility); }}
-			sx={{
-				p: 3,
-				'& .MuiDialog-paper': {
-					backgroundColor: '#B8D8D8'
-				}
-			}}
 		>
-			<DialogTitle>
-				{formatName(Object.keys(ability)[0])}
+			<DialogTitle textAlign='center'>
+				{formatName(Object.keys(ability)[0])} (Ability)
 			</DialogTitle>
+			<Divider textAlign='left'>
+				<Typography variant='body1'>Description</Typography>
+			</Divider>
 			<DialogContent>
 				<DialogContentText>
 					{Object.values(ability)}
 				</DialogContentText>
 			</DialogContent>
-		</Dialog>
+		</StyledDialog>
 	);
 };

@@ -11,7 +11,7 @@ interface CustomTooltipProps {
 export const CustomTooltip = ({ title, haveCursor, onClick, children }: CustomTooltipProps): React.JSX.Element => (
 	<Tooltip
 		title={<Box style={{ fontSize: '16px' }}>{title}</Box>}
-		TransitionComponent={Zoom}
+		slots={{ transition: Zoom }}
 		placement='top'
 		leaveDelay={100}
 		arrow

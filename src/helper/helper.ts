@@ -1,3 +1,5 @@
+import type { PokemonAutocompleteItem } from 'models/models';
+
 export const capitalizeFirstLetter = (word: string): string => {
 	return word.charAt(0).toUpperCase() + word.slice(1);
 };
@@ -90,4 +92,8 @@ export const getGeneration = (pokedexNumber: number): string => {
 
 export const generateKey = (): string => {
 	return `key-${Math.random().toString(36).substring(2, 11)}`;
+};
+
+export const sortPokemonAutocompleteItemArrayByGeneration = (array: PokemonAutocompleteItem[]): PokemonAutocompleteItem[] => {
+	return array.sort((a, b) => (a.generation < b.generation ? -1 : a.generation > b.generation ? 1 : 0));
 };

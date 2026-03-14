@@ -60,10 +60,10 @@ export const defaultMove: Move = {
 };
 
 export const runnerPokemon: RunnerItems = {
-	topLeft: 'Cranidos',
-	topRight: 'Archen',
-	bottomLeft: 'Aurorus',
-	bottomRight: 'Cradily'
+	topLeft: 'cranidos',
+	topRight: 'archen',
+	bottomLeft: 'aurorus',
+	bottomRight: 'cradily'
 };
 
 export const statValues = {

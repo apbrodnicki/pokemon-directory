@@ -1,6 +1,7 @@
 import { Box, Paper } from '@mui/material';
 import { useFetchSprite } from 'api/useFetchSprite';
 import { PokemonListContext } from 'contexts/PokemonListContext';
+import { formatName } from 'helper/helper';
 import { useUpdatePokemonList, type updatePokemonListProps } from 'hooks/useUpdatePokemonList';
 import React, { useContext } from 'react';
 import { CustomTooltip } from './custom/CustomTooltip';
@@ -40,14 +41,14 @@ export const Runner = ({ leftPokemon, rightPokemon, children }: RunnerProps): Re
 					<Box display={{ xs: 'none', sm: 'block' }}>
 						{leftSprite !== '' && (
 							<CustomTooltip
-								title={`${leftPokemon} - Click to add or remove.`}
+								title={`${formatName(leftPokemon)} - Click to add or remove.`}
 								haveCursor
 								onClick={() => { onClick(leftPokemon); }}
 							>
 								<Box
 									component='img'
 									src={leftSprite}
-									alt={`${leftPokemon}`}
+									alt={`${formatName(leftPokemon)}`}
 									mx={2}
 								/>
 							</CustomTooltip>
@@ -57,14 +58,14 @@ export const Runner = ({ leftPokemon, rightPokemon, children }: RunnerProps): Re
 					<Box display={{ xs: 'none', sm: 'block' }}>
 						{rightSprite !== '' && (
 							<CustomTooltip
-								title={`${rightPokemon} - Click to add or remove.`}
+								title={`${formatName(rightPokemon)} - Click to add or remove.`}
 								haveCursor
 								onClick={() => { onClick(rightPokemon); }}
 							>
 								<Box
 									component='img'
 									src={rightSprite}
-									alt={`${rightPokemon}`}
+									alt={`${formatName(rightPokemon)}`}
 									mx={2}
 								/>
 							</CustomTooltip>

@@ -1,4 +1,5 @@
 import { Box, DialogContent, DialogContentText, DialogTitle, Divider, Typography } from '@mui/material';
+import pokeballIcon from 'assets/pokeball-icon.svg';
 import { StyledDialog } from 'components/custom/Styles';
 import { defaultItem } from 'data';
 import type { Item } from 'models/models';
@@ -22,6 +23,12 @@ export const ItemDialog = (
 			open={isItemDialogOpen}
 			onClose={onClose}
 			onTransitionExited={() => { setItem(defaultItem); }}
+			sx={{
+				'& .MuiDialog-paper': {
+					width: '100%',
+					backgroundColor: '#2d6fb6'
+				}
+			}}
 		>
 			<Box display='flex' justifyContent='center' alignItems='center'>
 				<DialogTitle textAlign='center'>
@@ -29,8 +36,10 @@ export const ItemDialog = (
 				</DialogTitle>
 				<Box
 					component='img'
-					src={item.sprite}
+					src={item.sprite ?? pokeballIcon}
 					alt='sprite'
+					height={75}
+					width={75}
 				/>
 			</Box>
 			<Divider textAlign='left'>

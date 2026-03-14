@@ -1,7 +1,7 @@
 import { Box, DialogContent, DialogContentText, DialogTitle, Divider, Typography } from '@mui/material';
 import { ImagesDamageClasses, ImagesTypes } from 'assets/index.ts';
 import { StyledDialog } from 'components/custom/Styles';
-import { defaultMove } from 'data';
+import { defaultMove, typeColors } from 'data';
 import type { Move, Types } from 'models/models';
 import React from 'react';
 
@@ -23,6 +23,12 @@ export const MoveDialog = (
 			open={isMoveDialogOpen}
 			onClose={onClose}
 			onTransitionExited={() => { setMove(defaultMove); }}
+			sx={{
+				'& .MuiDialog-paper': {
+					width: '100%',
+					backgroundColor: typeColors[move.type as keyof Types]
+				}
+			}}
 		>
 			<Box display='flex' justifyContent='center' alignItems='center' flexDirection='column'>
 				<DialogTitle textAlign='center'>
@@ -50,8 +56,8 @@ export const MoveDialog = (
 				<DialogContentText>
 					{move.description}
 				</DialogContentText>
+				<Divider />
 			</DialogContent>
-			<Divider />
 			<DialogContent>
 				<DialogContentText>
 					Power: {move.power}
@@ -59,8 +65,6 @@ export const MoveDialog = (
 				<DialogContentText>
 					Accuracy: {move.accuracy}%
 				</DialogContentText>
-			</DialogContent>
-			<DialogContent>
 				<DialogContentText>
 					ailment: {move.ailment}
 				</DialogContentText>
@@ -85,8 +89,6 @@ export const MoveDialog = (
 				<DialogContentText>
 					pp: {move.powerPoints}
 				</DialogContentText>
-			</DialogContent>
-			<DialogContent dividers>
 				{move.statChanges.map((statChange, index) => (
 					<DialogContentText key={index}>
 						stat change | {statChange.stat}: {statChange.change}
@@ -95,16 +97,12 @@ export const MoveDialog = (
 				<DialogContentText>
 					stat change chance: {move.statChangeChance}
 				</DialogContentText>
-			</DialogContent>
-			<DialogContent>
 				<DialogContentText>
 					drain: {move.drain}
 				</DialogContentText>
 				<DialogContentText>
 					healing: {move.healing}
 				</DialogContentText>
-			</DialogContent>
-			<DialogContent>
 				<DialogContentText>
 					max hits: {move.maxHits}
 				</DialogContentText>

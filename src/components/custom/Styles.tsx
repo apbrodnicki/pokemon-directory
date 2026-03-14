@@ -21,8 +21,5 @@ export const StyledPaper = styled(Paper)(() => ({
 }));
 
 export const StyledDialog = styled(Dialog)(() => ({
-	padding: '24px',
-	'& .MuiDialog-paper': {
-		backgroundColor: '#B8D8D8'
-	}
+	padding: '24px'
 }));

@@ -25,8 +25,8 @@ export const StyledDialog = styled(Dialog)(() => ({
 }));
 
 export const StyledRadioButton = styled(Radio)(() => ({
-	color: 'pink',
+	color: '#B8314F;',
 	'&.Mui-checked': {
-		color: 'pink',
+		color: '#B8314F;',
 	}
 }));

@@ -33,7 +33,7 @@ export const Home = (): React.JSX.Element => {
 					elevation={3}
 					sx={{
 						m: 5,
-						width: '33%',
+						width: { xs: '67%', md: '33%' },
 						backgroundColor: '#B8314F',
 						display: 'flex',
 						justifyContent: 'center',

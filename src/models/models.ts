@@ -83,9 +83,8 @@ export interface Move {
 	maxTurns?: number;
 	minHits?: number;
 	minTurns?: number;
-	statChangeChance?: number;
 	name: string;
-	power: number;
+	power: number | null;
 	powerPoints: number;
 	priority: number;
 	statChanges: Array<{

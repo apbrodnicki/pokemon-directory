@@ -161,10 +161,10 @@ export interface GenericMove {
 		max_turns: number;
 		min_hits: number;
 		min_turns: number;
-		stat_chance: number;
+		[key: string]: unknown;
 	} | null;
 	name: string;
-	power: number;
+	power: number | null;
 	pp: number;
 	priority: number;
 	stat_changes: [{

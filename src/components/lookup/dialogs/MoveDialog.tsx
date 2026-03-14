@@ -2,6 +2,7 @@ import { Box, DialogContent, DialogContentText, DialogTitle, Divider, Typography
 import { ImagesDamageClasses, ImagesTypes } from 'assets/index.ts';
 import { StyledDialog } from 'components/custom/Styles';
 import { defaultMove, typeColors } from 'data';
+import { capitalizeFirstLetter } from 'helper/helper';
 import type { Move, Types } from 'models/models';
 import React from 'react';
 
@@ -56,66 +57,92 @@ export const MoveDialog = (
 				<DialogContentText>
 					{move.description}
 				</DialogContentText>
-				<Divider />
 			</DialogContent>
+			<Divider textAlign='left'>
+				<Typography variant='body1'>Stats</Typography>
+			</Divider>
 			<DialogContent>
-				<DialogContentText>
-					Power: {move.power}
-				</DialogContentText>
+				{move.power && (
+					<DialogContentText>
+						Power: {move.power}
+					</DialogContentText>
+				)}
 				<DialogContentText>
 					Accuracy: {move.accuracy}%
 				</DialogContentText>
 				<DialogContentText>
-					ailment: {move.ailment}
+					Priority: {move.priority}
 				</DialogContentText>
 				<DialogContentText>
-					category: {move.category}
+					PP: {move.powerPoints}
 				</DialogContentText>
-				<DialogContentText>
-					crit rate: {move.critRate}
-				</DialogContentText>
-				<DialogContentText>
-					flinch chance: {move.flinchChance}
-				</DialogContentText>
-				<DialogContentText>
-					is contact: {move.isContact ? 'yes' : 'no'}
-				</DialogContentText>
-				<DialogContentText>
-					target: {move.target}
-				</DialogContentText>
-				<DialogContentText>
-					priority: {move.priority}
-				</DialogContentText>
-				<DialogContentText>
-					pp: {move.powerPoints}
-				</DialogContentText>
-				{move.statChanges.map((statChange, index) => (
-					<DialogContentText key={index}>
-						stat change | {statChange.stat}: {statChange.change}
+				{move.category && (
+					<DialogContentText>
+						Category: {move.category}
 					</DialogContentText>
-				))}
+				)}
+				{move.ailment && (
+					<DialogContentText>
+						Ailment: {move.ailment}
+					</DialogContentText>
+				)}
 				<DialogContentText>
-					stat change chance: {move.statChangeChance}
+					Makes contact?: {move.isContact ? 'yes' : 'no'}
 				</DialogContentText>
+				{move.critRate && (
+					<DialogContentText>
+						Crit rate: {move.critRate}
+					</DialogContentText>
+				)}
+				{move.flinchChance && (
+					<DialogContentText>
+						Flinch chance: {move.flinchChance}
+					</DialogContentText>
+				)}
 				<DialogContentText>
-					drain: {move.drain}
-				</DialogContentText>
-				<DialogContentText>
-					healing: {move.healing}
-				</DialogContentText>
-				<DialogContentText>
-					max hits: {move.maxHits}
-				</DialogContentText>
-				<DialogContentText>
-					min hits: {move.minHits}
-				</DialogContentText>
-				<DialogContentText>
-					max turns: {move.maxTurns}
-				</DialogContentText>
-				<DialogContentText>
-					min turns: {move.minTurns}
+					Target: {move.target}
 				</DialogContentText>
 			</DialogContent>
+			<Divider textAlign='left'>
+				<Typography variant='body1'>Stat changes</Typography>
+			</Divider>
+			<DialogContent>
+				{move.statChanges.map((statChange, index) => (
+					<DialogContentText key={index}>
+						{capitalizeFirstLetter(statChange.stat)} ({statChange.change > 0 && '+'}{statChange.change} stage{statChange.change > 1 && 's'})
+					</DialogContentText>
+				))}
+			</DialogContent>
+			{move.drain && (
+				<DialogContentText>
+					Drain: {move.drain}
+				</DialogContentText>
+			)}
+			{move.healing && (
+				<DialogContentText>
+					Healing: {move.healing}
+				</DialogContentText>
+			)}
+			{move.maxHits && (
+				<DialogContentText>
+					Max hits: {move.maxHits}
+				</DialogContentText>
+			)}
+			{move.minHits && (
+				<DialogContentText>
+					Min hits: {move.minHits}
+				</DialogContentText>
+			)}
+			{move.maxTurns && (
+				<DialogContentText>
+					Max turns: {move.maxTurns}
+				</DialogContentText>
+			)}
+			{move.minTurns && (
+				<DialogContentText>
+					Min turns: {move.minTurns}
+				</DialogContentText>
+			)}
 		</StyledDialog>
 	);
 };

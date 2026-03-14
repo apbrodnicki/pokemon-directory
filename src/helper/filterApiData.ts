@@ -203,13 +203,12 @@ export const filterMoveData = (move: GenericMove, contactMoves: string[]): Move 
 		maxTurns: move.meta?.max_turns,
 		minHits: move.meta?.min_hits,
 		minTurns: move.meta?.min_turns,
-		statChangeChance: move.meta?.stat_chance,
 		name,
-		power: move.power,
+		power: move?.power,
 		powerPoints: move.pp,
 		priority: move.priority,
 		statChanges,
-		target: move.target.name,
+		target: formatName(move.target.name),
 		type: move.type.name
 	};
 };

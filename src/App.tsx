@@ -1,4 +1,5 @@
 import { Box } from '@mui/material';
+import pokeballIcon from 'assets/pokeball-icon.png';
 import { Footer } from 'components/Footer';
 import { Header } from 'components/Header';
 import { Home } from 'components/Home';
@@ -29,7 +30,7 @@ export const App = (): React.JSX.Element => {
 	}, [pokemonList]);
 
 	return (
-		<Box id='pokemon-directory'>
+		<Box id='pokemon-directory' sx={{ cursor: `url(${pokeballIcon}), auto` }}>
 			<SnackbarContext.Provider value={{ snackbarOpen, setSnackbarOpen, snackbarMessage, setSnackbarMessage, snackbarColor, setSnackbarColor }}>
 				<PokemonListContext.Provider value={{ pokemonList, setPokemonList }}>
 					<Runner leftPokemon={runnerPokemon.topLeft} rightPokemon={runnerPokemon.topRight}>

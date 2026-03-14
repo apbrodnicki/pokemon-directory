@@ -166,7 +166,11 @@ export const filterMoveData = (move: GenericMove, contactMoves: string[]): Move 
 
 	for (const entry of move.effect_entries) {
 		if (entry.language.name === 'en') {
-			description = entry.effect.replace(/\$effect_chance%/, move.effect_chance.toString() + '%');
+			description = entry.effect;
+
+			if (description.includes('$effect_chance%') && move.effect_chance !== null) {
+				description = description.replace(/\$effect_chance%/, move.effect_chance.toString() + '%');
+			}
 		}
 	}
 

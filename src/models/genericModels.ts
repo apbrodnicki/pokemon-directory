@@ -139,7 +139,7 @@ export interface GenericMove {
 	damage_class: {
 		name: 'status' | 'physical' | 'special';
 	};
-	effect_chance: number;
+	effect_chance: number | null;
 	effect_entries: [{
 		effect: string;
 		language: {

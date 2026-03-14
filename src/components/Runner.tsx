@@ -30,7 +30,7 @@ export const Runner = ({ leftPokemon, rightPokemon, children }: RunnerProps): Re
 
 	return (
 		<Box id='runner'>
-			<Paper elevation={3} sx={{ m: 2, p: 1, backgroundColor: '#7A9E9f' }}>
+			<Paper elevation={3} sx={{ m: 2, p: 1, backgroundColor: '#66001e' }}>
 				<Box
 					sx={{
 						display: 'flex',

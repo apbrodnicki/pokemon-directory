@@ -6,7 +6,7 @@ body {
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
-	background-color: #4F6367;
+	background-color: #800020;
 }
 
 div > .MuiAutocomplete-listbox {
@@ -15,8 +15,4 @@ div > .MuiAutocomplete-listbox {
 }
 
 /* theme:
-'#4F6367'
-'#7A9E9F'
-'#B8D8D8'
-'#DDEDED'
 pokemon blue #2d6fb6 */

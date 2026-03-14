@@ -26,7 +26,7 @@ export const ItemDialog = (
 			sx={{
 				'& .MuiDialog-paper': {
 					width: '100%',
-					backgroundColor: '#2d6fb6'
+					backgroundColor: '#D4728A'
 				}
 			}}
 		>

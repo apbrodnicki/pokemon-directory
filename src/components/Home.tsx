@@ -34,7 +34,7 @@ export const Home = (): React.JSX.Element => {
 					sx={{
 						m: 5,
 						width: '33%',
-						backgroundColor: '#B8D8D8',
+						backgroundColor: '#B8314F',
 						display: 'flex',
 						justifyContent: 'center',
 						alignItems: 'center'

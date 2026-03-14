@@ -8,7 +8,7 @@ export const Footer = (): React.JSX.Element => {
 	return (
 		<Box id='footer'>
 			<Box display='flex' alignItems='center' justifyContent='center'>
-				<Typography variant='subtitle2' mx={1}>
+				<Typography variant='subtitle1' mx={1}>
 					Created by Alex Brodnicki
 				</Typography>
 				<MuiLink href='https://github.com/apbrodnicki' target='_blank' mx={1}>
@@ -18,7 +18,7 @@ export const Footer = (): React.JSX.Element => {
 				</MuiLink>
 			</Box>
 			<Box display='flex' alignItems='center' justifyContent='center'>
-				<Typography variant='subtitle2' mx={1}>
+				<Typography variant='subtitle1' mx={1}>
 					Data provided by PokéApi
 				</Typography>
 				<MuiLink href='https://pokeapi.co/' target='_blank' underline='hover' color='black' mx={1}>

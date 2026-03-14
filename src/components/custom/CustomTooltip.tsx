@@ -12,11 +12,19 @@ export const CustomTooltip = ({ title, haveCursor, onClick, children }: CustomTo
 	<Tooltip
 		title={<Box style={{ fontSize: '16px' }}>{title}</Box>}
 		slots={{ transition: Zoom }}
+		slotProps={{
+			tooltip: {
+				sx: {
+					bgcolor: '#D4728A',
+					color: 'black'
+				}
+			}
+		}}
 		placement='top'
 		leaveDelay={100}
 		arrow
 		onClick={onClick}
-		sx={(haveCursor === true) ? { cursor: 'pointer' } : {}}
+		sx={{ ...(haveCursor === true && { cursor: 'pointer' }) }}
 	>
 		{children}
 	</Tooltip>

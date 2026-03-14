@@ -100,12 +100,13 @@ export const UpdatePokemon = (): React.JSX.Element => {
 							{...params}
 							label={`${isAddAutocomplete ? 'Add' : 'Remove'} Pokémon`}
 							variant='filled'
+							color='warning'
 						/>
 						<Button fullWidth onClick={() => {
 							onClick(isAddAutocomplete ? 'add' : 'remove');
 							updateAutocompleteKey();
 						}}>
-							<Typography variant='body1'>
+							<Typography variant='body1' color='black'>
 								Submit
 							</Typography>
 						</Button>
@@ -116,7 +117,7 @@ export const UpdatePokemon = (): React.JSX.Element => {
 
 					return (
 						<StyledGroupListItem key={params.key}>
-							<Box sx={{ width: '100%', backgroundColor: '#7A9E9F' }}>
+							<Box sx={{ width: '100%', backgroundColor: '#66001e' }}>
 								<Typography align='center'>
 									{params.group}
 								</Typography>

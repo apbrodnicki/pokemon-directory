@@ -1,6 +1,6 @@
 import { DialogContent, DialogContentText, DialogTitle, Divider, Typography } from '@mui/material';
 import { StyledDialog } from 'components/custom/Styles';
-import { defaultAbility, typeColors } from 'data';
+import { defaultAbility } from 'data';
 import { formatName } from 'helper/helper';
 import type { Ability } from 'models/models';
 import React from 'react';
@@ -26,7 +26,7 @@ export const AbilityDialog = (
 			sx={{
 				'& .MuiDialog-paper': {
 					width: '100%',
-					backgroundColor: typeColors.fighting
+					backgroundColor: '#D4728A'
 				}
 			}}
 		>

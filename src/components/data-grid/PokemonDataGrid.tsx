@@ -49,15 +49,15 @@ export const PokemonDataGrid = (): React.JSX.Element => {
 						rowHeight={100}
 						getRowClassName={() => 'datagrid-row'}
 						sx={{
-							backgroundColor: '#B8D8D8',
+							backgroundColor: '#B8314F',
 							'& .MuiDataGrid-columnHeader': {
-								backgroundColor: '#7A9E9F'
+								backgroundColor: '#66001e'
 							},
 							'& .MuiDataGrid-row': {
-								backgroundColor: '#B8D8D8'
+								backgroundColor: '#B8314F'
 							},
 							'& .MuiDataGrid-row:hover': {
-								backgroundColor: '#DDEDED'
+								backgroundColor: '#D4728A'
 							}
 						}}
 					/>

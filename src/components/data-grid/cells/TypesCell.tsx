@@ -47,7 +47,7 @@ export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Ele
 		<Paper
 			elevation={5}
 			sx={{
-				backgroundColor: '#B8D8D8',
+				backgroundColor: '#B8314F',
 				p: 2,
 				minWidth: '350px',
 			}}

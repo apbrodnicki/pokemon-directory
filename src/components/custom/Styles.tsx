@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Dialog, ListItem, Paper } from '@mui/material';
+import { Dialog, ListItem, Paper, Radio } from '@mui/material';
 
 export const StyledOptionListItem = styled(ListItem)(() => ({
 	backgroundColor: '#B8314F',
@@ -22,4 +22,11 @@ export const StyledPaper = styled(Paper)(() => ({
 
 export const StyledDialog = styled(Dialog)(() => ({
 	padding: '24px'
+}));
+
+export const StyledRadioButton = styled(Radio)(() => ({
+	color: 'pink',
+	'&.Mui-checked': {
+		color: 'pink',
+	}
 }));

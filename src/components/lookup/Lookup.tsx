@@ -1,8 +1,9 @@
-import { Box, FormControlLabel, Radio, RadioGroup } from '@mui/material';
+import { Box, FormControlLabel, RadioGroup } from '@mui/material';
 import { useFetchAbility } from 'api/abilities/useFetchAbility';
 import { useFetchItem } from 'api/items/useFetchItem';
 import { useFetchContactMovesHtml } from 'api/moves/useFetchContactMovesHtml';
 import { useFetchMove } from 'api/moves/useFetchMove';
+import { StyledRadioButton } from 'components/custom/Styles';
 import { PokeballLoader } from 'components/loaders/PokeballLoader';
 import { SnackbarContext } from 'contexts/SnackbarContext';
 import 'css/PokeballLoader.css';
@@ -87,9 +88,9 @@ export const Lookup = (): React.JSX.Element => {
 							flexWrap: 'nowrap'
 						}}
 					>
-						<FormControlLabel value='ability' control={<Radio />} label='Ability' />
-						<FormControlLabel value='item' control={<Radio />} label='Item' />
-						<FormControlLabel value='move' control={<Radio />} label='Move' />
+						<FormControlLabel value='ability' control={<StyledRadioButton />} label='Ability' />
+						<FormControlLabel value='item' control={<StyledRadioButton />} label='Item' />
+						<FormControlLabel value='move' control={<StyledRadioButton />} label='Move' />
 					</RadioGroup>
 					<LookupForm label='Lookup' onSubmit={onSubmit} onChange={onLookupInputChange} />
 					<AbilityDialog ability={ability} setAbility={setAbility} isAbilityDialogOpen={isAbilityDialogOpen} />

@@ -1,14 +1,16 @@
-import js from '@eslint/js';
+import eslint from '@eslint/js';
 import stylistic from '@stylistic/eslint-plugin';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
+import { defineConfig } from 'eslint/config';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
-export default tseslint.config(
+export default defineConfig(
+	eslint .configs.recommended,
+	tseslint.configs.recommended,
 	{ ignores: ['dist', 'node_modules'] },
 	{
-		extends: [js.configs.recommended, ...tseslint.configs.recommended],
 		files: ['**/*.{js,jsx,ts,tsx}'],
 		languageOptions: {
 			ecmaVersion: 'latest',

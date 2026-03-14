@@ -162,7 +162,7 @@ export interface GenericMove {
 		min_hits: number;
 		min_turns: number;
 		stat_chance: number;
-	};
+	} | null;
 	name: string;
 	power: number;
 	pp: number;

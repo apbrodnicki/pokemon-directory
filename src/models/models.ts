@@ -69,21 +69,21 @@ export interface Item {
 
 export interface Move {
 	accuracy: number;
-	ailment: string;
+	ailment?: string;
 	damageClass: 'status' | 'physical' | 'special';
-	effectChance: number;
+	effectChance: number | null;
 	description: string;
-	category: string;
-	critRate: number;
-	drain: number;
-	flinchChance: number;
-	healing: number;
+	category?: string;
+	critRate?: number;
+	drain?: number;
+	flinchChance?: number;
+	healing?: number;
 	isContact: boolean;
-	maxHits: number;
-	maxTurns: number;
-	minHits: number;
-	minTurns: number;
-	statChangeChance: number;
+	maxHits?: number;
+	maxTurns?: number;
+	minHits?: number;
+	minTurns?: number;
+	statChangeChance?: number;
 	name: string;
 	power: number;
 	powerPoints: number;

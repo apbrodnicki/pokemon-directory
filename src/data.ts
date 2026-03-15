@@ -49,7 +49,6 @@ export const defaultMove: Move = {
 	maxTurns: 0,
 	minHits: 0,
 	minTurns: 0,
-	statChangeChance: 0,
 	name: '',
 	power: 0,
 	powerPoints: 0,

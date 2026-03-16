@@ -96,7 +96,7 @@ export interface Move {
 }
 
 export interface LookupType {
-	lookupType: 'ability' | 'item' | 'move';
+	lookupType: 'ability' | 'item' | 'move' | 'types';
 }
 
 export interface RunnerItems {

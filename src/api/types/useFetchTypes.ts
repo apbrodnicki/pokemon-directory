@@ -29,8 +29,8 @@ export const useFetchTypes = (
 		};
 
 		void fetchData();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [typesList.join(','), setIsLoadingTypes]); // typesList needs to be converted to a primitive type to avoid infinite calls
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [setIsLoadingTypes, typesList.join(',')]); // typesList needs to be converted to a primitive type to avoid infinite calls
 
 	return types;
 };

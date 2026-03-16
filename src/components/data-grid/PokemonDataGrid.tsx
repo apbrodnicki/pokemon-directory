@@ -52,12 +52,14 @@ export const PokemonDataGrid = (): React.JSX.Element => {
 							backgroundColor: '#B8314F',
 							'& .MuiDataGrid-columnHeader': {
 								backgroundColor: '#66001e'
-							},
-							'& .MuiDataGrid-row': {
+							}, '& .MuiDataGrid-row': {
 								backgroundColor: '#B8314F'
-							},
-							'& .MuiDataGrid-row:hover': {
+							}, '& .MuiDataGrid-row:hover': {
 								backgroundColor: '#D4728A'
+							}, '& .MuiDataGrid-row.Mui-selected': {
+								backgroundColor: '#7D0B2B'
+							}, '& .MuiDataGrid-row.Mui-selected:hover': {
+								backgroundColor: '#9E1438'
 							}
 						}}
 					/>

@@ -66,6 +66,7 @@ export const UpdatePokemon = (): React.JSX.Element => {
 				getOptionLabel={(option) => option.name}
 				onChange={(_, value) => { onAutocompleteChange(value); }}
 				inputValue={isAddAutocomplete ? addInputValue : removeInputValue}
+				noOptionsText='No Pokémon options'
 				onInputChange={(_event, value, reason) => {
 					if (reason !== 'reset' && reason !== 'selectOption') {
 						if (isAddAutocomplete) {

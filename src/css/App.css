@@ -14,5 +14,9 @@ div > .MuiAutocomplete-listbox {
 	max-height: 50vh;
 }
 
+.MuiAutocomplete-noOptions {
+	background-color: #B8314F;
+}
+
 /* theme:
 pokemon blue #2d6fb6 */

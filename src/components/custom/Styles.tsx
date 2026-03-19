@@ -5,7 +5,11 @@ export const StyledOptionListItem = styled(ListItem)(() => ({
 	backgroundColor: '#B8314F',
 	'&.MuiAutocomplete-option.Mui-focused': {
 		backgroundColor: '#D4728A'
-	},
+	}, '&.MuiAutocomplete-option[aria-selected="true"]': {
+		backgroundColor: '#7D0B2B'
+	},	'&.MuiAutocomplete-option.Mui-focused[aria-selected="true"]': {
+		backgroundColor: '#9E1438'
+	}
 }));
 
 export const StyledGroupListItem = styled(ListItem)(() => ({

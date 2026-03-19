@@ -51,97 +51,101 @@ export const MoveDialog = (
 				</Box>
 			</Box>
 			<Divider textAlign='left'>
-				<Typography variant='body1'>Description</Typography>
+				<Typography variant='subtitle1'>Description</Typography>
 			</Divider>
 			<DialogContent>
-				<DialogContentText>
+				<DialogContentText variant='subtitle2'>
 					{move.description}
 				</DialogContentText>
 			</DialogContent>
 			<Divider textAlign='left'>
-				<Typography variant='body1'>Stats</Typography>
+				<Typography variant='subtitle1'>Stats</Typography>
 			</Divider>
 			<DialogContent>
-				{move.power && (
-					<DialogContentText>
+				{move.power !== null && (
+					<DialogContentText variant='subtitle2'>
 						Power: {move.power}
 					</DialogContentText>
 				)}
-				<DialogContentText>
+				<DialogContentText variant='subtitle2'>
 					Accuracy: {move.accuracy}%
 				</DialogContentText>
-				<DialogContentText>
+				<DialogContentText variant='subtitle2'>
 					Priority: {move.priority}
 				</DialogContentText>
-				<DialogContentText>
+				<DialogContentText variant='subtitle2'>
 					PP: {move.powerPoints}
 				</DialogContentText>
 				{move.category && (
-					<DialogContentText>
+					<DialogContentText variant='subtitle2'>
 						Category: {move.category}
 					</DialogContentText>
 				)}
 				{move.ailment && (
-					<DialogContentText>
+					<DialogContentText variant='subtitle2'>
 						Ailment: {move.ailment}
 					</DialogContentText>
 				)}
-				<DialogContentText>
+				<DialogContentText variant='subtitle2'>
 					Makes contact?: {move.isContact ? 'yes' : 'no'}
 				</DialogContentText>
-				{move.critRate && (
-					<DialogContentText>
+				{move.critRate !== null && (
+					<DialogContentText variant='subtitle2'>
 						Crit rate: {move.critRate}
 					</DialogContentText>
 				)}
-				{move.flinchChance && (
-					<DialogContentText>
+				{move.flinchChance !== null && (
+					<DialogContentText variant='subtitle2'>
 						Flinch chance: {move.flinchChance}
 					</DialogContentText>
 				)}
-				<DialogContentText>
+				<DialogContentText variant='subtitle2'>
 					Target: {move.target}
 				</DialogContentText>
-			</DialogContent>
-			<Divider textAlign='left'>
-				<Typography variant='body1'>Stat changes</Typography>
-			</Divider>
-			<DialogContent>
-				{move.statChanges.map((statChange, index) => (
-					<DialogContentText key={index}>
-						{capitalizeFirstLetter(statChange.stat)} ({statChange.change > 0 && '+'}{statChange.change} stage{statChange.change > 1 && 's'})
+				{move.drain !== null && (
+					<DialogContentText variant='subtitle2'>
+						Drain: {move.drain}
 					</DialogContentText>
-				))}
+				)}
+				{move.healing !== null && (
+					<DialogContentText variant='subtitle2'>
+						Healing: {move.healing}
+					</DialogContentText>
+				)}
+				{move.maxHits !== null && (
+					<DialogContentText variant='subtitle2'>
+						Max hits: {move.maxHits}
+					</DialogContentText>
+				)}
+				{move.minHits !== null && (
+					<DialogContentText variant='subtitle2'>
+						Min hits: {move.minHits}
+					</DialogContentText>
+				)}
+				{move.maxTurns !== null && (
+					<DialogContentText variant='subtitle2'>
+						Max turns: {move.maxTurns}
+					</DialogContentText>
+				)}
+				{move.minTurns !== null && (
+					<DialogContentText variant='subtitle2'>
+						Min turns: {move.minTurns}
+					</DialogContentText>
+				)}
 			</DialogContent>
-			{move.drain && (
-				<DialogContentText>
-					Drain: {move.drain}
-				</DialogContentText>
-			)}
-			{move.healing && (
-				<DialogContentText>
-					Healing: {move.healing}
-				</DialogContentText>
-			)}
-			{move.maxHits && (
-				<DialogContentText>
-					Max hits: {move.maxHits}
-				</DialogContentText>
-			)}
-			{move.minHits && (
-				<DialogContentText>
-					Min hits: {move.minHits}
-				</DialogContentText>
-			)}
-			{move.maxTurns && (
-				<DialogContentText>
-					Max turns: {move.maxTurns}
-				</DialogContentText>
-			)}
-			{move.minTurns && (
-				<DialogContentText>
-					Min turns: {move.minTurns}
-				</DialogContentText>
+			{move.statChanges.length > 0 && (
+				<>
+					<Divider textAlign='left'>
+						<Typography variant='subtitle1'>Stat changes</Typography>
+					</Divider>
+					<DialogContent>
+						{move.statChanges.map((statChange, index) => (
+							<DialogContentText key={index} variant='subtitle2'>
+								{capitalizeFirstLetter(statChange.stat)} ({statChange.change > 0 && '+'}{statChange.change} stage{statChange.change > 1 && 's'})
+							</DialogContentText>
+						))}
+					</DialogContent>
+				</>
 			)}
 		</StyledDialog>
 	);

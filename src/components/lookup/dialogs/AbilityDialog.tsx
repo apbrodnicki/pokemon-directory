@@ -34,10 +34,10 @@ export const AbilityDialog = (
 				{formatName(Object.keys(ability)[0])} (Ability)
 			</DialogTitle>
 			<Divider textAlign='left'>
-				<Typography variant='body1'>Description</Typography>
+				<Typography variant='subtitle1'>Description</Typography>
 			</Divider>
 			<DialogContent>
-				<DialogContentText>
+				<DialogContentText variant='subtitle2'>
 					{Object.values(ability)}
 				</DialogContentText>
 			</DialogContent>

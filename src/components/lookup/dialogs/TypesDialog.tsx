@@ -46,7 +46,7 @@ export const TypesDialog = (
 				</Box>
 			</DialogTitle>
 			<Divider textAlign='left'>
-				<Typography variant='body1'>Description</Typography>
+				<Typography variant='subtitle1'>Description</Typography>
 			</Divider>
 			<DialogContent>
 				<DialogContentText>

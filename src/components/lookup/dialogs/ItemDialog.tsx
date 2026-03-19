@@ -43,21 +43,21 @@ export const ItemDialog = (
 				/>
 			</Box>
 			<Divider textAlign='left'>
-				<Typography variant='body1'>Description</Typography>
+				<Typography variant='subtitle1'>Description</Typography>
 			</Divider>
 			<DialogContent>
-				<DialogContentText>
+				<DialogContentText variant='subtitle2'>
 					{item.description}
 				</DialogContentText>
 			</DialogContent>
 			<Divider textAlign='left'>
-				<Typography variant='body1'>Fling</Typography>
+				<Typography variant='subtitle1'>Fling</Typography>
 			</Divider>
 			<DialogContent>
-				<DialogContentText>
+				<DialogContentText variant='subtitle2'>
 					Power: {item.flingPower}
 				</DialogContentText>
-				<DialogContentText>
+				<DialogContentText variant='subtitle2'>
 					Effect: {item.flingEffect ?? 'None'}
 				</DialogContentText>
 			</DialogContent>

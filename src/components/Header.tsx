@@ -3,13 +3,13 @@ import React from 'react';
 
 export const Header = (): React.JSX.Element => {
 	return (
-		<Box id='header'>
+		<Box id='header' mx={1}>
 			<Typography
 				color='black'
 				align='center'
 				sx={{
 					typography: {
-						sm: 'h3',
+						md: 'h4',
 						xs: 'h6'
 					}
 				}}

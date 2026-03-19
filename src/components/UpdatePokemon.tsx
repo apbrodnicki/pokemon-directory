@@ -98,7 +98,9 @@ export const UpdatePokemon = (): React.JSX.Element => {
 					<>
 						<TextField
 							{...params}
-							label={`${isAddAutocomplete ? 'Add' : 'Remove'} Pokémon`}
+							label={
+								<Typography variant='subtitle1'>{isAddAutocomplete ? 'Add' : 'Remove'} Pokémon</Typography>
+							}
 							variant='filled'
 							color='warning'
 						/>

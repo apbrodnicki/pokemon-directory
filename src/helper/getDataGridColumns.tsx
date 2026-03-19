@@ -35,7 +35,7 @@ export const getDataGridColumns = ({ abilitiesWithDescriptions, types }: getData
 			headerAlign: 'center',
 			align: 'center',
 			display: 'flex',
-			renderCell: (param) => <Box><Typography>{param.value}</Typography></Box>
+			renderCell: (param) => <Box><Typography variant='subtitle1'>{param.value}</Typography></Box>
 		},
 		{
 			field: 'sprite',
@@ -51,7 +51,7 @@ export const getDataGridColumns = ({ abilitiesWithDescriptions, types }: getData
 			field: 'types',
 			headerName: 'Types',
 			type: 'string',
-			width: 200,
+			width: 275,
 			headerAlign: 'center',
 			align: 'center',
 			display: 'flex',
@@ -61,7 +61,7 @@ export const getDataGridColumns = ({ abilitiesWithDescriptions, types }: getData
 			field: 'abilities',
 			headerName: 'Abilities',
 			type: 'string',
-			width: 150,
+			width: 175,
 			headerAlign: 'center',
 			align: 'center',
 			display: 'flex',

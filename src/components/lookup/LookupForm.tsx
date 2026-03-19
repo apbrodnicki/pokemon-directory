@@ -18,10 +18,17 @@ export const LookupForm = (
 	<Paper elevation={3} sx={{ width: { xs: '67%', md: '33%' }, backgroundColor: '#B8314F' }}>
 		<Box component='form' onSubmit={onSubmit} display='flex' flexDirection='column'>
 			{lookupType !== 'types' ? (
-				<TextField label='Lookup' onChange={onLookupInputChange} variant='filled' color='warning' />
+				<TextField
+					label={<Typography variant='subtitle1'>Lookup</Typography>}
+					onChange={onLookupInputChange}
+					variant='filled'
+					color='warning'
+				/>
 			) : (
 				<FormControl fullWidth variant='filled' color='warning'>
-					<InputLabel id='types-lookup'>Lookup</InputLabel>
+					<InputLabel id='types-lookup'>
+						<Typography variant='subtitle1'>Lookup</Typography>
+					</InputLabel>
 					<Select
 						labelId='types-lookup'
 						label='Lookup'

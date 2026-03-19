@@ -13,34 +13,34 @@ interface TypesCellProps {
 
 export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Element => {
 	const DamageRelationElement = (title: string, damageRelationTypes: string[]): React.JSX.Element => (
-		<>
-			<Typography component='div'>
-				<Box fontWeight='medium'>
+		<Box mb={1}>
+			<Box>
+				<Typography variant='subtitle1' fontWeight='medium'>
 					{title}
-				</Box>
-			</Typography>
-			<Box display='flex' py={.5}>
+				</Typography>
+			</Box>
+			<Box display='flex' flexWrap='wrap' py={.5}>
 				{damageRelationTypes.map((type: string, index: number) => (
 					<Box
 						key={index}
 						bgcolor={typeColors[type as keyof Types]}
+						width='133px'
 					>
-						<Typography
-							component='div'
+						<Box
 							mx={3}
 							my={1}
 							display='flex'
 							alignItems='center'
 							justifyContent='center'
 						>
-							<Box fontWeight='regular'>
+							<Typography variant='subtitle1' fontWeight='regular'>
 								{capitalizeFirstLetter(type)}
-							</Box>
-						</Typography>
+							</Typography>
+						</Box>
 					</Box>
 				))}
 			</Box>
-		</>
+		</Box>
 	);
 
 	const DamageRelationContent = (damageRelation: DamageRelation): React.JSX.Element => (
@@ -49,7 +49,7 @@ export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Ele
 			sx={{
 				backgroundColor: '#B8314F',
 				p: 2,
-				minWidth: '350px',
+				maxWidth: '431px'
 			}}
 		>
 			{damageRelation.noDamageFrom.length > 0 && (
@@ -87,7 +87,7 @@ export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Ele
 				}}
 				key={index}
 			>
-				<Typography my={1} align='center'>{capitalizeFirstLetter(typeName)}</Typography>
+				<Typography variant='subtitle1' my={1} align='center'>{capitalizeFirstLetter(typeName)}</Typography>
 			</Box>
 		));
 
@@ -219,7 +219,7 @@ export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Ele
 								backgroundColor: typeColors[typeName],
 							}}
 						>
-							<Typography my={1} align='center'>{capitalizeFirstLetter(typeName)}</Typography>
+							<Typography variant='subtitle1' my={1} align='center'>{capitalizeFirstLetter(typeName)}</Typography>
 						</Box>
 					</>
 				)}

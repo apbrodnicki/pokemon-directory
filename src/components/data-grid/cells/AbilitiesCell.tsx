@@ -19,7 +19,7 @@ export const AbilitiesCell = ({ abilityStrings, abilities }: AbilitiesCellProps)
 					title={(title !== undefined) ? title[ability] : ''}
 					key={index}
 				>
-					<Typography my={1} align='center'>{formatName(ability)}</Typography>
+					<Typography variant='subtitle1' my={1} align='center'>{formatName(ability)}</Typography>
 				</CustomTooltip>
 			);
 		})}

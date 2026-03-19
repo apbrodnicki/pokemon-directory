@@ -15,7 +15,13 @@ export const theme = createTheme({
 	typography: {
 		fontFamily: 'PokemonFont',
 		subtitle1: {
-			fontSize: '.67rem'
+			fontSize: '.75rem',
+			fontWeight: 700,
+			color: 'black'
+		},
+		subtitle2: {
+			fontSize: '.67rem',
+			color: 'black'
 		}
 	}
 });

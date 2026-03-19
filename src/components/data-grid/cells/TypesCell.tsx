@@ -15,7 +15,7 @@ export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Ele
 	const DamageRelationElement = (title: string, damageRelationTypes: string[]): React.JSX.Element => (
 		<Box mb={1}>
 			<Box>
-				<Typography variant='subtitle1' fontWeight='medium'>
+				<Typography variant='subtitle2' fontWeight='medium'>
 					{title}
 				</Typography>
 			</Box>
@@ -33,7 +33,7 @@ export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Ele
 							alignItems='center'
 							justifyContent='center'
 						>
-							<Typography variant='subtitle1' fontWeight='regular'>
+							<Typography variant='subtitle2' fontWeight='regular'>
 								{capitalizeFirstLetter(type)}
 							</Typography>
 						</Box>
@@ -87,7 +87,7 @@ export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Ele
 				}}
 				key={index}
 			>
-				<Typography variant='subtitle1' my={1} align='center'>{capitalizeFirstLetter(typeName)}</Typography>
+				<Typography variant='subtitle2' my={1} align='center'>{capitalizeFirstLetter(typeName)}</Typography>
 			</Box>
 		));
 
@@ -219,7 +219,7 @@ export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Ele
 								backgroundColor: typeColors[typeName],
 							}}
 						>
-							<Typography variant='subtitle1' my={1} align='center'>{capitalizeFirstLetter(typeName)}</Typography>
+							<Typography variant='subtitle2' my={1} align='center'>{capitalizeFirstLetter(typeName)}</Typography>
 						</Box>
 					</>
 				)}

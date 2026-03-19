@@ -1,9 +1,8 @@
-import { Box, FormControlLabel, RadioGroup, type SelectChangeEvent } from '@mui/material';
+import { Box, ToggleButton, ToggleButtonGroup, Typography, type SelectChangeEvent } from '@mui/material';
 import { useFetchAbility } from 'api/abilities/useFetchAbility';
 import { useFetchItem } from 'api/items/useFetchItem';
 import { useFetchContactMovesHtml } from 'api/moves/useFetchContactMovesHtml';
 import { useFetchMove } from 'api/moves/useFetchMove';
-import { StyledRadioButton } from 'components/custom/Styles';
 import { PokeballLoader } from 'components/loaders/PokeballLoader';
 import { SnackbarContext } from 'contexts/SnackbarContext';
 import 'css/PokeballLoader.css';
@@ -50,8 +49,8 @@ export const Lookup = (): React.JSX.Element => {
 		);
 	};
 
-	const onRadioGroupChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-		setLookupType(event.target.value as LookupType['lookupType']);
+	const onToggleGroupChange = (_event: React.MouseEvent<HTMLElement>, value: LookupType['lookupType']): void => {
+		setLookupType(value);
 	};
 
 	const onSubmit = (event: React.SubmitEvent): void => {
@@ -99,19 +98,16 @@ export const Lookup = (): React.JSX.Element => {
 		>
 			{!isLoading ? (
 				<>
-					<RadioGroup
+					<ToggleButtonGroup
+						exclusive
 						value={lookupType}
-						row
-						onChange={onRadioGroupChange}
-						sx={{
-							flexWrap: 'nowrap'
-						}}
+						onChange={onToggleGroupChange}
 					>
-						<FormControlLabel value='ability' control={<StyledRadioButton />} label='Ability' />
-						<FormControlLabel value='item' control={<StyledRadioButton />} label='Item' />
-						<FormControlLabel value='move' control={<StyledRadioButton />} label='Move' />
-						<FormControlLabel value='types' control={<StyledRadioButton />} label='Types' />
-					</RadioGroup>
+						<ToggleButton value='ability'><Typography variant='subtitle2'>Ability</Typography></ToggleButton>
+						<ToggleButton value='item'><Typography variant='subtitle2'>Item</Typography></ToggleButton>
+						<ToggleButton value='move'><Typography variant='subtitle2'>Move</Typography></ToggleButton>
+						<ToggleButton value='types'><Typography variant='subtitle2'>Types</Typography></ToggleButton>
+					</ToggleButtonGroup>
 					<LookupForm
 						lookupType={lookupType}
 						typesInput={typesInput}

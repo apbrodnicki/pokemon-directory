@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Chip, Typography } from '@mui/material';
 import { CustomTooltip } from 'components/custom/CustomTooltip';
 import { formatName } from 'helper/helper';
 import type { Ability } from 'models/models';
@@ -10,7 +10,7 @@ interface AbilitiesCellProps {
 }
 
 export const AbilitiesCell = ({ abilityStrings, abilities }: AbilitiesCellProps): React.JSX.Element => (
-	<Box>
+	<Box display='flex' flexDirection='column'>
 		{abilityStrings.map((ability: string, index: number) => {
 			const title = abilities.find(currentAbility => Object.keys(currentAbility).includes(ability));
 
@@ -19,7 +19,14 @@ export const AbilitiesCell = ({ abilityStrings, abilities }: AbilitiesCellProps)
 					title={(title !== undefined) ? title[ability] : ''}
 					key={index}
 				>
-					<Typography variant='subtitle1' my={1} align='center'>{formatName(ability)}</Typography>
+					<Chip
+						label={
+							<Typography variant='subtitle2' whiteSpace='normal' my={1} align='center'>{formatName(ability)}</Typography>
+						}
+						sx={{
+							my: .5
+						}}
+					/>
 				</CustomTooltip>
 			);
 		})}

@@ -19,7 +19,7 @@ export const LookupForm = (
 		<Box component='form' onSubmit={onSubmit} display='flex' flexDirection='column'>
 			{lookupType !== 'types' ? (
 				<TextField
-					label={<Typography variant='subtitle1'>Lookup</Typography>}
+					label={<Typography variant='subtitle2'>Lookup</Typography>}
 					onChange={onLookupInputChange}
 					variant='filled'
 					color='warning'
@@ -27,7 +27,7 @@ export const LookupForm = (
 			) : (
 				<FormControl fullWidth variant='filled' color='warning'>
 					<InputLabel id='types-lookup'>
-						<Typography variant='subtitle1'>Lookup</Typography>
+						<Typography variant='subtitle2'>Lookup</Typography>
 					</InputLabel>
 					<Select
 						labelId='types-lookup'
@@ -75,7 +75,7 @@ export const LookupForm = (
 				</FormControl>
 			)}
 			<Button type='submit'>
-				<Typography variant='body1' color='black'>
+				<Typography variant='subtitle1'>
 					Submit
 				</Typography>
 			</Button>

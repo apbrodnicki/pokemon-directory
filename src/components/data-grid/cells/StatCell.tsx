@@ -14,7 +14,7 @@ export const StatCell = (
 
 	return (
 		<Box width='100%'>
-			<Typography my={1} textAlign='center'>{statValue}</Typography>
+			<Typography variant='subtitle2' mb={1} textAlign='center'>{statValue}</Typography>
 			<LinearProgress
 				variant='determinate'
 				value={progressValue}

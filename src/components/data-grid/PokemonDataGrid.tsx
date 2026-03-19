@@ -46,7 +46,7 @@ export const PokemonDataGrid = (): React.JSX.Element => {
 						}}
 						pageSizeOptions={[10, 20, 30, 40, 50]}
 						hideFooterSelectedRowCount
-						rowHeight={100}
+						rowHeight={125}
 						getRowClassName={() => 'datagrid-row'}
 						sx={{
 							backgroundColor: '#B8314F',

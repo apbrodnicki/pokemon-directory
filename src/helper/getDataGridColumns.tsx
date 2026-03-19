@@ -29,113 +29,113 @@ export const getDataGridColumns = ({ abilitiesWithDescriptions, types }: getData
 		},
 		{
 			field: 'name',
-			headerName: 'Name',
 			type: 'string',
-			width: 250,
+			width: 150,
 			headerAlign: 'center',
 			align: 'center',
 			display: 'flex',
-			renderCell: (param) => <Box><Typography variant='subtitle1'>{param.value}</Typography></Box>
+			renderCell: (param) => <Typography variant='subtitle2' whiteSpace='normal'>{param.value}</Typography>,
+			renderHeader: () => <Typography variant='subtitle1'>Name</Typography>
 		},
 		{
 			field: 'sprite',
-			headerName: 'Sprite',
 			type: 'string',
-			width: 125,
+			width: 150,
 			headerAlign: 'center',
 			align: 'center',
 			display: 'flex',
-			renderCell: (param) => <Box component='img' src={param.value} alt='sprite' />
+			renderCell: (param) => <Box component='img' src={param.value} alt='sprite' />,
+			renderHeader: () => <Typography variant='subtitle1'>Sprite</Typography>
 		},
 		{
 			field: 'types',
-			headerName: 'Types',
 			type: 'string',
 			width: 275,
 			headerAlign: 'center',
 			align: 'center',
 			display: 'flex',
-			renderCell: (param) => <TypesCell typeStrings={param.value} types={types} />
+			renderCell: (param) => <TypesCell typeStrings={param.value} types={types} />,
+			renderHeader: () => <Typography variant='subtitle1'>Types</Typography>
 		},
 		{
 			field: 'abilities',
-			headerName: 'Abilities',
 			type: 'string',
-			width: 175,
+			width: 150,
 			headerAlign: 'center',
 			align: 'center',
 			display: 'flex',
-			renderCell: (param) => <AbilitiesCell abilityStrings={param.value} abilities={abilitiesWithDescriptions} />
+			renderCell: (param) => <AbilitiesCell abilityStrings={param.value} abilities={abilitiesWithDescriptions} />,
+			renderHeader: () => <Typography variant='subtitle1'>Abilities</Typography>
 		},
 		{
 			field: 'hp',
-			headerName: 'HP',
 			type: 'number',
-			width: 165,
+			width: 210,
 			headerAlign: 'center',
 			align: 'center',
 			display: 'flex',
-			renderCell: (param) => <StatCell statValue={param.value} />
+			renderCell: (param) => <StatCell statValue={param.value} />,
+			renderHeader: () => <Typography variant='subtitle1'>HP</Typography>
 		},
 		{
 			field: 'attack',
-			headerName: 'Attack',
 			type: 'number',
-			width: 165,
+			width: 210,
 			headerAlign: 'center',
 			align: 'center',
 			display: 'flex',
-			renderCell: (param) => <StatCell statValue={param.value} />
+			renderCell: (param) => <StatCell statValue={param.value} />,
+			renderHeader: () => <Typography variant='subtitle1'>Attack</Typography>
 		},
 		{
 			field: 'defense',
-			headerName: 'Defense',
 			type: 'number',
-			width: 165,
+			width: 210,
 			headerAlign: 'center',
 			align: 'center',
 			display: 'flex',
-			renderCell: (param) => <StatCell statValue={param.value} />
+			renderCell: (param) => <StatCell statValue={param.value} />,
+			renderHeader: () => <Typography variant='subtitle1'>Defense</Typography>
 		},
 		{
 			field: 'specialAttack',
-			headerName: 'Special Attack',
 			type: 'number',
-			width: 165,
+			width: 210,
 			headerAlign: 'center',
 			align: 'center',
 			display: 'flex',
-			renderCell: (param) => <StatCell statValue={param.value} />
+			renderCell: (param) => <StatCell statValue={param.value} />,
+			renderHeader: () => <Typography variant='subtitle1'>Special Attack</Typography>
 		},
 		{
 			field: 'specialDefense',
-			headerName: 'Special Defense',
 			type: 'number',
-			width: 165,
+			width: 210,
 			headerAlign: 'center',
 			align: 'center',
 			display: 'flex',
-			renderCell: (param) => <StatCell statValue={param.value} />
+			renderCell: (param) => <StatCell statValue={param.value} />,
+			renderHeader: () => <Typography variant='subtitle1'>Special Defense</Typography>
 		},
 		{
 			field: 'speed',
-			headerName: 'Speed',
 			type: 'number',
-			width: 165,
+			width: 210,
 			headerAlign: 'center',
 			align: 'center',
 			display: 'flex',
-			renderCell: (param) => <StatCell statValue={param.value} />
+			renderCell: (param) => <StatCell statValue={param.value} />,
+			renderHeader: () => <Typography variant='subtitle1'>Speed</Typography>
 		},
 		{
 			field: 'total',
-			headerName: 'Total',
 			type: 'number',
-			width: 100,
+			width: 115,
 			headerAlign: 'center',
 			align: 'center',
 			display: 'flex',
-			renderCell: (param) => <TotalCell totalValue={param.value} />
+			renderCell: (param) => <TotalCell totalValue={param.value} />,
+			renderHeader: () => <Typography variant='subtitle1'>Total</Typography>
 		}
 	];
 };

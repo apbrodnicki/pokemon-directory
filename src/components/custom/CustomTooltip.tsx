@@ -12,7 +12,7 @@ export const CustomTooltip = ({ title, haveCursor, onClick, children }: CustomTo
 	<Tooltip
 		title={
 			<Box m={1}>
-				<Typography variant='subtitle1'>{title}</Typography>
+				<Typography variant='subtitle2'>{title}</Typography>
 			</Box>
 		}
 		slots={{ transition: Zoom }}

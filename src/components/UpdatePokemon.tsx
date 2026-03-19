@@ -99,7 +99,7 @@ export const UpdatePokemon = (): React.JSX.Element => {
 						<TextField
 							{...params}
 							label={
-								<Typography variant='subtitle1'>{isAddAutocomplete ? 'Add' : 'Remove'} Pokémon</Typography>
+								<Typography variant='subtitle2'>{isAddAutocomplete ? 'Add' : 'Remove'} Pokémon</Typography>
 							}
 							variant='filled'
 							color='warning'
@@ -108,7 +108,7 @@ export const UpdatePokemon = (): React.JSX.Element => {
 							onClick(isAddAutocomplete ? 'add' : 'remove');
 							updateAutocompleteKey();
 						}}>
-							<Typography variant='body1' color='black'>
+							<Typography variant='subtitle1'>
 								Submit
 							</Typography>
 						</Button>

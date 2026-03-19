@@ -41,6 +41,7 @@ export const MoveDialog = (
 						src={ImagesTypes[move.type as keyof Types]}
 						alt={move.type}
 						p={1}
+						sx={{ width: { xs: '67%', sm: 'unset' } }}
 					/>
 					<Box
 						component='img'

@@ -52,7 +52,7 @@ export const TypesDialog = (
 			}}
 		>
 			<DialogTitle textAlign='center'>
-				<Box display='flex' justifyContent='center'>
+				<Box display='flex' justifyContent='center' alignItems='center' sx={{ flexDirection: { xs: 'column', sm: 'row' } }}>
 					{types.map((type, index) => (
 						<Box
 							key={index}

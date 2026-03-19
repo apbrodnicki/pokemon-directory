@@ -35,7 +35,7 @@ const DamageRelationElement = (title: string, damageRelationTypes: string[]): Re
 				<Box
 					key={index}
 					bgcolor={typeColors[type as keyof Types]}
-					width='133px'
+					sx={{ width: { xs: '50%', sm: '33%' } }}
 				>
 					<Box
 						mx={3}

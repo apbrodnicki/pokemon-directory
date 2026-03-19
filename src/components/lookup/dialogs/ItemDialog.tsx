@@ -31,15 +31,17 @@ export const ItemDialog = (
 			}}
 		>
 			<Box display='flex' justifyContent='center' alignItems='center'>
-				<DialogTitle textAlign='center'>
+				<DialogTitle textAlign='center' sx={{ width: { xs: '100%', sm: 'unset' } }}>
 					{item.name}
 				</DialogTitle>
 				<Box
 					component='img'
 					src={item.sprite ?? pokeballIcon}
 					alt='sprite'
+					m={1}
 					height={75}
 					width={75}
+					sx={{ display: { xs: 'none', sm: 'block' } }}
 				/>
 			</Box>
 			<Divider textAlign='left'>

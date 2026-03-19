@@ -41,7 +41,7 @@ export const Home = (): React.JSX.Element => {
 					}}>
 					<Box p={3}>
 						<Typography variant='subtitle2' align='center'>
-							Add Pokémon to learn more about them or lookup information about abilities/items/moves/types!
+							Add Pokémon to learn more about them or lookup related information!
 						</Typography>
 					</Box>
 				</Paper>

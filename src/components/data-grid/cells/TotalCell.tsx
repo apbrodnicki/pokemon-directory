@@ -10,7 +10,7 @@ interface TotalCellProps {
 export const TotalCell = ({ totalValue }: TotalCellProps): React.JSX.Element => (
 	<Box
 		bgcolor={getProgressColor(totalValue / statValues.maxTotalStat * 100)}
-		height='100%'
+		height='67%'
 		width='100%'
 		display='flex'
 		justifyContent='center'

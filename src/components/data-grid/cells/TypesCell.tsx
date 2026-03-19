@@ -1,5 +1,7 @@
 import { Box, Paper, Typography } from '@mui/material';
+import { DamageRelationContent } from 'components/DamageRelationChart';
 import { typeColors } from 'data';
+import { getTypesDamageRelation } from 'helper/getTypesDamageRelation';
 import { capitalizeFirstLetter } from 'helper/helper';
 import PopupState, { bindHover, bindPopover } from 'material-ui-popup-state';
 import HoverPopover from 'material-ui-popup-state/HoverPopover';
@@ -7,71 +9,13 @@ import type { DamageRelation, Type, Types } from 'models/models';
 import React from 'react';
 
 interface TypesCellProps {
-	typeStrings: Array<keyof Types>;
+	typeNames: Array<keyof Types>;
 	types: Type[];
 }
 
-export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Element => {
-	const DamageRelationElement = (title: string, damageRelationTypes: string[]): React.JSX.Element => (
-		<Box mb={1}>
-			<Box>
-				<Typography variant='subtitle2' fontWeight='medium'>
-					{title}
-				</Typography>
-			</Box>
-			<Box display='flex' flexWrap='wrap' py={.5}>
-				{damageRelationTypes.map((type: string, index: number) => (
-					<Box
-						key={index}
-						bgcolor={typeColors[type as keyof Types]}
-						width='133px'
-					>
-						<Box
-							mx={3}
-							my={1}
-							display='flex'
-							alignItems='center'
-							justifyContent='center'
-						>
-							<Typography variant='subtitle2' fontWeight='regular'>
-								{capitalizeFirstLetter(type)}
-							</Typography>
-						</Box>
-					</Box>
-				))}
-			</Box>
-		</Box>
-	);
-
-	const DamageRelationContent = (damageRelation: DamageRelation): React.JSX.Element => (
-		<Paper
-			elevation={5}
-			sx={{
-				backgroundColor: '#B8314F',
-				p: 2,
-				maxWidth: '431px'
-			}}
-		>
-			{damageRelation.noDamageFrom.length > 0 && (
-				DamageRelationElement('Immune to (0x):', damageRelation.noDamageFrom)
-			)}
-			{damageRelation.quarterDamageFrom !== undefined && damageRelation.quarterDamageFrom.length > 0 && (
-				DamageRelationElement('Strongly resists (.25x):', damageRelation.quarterDamageFrom)
-			)}
-			{damageRelation.halfDamageFrom.length > 0 && (
-				DamageRelationElement('Resists (.5x):', damageRelation.halfDamageFrom)
-			)}
-			{damageRelation.doubleDamageFrom.length > 0 && (
-				DamageRelationElement('Weak to (2x):', damageRelation.doubleDamageFrom)
-			)}
-			{damageRelation.quadrupleDamageFrom !== undefined && damageRelation.quadrupleDamageFrom.length > 0 && (
-				DamageRelationElement('Very weak to (4x):', damageRelation.quadrupleDamageFrom)
-			)}
-		</Paper>
-	);
-
-	if (typeStrings.length > 1) {
-		const damageRelation: DamageRelation = {
+export const TypesCell = ({ typeNames, types }: TypesCellProps): React.JSX.Element => {
+	if (typeNames.length > 1) {
+		let damageRelation: DamageRelation = {
 			noDamageFrom: [],
 			quarterDamageFrom: [],
 			halfDamageFrom: [],
@@ -79,7 +23,20 @@ export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Ele
 			quadrupleDamageFrom: [],
 		};
 
-		const TypeBoxes = typeStrings.map((typeName: keyof Types, index: number) => (
+		const typesToGetDamageRelation = [];
+		for (const currentTypeName of typeNames) {
+			for (const currentType of types) {
+				if (currentTypeName === currentType.name) {
+					typesToGetDamageRelation.push(currentType);
+				}
+			}
+		}
+
+		if (typesToGetDamageRelation.length > 1) {
+			damageRelation = getTypesDamageRelation(typesToGetDamageRelation);
+		}
+
+		const TypeBoxes = typeNames.map((typeName: keyof Types, index: number) => (
 			<Box
 				sx={{
 					width: '40%',
@@ -90,64 +47,6 @@ export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Ele
 				<Typography variant='subtitle2' my={1} align='center'>{capitalizeFirstLetter(typeName)}</Typography>
 			</Box>
 		));
-
-		for (const typeName of typeStrings) {
-			for (const item of types) {
-				if (item.name === typeName) {
-					for (const currentType of item.doubleDamageFrom) {
-						if (!damageRelation.doubleDamageFrom.includes(currentType)) {
-							damageRelation.doubleDamageFrom.push(currentType);
-						} else {
-							damageRelation.doubleDamageFrom = damageRelation.doubleDamageFrom.filter((type) => type !== currentType);
-
-							if (damageRelation.quadrupleDamageFrom !== undefined) {
-								damageRelation.quadrupleDamageFrom.push(currentType);
-							} else {
-								damageRelation.quadrupleDamageFrom = [];
-							}
-						}
-					}
-
-					for (const currentType of item.halfDamageFrom) {
-						if (!damageRelation.halfDamageFrom.includes(currentType)) {
-							damageRelation.halfDamageFrom.push(currentType);
-						} else {
-							damageRelation.halfDamageFrom = damageRelation.halfDamageFrom.filter((type) => type !== currentType);
-
-							if (damageRelation.quarterDamageFrom !== undefined) {
-								damageRelation.quarterDamageFrom.push(currentType);
-							} else {
-								damageRelation.quarterDamageFrom = [];
-							}
-						}
-					}
-
-					damageRelation.noDamageFrom = item.noDamageFrom;
-				}
-			}
-		}
-
-		const neutralTypes = damageRelation.doubleDamageFrom.filter((type) => damageRelation.halfDamageFrom.includes(type));
-
-		for (const neutralType of neutralTypes) {
-			damageRelation.doubleDamageFrom = damageRelation.doubleDamageFrom.filter((type) => type !== neutralType);
-			damageRelation.halfDamageFrom = damageRelation.halfDamageFrom.filter((type) => type !== neutralType);
-		}
-
-		for (const immuneType of damageRelation.noDamageFrom) {
-			if (damageRelation.quadrupleDamageFrom !== undefined && damageRelation.quadrupleDamageFrom.includes(immuneType)) {
-				damageRelation.quadrupleDamageFrom = damageRelation.quadrupleDamageFrom.filter((type) => type !== immuneType);
-			}
-			if (damageRelation.doubleDamageFrom.includes(immuneType)) {
-				damageRelation.doubleDamageFrom = damageRelation.doubleDamageFrom.filter((type) => type !== immuneType);
-			}
-			if (damageRelation.halfDamageFrom.includes(immuneType)) {
-				damageRelation.halfDamageFrom = damageRelation.halfDamageFrom.filter((type) => type !== immuneType);
-			}
-			if (damageRelation.quarterDamageFrom !== undefined && damageRelation.quarterDamageFrom.includes(immuneType)) {
-				damageRelation.quarterDamageFrom = damageRelation.quarterDamageFrom.filter((type) => type !== immuneType);
-			}
-		}
 
 		return (
 			<PopupState variant='popover' popupId='doubleTypesPopup'>
@@ -164,7 +63,16 @@ export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Ele
 								horizontal: 'center',
 							}}
 						>
-							{DamageRelationContent(damageRelation)}
+							<Paper
+								elevation={5}
+								sx={{
+									backgroundColor: '#B8314F',
+									p: 2,
+									maxWidth: '431px'
+								}}
+							>
+								{DamageRelationContent(damageRelation)}
+							</Paper>
 						</HoverPopover>
 						<Box
 							{...bindHover(popupState)}
@@ -182,7 +90,7 @@ export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Ele
 			</PopupState>
 		);
 	} else {
-		const typeName = typeStrings[0] as keyof Types;
+		const typeName = typeNames[0] as keyof Types;
 		let damageRelation: DamageRelation = {
 			noDamageFrom: [],
 			halfDamageFrom: [],

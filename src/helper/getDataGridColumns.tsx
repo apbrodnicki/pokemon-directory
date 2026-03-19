@@ -54,7 +54,7 @@ export const getDataGridColumns = ({ abilitiesWithDescriptions, types }: getData
 			headerAlign: 'center',
 			align: 'center',
 			display: 'flex',
-			renderCell: (param) => <TypesCell typeStrings={param.value} types={types} />,
+			renderCell: (param) => <TypesCell typeNames={param.value} types={types} />,
 			renderHeader: () => <Typography variant='subtitle1'>Types</Typography>
 		},
 		{

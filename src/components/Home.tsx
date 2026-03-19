@@ -39,9 +39,9 @@ export const Home = (): React.JSX.Element => {
 						justifyContent: 'center',
 						alignItems: 'center'
 					}}>
-					<Box p={5}>
-						<Typography align='center'>
-							Add Pokémon to learn more about them or lookup information about abilities/items/moves!
+					<Box p={3}>
+						<Typography variant='subtitle2' align='center'>
+							Add Pokémon to learn more about them or lookup information about abilities/items/moves/types!
 						</Typography>
 					</Box>
 				</Paper>

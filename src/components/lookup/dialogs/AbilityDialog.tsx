@@ -31,7 +31,7 @@ export const AbilityDialog = (
 			}}
 		>
 			<DialogTitle textAlign='center'>
-				{formatName(Object.keys(ability)[0])} (Ability)
+				{formatName(Object.keys(ability)[0])}
 			</DialogTitle>
 			<Divider textAlign='left'>
 				<Typography variant='subtitle1'>Description</Typography>

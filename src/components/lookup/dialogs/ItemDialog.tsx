@@ -32,7 +32,7 @@ export const ItemDialog = (
 		>
 			<Box display='flex' justifyContent='center' alignItems='center'>
 				<DialogTitle textAlign='center'>
-					{item.name} (Item)
+					{item.name}
 				</DialogTitle>
 				<Box
 					component='img'

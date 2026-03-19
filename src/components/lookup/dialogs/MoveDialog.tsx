@@ -33,7 +33,7 @@ export const MoveDialog = (
 		>
 			<Box display='flex' justifyContent='center' alignItems='center' flexDirection='column'>
 				<DialogTitle textAlign='center'>
-					{move.name} (Move)
+					{move.name}
 				</DialogTitle>
 				<Box display='flex' justifyContent='center' alignItems='center' width='100%' pb={2}>
 					<Box

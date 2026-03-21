@@ -1,4 +1,4 @@
-import { Box, CssBaseline, ThemeProvider } from '@mui/material';
+import { Box } from '@mui/material';
 import pokeballIcon from 'assets/pokeball-icon.png';
 import { Footer } from 'components/Footer';
 import { Header } from 'components/Header';
@@ -11,7 +11,6 @@ import 'css/App.css';
 import { runnerPokemon } from 'data';
 import React, { useEffect, useState } from 'react';
 import { useOutlet } from 'react-router-dom';
-import { theme } from 'theme';
 
 export const App = (): React.JSX.Element => {
 	const outlet = useOutlet();
@@ -31,24 +30,21 @@ export const App = (): React.JSX.Element => {
 	}, [pokemonList]);
 
 	return (
-		<ThemeProvider theme={theme}>
-			<CssBaseline />
-			<Box id='pokemon-directory' sx={{ cursor: `url(${pokeballIcon}), auto` }}>
-				<SnackbarContext.Provider value={{ snackbarOpen, setSnackbarOpen, snackbarMessage, setSnackbarMessage, snackbarColor, setSnackbarColor }}>
-					<PokemonListContext.Provider value={{ pokemonList, setPokemonList }}>
-						<Runner leftPokemon={runnerPokemon.topLeft} rightPokemon={runnerPokemon.topRight}>
-							<Header />
-						</Runner>
-						{outlet ?? (
-							<Home />
-						)}
-						<CustomSnackbar />
-						<Runner leftPokemon={runnerPokemon.bottomLeft} rightPokemon={runnerPokemon.bottomRight}>
-							<Footer />
-						</Runner>
-					</PokemonListContext.Provider>
-				</SnackbarContext.Provider>
-			</Box>
-		</ThemeProvider>
+		<Box id='pokemon-directory' sx={{ cursor: `url(${pokeballIcon}), auto` }}>
+			<SnackbarContext.Provider value={{ snackbarOpen, setSnackbarOpen, snackbarMessage, setSnackbarMessage, snackbarColor, setSnackbarColor }}>
+				<PokemonListContext.Provider value={{ pokemonList, setPokemonList }}>
+					<Runner leftPokemon={runnerPokemon.topLeft} rightPokemon={runnerPokemon.topRight}>
+						<Header />
+					</Runner>
+					{outlet ?? (
+						<Home />
+					)}
+					<CustomSnackbar />
+					<Runner leftPokemon={runnerPokemon.bottomLeft} rightPokemon={runnerPokemon.bottomRight}>
+						<Footer />
+					</Runner>
+				</PokemonListContext.Provider>
+			</SnackbarContext.Provider>
+		</Box>
 	);
 };

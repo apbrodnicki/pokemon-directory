@@ -1,24 +1,38 @@
 import { Box, Typography } from '@mui/material';
 import { typeColors } from 'data';
 import { capitalizeFirstLetter } from 'helper/helper';
-import type { DamageRelation, Types } from 'models/models';
+import type { DamageRelationFrom, DamageRelationTo, Types } from 'models/models';
 
-export const DamageRelationContent = (damageRelation: DamageRelation): React.JSX.Element => (
+export const DamageRelationFromContent = (damageRelationFrom: DamageRelationFrom): React.JSX.Element => (
 	<>
-		{damageRelation.noDamageFrom.length > 0 && (
-			DamageRelationElement('Immune to (0x):', damageRelation.noDamageFrom)
+		{damageRelationFrom.noDamageFrom.length > 0 && (
+			DamageRelationElement('Immune to (0x):', damageRelationFrom.noDamageFrom)
 		)}
-		{damageRelation.quarterDamageFrom !== undefined && damageRelation.quarterDamageFrom.length > 0 && (
-			DamageRelationElement('Strongly resists (.25x):', damageRelation.quarterDamageFrom)
+		{damageRelationFrom.quarterDamageFrom !== undefined && damageRelationFrom.quarterDamageFrom.length > 0 && (
+			DamageRelationElement('Strongly resists (.25x):', damageRelationFrom.quarterDamageFrom)
 		)}
-		{damageRelation.halfDamageFrom.length > 0 && (
-			DamageRelationElement('Resists (.5x):', damageRelation.halfDamageFrom)
+		{damageRelationFrom.halfDamageFrom.length > 0 && (
+			DamageRelationElement('Resists (.5x):', damageRelationFrom.halfDamageFrom)
 		)}
-		{damageRelation.doubleDamageFrom.length > 0 && (
-			DamageRelationElement('Weak to (2x):', damageRelation.doubleDamageFrom)
+		{damageRelationFrom.doubleDamageFrom.length > 0 && (
+			DamageRelationElement('Weak to (2x):', damageRelationFrom.doubleDamageFrom)
 		)}
-		{damageRelation.quadrupleDamageFrom !== undefined && damageRelation.quadrupleDamageFrom.length > 0 && (
-			DamageRelationElement('Very weak to (4x):', damageRelation.quadrupleDamageFrom)
+		{damageRelationFrom.quadrupleDamageFrom !== undefined && damageRelationFrom.quadrupleDamageFrom.length > 0 && (
+			DamageRelationElement('Very weak to (4x):', damageRelationFrom.quadrupleDamageFrom)
+		)}
+	</>
+);
+
+export const DamageRelationToContent = (damageRelationTo: DamageRelationTo): React.JSX.Element => (
+	<>
+		{damageRelationTo.noDamageTo !== undefined && damageRelationTo.noDamageTo.length > 0 && (
+			DamageRelationElement('No effect (0x):', damageRelationTo.noDamageTo)
+		)}
+		{damageRelationTo.halfDamageTo !== undefined && damageRelationTo.halfDamageTo.length > 0 && (
+			DamageRelationElement('Not very effective (.5x):', damageRelationTo.halfDamageTo)
+		)}
+		{damageRelationTo.doubleDamageTo !== undefined && damageRelationTo.doubleDamageTo.length > 0 && (
+			DamageRelationElement('Super effective (2x):', damageRelationTo.doubleDamageTo)
 		)}
 	</>
 );

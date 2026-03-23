@@ -89,7 +89,7 @@ export const filterTypeData = (type: GenericType): Type => {
 		half_damage_from: [],
 		half_damage_to: [],
 		double_damage_from: [],
-		double_damage_to: [],
+		double_damage_to: []
 	};
 
 	for (const relation in type.damage_relations) {
@@ -100,8 +100,11 @@ export const filterTypeData = (type: GenericType): Type => {
 
 	const convertedDamageRelation: DamageRelation = {
 		noDamageFrom: damageRelation.no_damage_from,
+		noDamageTo: damageRelation.no_damage_to,
 		halfDamageFrom: damageRelation.half_damage_from,
+		halfDamageTo: damageRelation.half_damage_to,
 		doubleDamageFrom: damageRelation.double_damage_from,
+		doubleDamageTo: damageRelation.double_damage_to
 	};
 
 	return {

@@ -2,9 +2,9 @@ import { Box, DialogContent, DialogTitle, Divider, Typography } from '@mui/mater
 import { useFetchTypes } from 'api/types/useFetchTypes';
 import { ImagesTypes } from 'assets';
 import { StyledDialog } from 'components/custom/Styles';
-import { DamageRelationContent } from 'components/DamageRelationChart';
-import { getTypesDamageRelation } from 'helper/getTypesDamageRelation';
-import type { DamageRelation, Types } from 'models/models';
+import { DamageRelationFromContent, DamageRelationToContent } from 'components/DamageRelationChart';
+import { getDoubleTypeDamageRelationFrom } from 'helper/getDoubleTypeDamageRelationFrom';
+import type { DamageRelationFrom, DamageRelationTo, Types } from 'models/models';
 import React from 'react';
 
 interface TypesDialogProps {
@@ -24,14 +24,33 @@ export const TypesDialog = (
 		return <></>;
 	}
 
-	let damageRelation: DamageRelation = {
-		noDamageFrom: types[0].noDamageFrom,
-		halfDamageFrom: types[0].halfDamageFrom,
-		doubleDamageFrom: types[0].doubleDamageFrom
+	let damageRelationFrom: DamageRelationFrom = {
+		noDamageFrom: [],
+		quarterDamageFrom: [],
+		halfDamageFrom: [],
+		doubleDamageFrom: [],
+		quadrupleDamageFrom: []
+	};
+	let damageRelationTo: DamageRelationTo = {
+		noDamageTo: [],
+		halfDamageTo: [],
+		doubleDamageTo: []
 	};
 
 	if (types.length === 2) {
-		damageRelation = getTypesDamageRelation(types);
+		damageRelationFrom = getDoubleTypeDamageRelationFrom(types);
+	} else {
+		const {
+			noDamageFrom,
+			noDamageTo,
+			halfDamageFrom,
+			halfDamageTo,
+			doubleDamageFrom,
+			doubleDamageTo
+		} = types[0];
+
+		damageRelationFrom = { noDamageFrom, halfDamageFrom, doubleDamageFrom };
+		damageRelationTo = { noDamageTo, halfDamageTo, doubleDamageTo };
 	}
 
 	const onClose = (): void => {
@@ -65,11 +84,21 @@ export const TypesDialog = (
 				</Box>
 			</DialogTitle>
 			<Divider textAlign='left'>
-				<Typography variant='subtitle1'>Type Chart</Typography>
+				<Typography variant='subtitle1'>Defensive Type Chart</Typography>
 			</Divider>
 			<DialogContent>
-				{DamageRelationContent(damageRelation)}
+				{DamageRelationFromContent(damageRelationFrom)}
 			</DialogContent>
+			{types.length === 1 && (
+				<>
+					<Divider textAlign='left'>
+						<Typography variant='subtitle1'>Offensive Type Chart</Typography>
+					</Divider>
+					<DialogContent>
+						{DamageRelationToContent(damageRelationTo)}
+					</DialogContent>
+				</>
+			)}
 		</StyledDialog>
 	);
 };

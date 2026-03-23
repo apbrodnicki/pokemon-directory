@@ -1,11 +1,11 @@
 import { Box, Paper, Typography } from '@mui/material';
-import { DamageRelationContent } from 'components/DamageRelationChart';
+import { DamageRelationFromContent } from 'components/DamageRelationChart';
 import { typeColors } from 'data';
-import { getTypesDamageRelation } from 'helper/getTypesDamageRelation';
+import { getDoubleTypeDamageRelationFrom } from 'helper/getDoubleTypeDamageRelationFrom';
 import { capitalizeFirstLetter } from 'helper/helper';
 import PopupState, { bindHover, bindPopover } from 'material-ui-popup-state';
 import HoverPopover from 'material-ui-popup-state/HoverPopover';
-import type { DamageRelation, Type, Types } from 'models/models';
+import type { DamageRelationFrom, Type, Types } from 'models/models';
 import React from 'react';
 
 interface TypesCellProps {
@@ -14,8 +14,8 @@ interface TypesCellProps {
 }
 
 export const TypesCell = ({ typeNames, types }: TypesCellProps): React.JSX.Element => {
-	if (typeNames.length > 1) {
-		let damageRelation: DamageRelation = {
+	if (typeNames.length === 2) {
+		let damageRelationFrom: DamageRelationFrom = {
 			noDamageFrom: [],
 			quarterDamageFrom: [],
 			halfDamageFrom: [],
@@ -32,8 +32,8 @@ export const TypesCell = ({ typeNames, types }: TypesCellProps): React.JSX.Eleme
 			}
 		}
 
-		if (typesToGetDamageRelation.length > 1) {
-			damageRelation = getTypesDamageRelation(typesToGetDamageRelation);
+		if (typesToGetDamageRelation.length === 2) {
+			damageRelationFrom = getDoubleTypeDamageRelationFrom(typesToGetDamageRelation);
 		}
 
 		const TypeBoxes = typeNames.map((typeName: keyof Types, index: number) => (
@@ -71,7 +71,7 @@ export const TypesCell = ({ typeNames, types }: TypesCellProps): React.JSX.Eleme
 									maxWidth: '431px'
 								}}
 							>
-								{DamageRelationContent(damageRelation)}
+								{DamageRelationFromContent(damageRelationFrom)}
 							</Paper>
 						</HoverPopover>
 						<Box
@@ -91,17 +91,14 @@ export const TypesCell = ({ typeNames, types }: TypesCellProps): React.JSX.Eleme
 		);
 	} else {
 		const typeName = typeNames[0] as keyof Types;
-		let damageRelation: DamageRelation = {
-			noDamageFrom: [],
-			halfDamageFrom: [],
-			doubleDamageFrom: [],
-		};
+		const currentType = types.find((type) => type.name === typeName);
 
-		for (const currentType of types) {
-			if (currentType.name === typeName) {
-				damageRelation = currentType;
-			}
+		if (currentType == undefined) {
+			return <></>;
 		}
+
+		const { noDamageFrom, halfDamageFrom, doubleDamageFrom } = currentType;
+		const damageRelationFrom: DamageRelationFrom = { noDamageFrom, halfDamageFrom, doubleDamageFrom };
 
 		return (
 			<PopupState variant='popover' popupId='singleTypePopup'>
@@ -118,7 +115,16 @@ export const TypesCell = ({ typeNames, types }: TypesCellProps): React.JSX.Eleme
 								horizontal: 'center',
 							}}
 						>
-							{DamageRelationContent(damageRelation)}
+							<Paper
+								elevation={5}
+								sx={{
+									backgroundColor: '#B8314F',
+									p: 2,
+									maxWidth: '431px'
+								}}
+							>
+								{DamageRelationFromContent(damageRelationFrom)}
+							</Paper>
 						</HoverPopover>
 						<Box
 							{...bindHover(popupState)}

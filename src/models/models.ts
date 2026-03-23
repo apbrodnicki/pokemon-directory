@@ -16,16 +16,24 @@ export interface Stats {
 	total: number;
 }
 
-export interface Type extends DamageRelation {
-	name: string;
-}
-
-export interface DamageRelation {
+export interface DamageRelationFrom {
 	noDamageFrom: string[];
 	quarterDamageFrom?: string[];
 	halfDamageFrom: string[];
 	doubleDamageFrom: string[];
 	quadrupleDamageFrom?: string[];
+}
+
+export interface DamageRelationTo {
+	noDamageTo: string[];
+	halfDamageTo: string[];
+	doubleDamageTo: string[];
+}
+
+export type DamageRelation = DamageRelationFrom & DamageRelationTo;
+
+export interface Type extends DamageRelation {
+	name: string;
 }
 
 export interface Types {

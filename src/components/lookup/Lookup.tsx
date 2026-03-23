@@ -129,11 +129,14 @@ export const Lookup = (): React.JSX.Element => {
 				setItem={setItem}
 				isItemDialogOpen={isItemDialogOpen}
 			/>
-			<MoveDialog
-				move={move}
-				setMove={setMove}
-				isMoveDialogOpen={isMoveDialogOpen}
-			/>
+			{isMoveDialogOpen && (
+				<MoveDialog
+					move={move}
+					setMove={setMove}
+					isMoveDialogOpen={isMoveDialogOpen}
+					setIsLoading={setIsLookupLoading}
+				/>
+			)}
 			{isTypesDialogOpen && (
 				<TypesDialog
 					typesInput={typesInput}

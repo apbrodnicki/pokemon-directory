@@ -1,20 +1,33 @@
 import { Box, DialogContent, DialogContentText, DialogTitle, Divider, Typography } from '@mui/material';
+import { useFetchTypes } from 'api/types/useFetchTypes';
 import { ImagesDamageClasses, ImagesTypes } from 'assets/index.ts';
 import { StyledDialog } from 'components/custom/Styles';
+import { DamageRelationToContent } from 'components/DamageRelationChart';
 import { defaultMove, typeColors } from 'data';
 import { capitalizeFirstLetter } from 'helper/helper';
-import type { Move, Types } from 'models/models';
+import type { DamageRelationTo, Move, Types } from 'models/models';
 import React from 'react';
 
 interface MoveDialogProps {
 	move: Move;
 	setMove: React.Dispatch<React.SetStateAction<Move>>;
 	isMoveDialogOpen: boolean;
+	setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const MoveDialog = (
-	{ move, setMove, isMoveDialogOpen }: MoveDialogProps
+	{ move, setMove, isMoveDialogOpen, setIsLoading }: MoveDialogProps
 ): React.JSX.Element => {
+	const types = useFetchTypes({ typesList: [move.type], setIsLoadingTypes: setIsLoading });
+	const type = types[0];
+
+	if (!type) {
+		return <></>;
+	}
+
+	const { noDamageTo, halfDamageTo, doubleDamageTo } = type;
+	const damageRelationTo: DamageRelationTo = { noDamageTo, halfDamageTo, doubleDamageTo };
+
 	const onClose = (): void => {
 		setMove(defaultMove);
 	};
@@ -148,6 +161,12 @@ export const MoveDialog = (
 					</DialogContent>
 				</>
 			)}
+			<Divider textAlign='left'>
+				<Typography variant='subtitle1'>Offensive Type Chart</Typography>
+			</Divider>
+			<DialogContent>
+				{DamageRelationToContent(damageRelationTo)}
+			</DialogContent>
 		</StyledDialog>
 	);
 };

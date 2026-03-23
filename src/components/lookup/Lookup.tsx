@@ -64,6 +64,14 @@ export const Lookup = (): React.JSX.Element => {
 			return;
 		}
 
+		if (lookupType === 'types' && typesInput.length === 0) {
+			setSnackbarMessage('Error: Please add a type.');
+			setSnackbarColor('error');
+			setSnackbarOpen(true);
+
+			return;
+		}
+
 		if (lookupType !== 'types') {
 			setIsLookupLoading(true);
 		}

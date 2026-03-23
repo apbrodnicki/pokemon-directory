@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import { typeColors } from 'data';
+import { alternateTypeColors } from 'data';
 import { capitalizeFirstLetter } from 'helper/helper';
 import type { DamageRelationFrom, DamageRelationTo, Types } from 'models/models';
 
@@ -48,7 +48,7 @@ const DamageRelationElement = (title: string, damageRelationTypes: string[]): Re
 			{damageRelationTypes.map((type: string, index: number) => (
 				<Box
 					key={index}
-					bgcolor={typeColors[type as keyof Types]}
+					bgcolor={alternateTypeColors[type as keyof Types]}
 					sx={{ width: { xs: '50%', sm: '33%' } }}
 				>
 					<Box

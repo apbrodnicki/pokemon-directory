@@ -21,6 +21,27 @@ export const typeColors: Types = {
 	fairy: '#EE99AC',
 };
 
+export const alternateTypeColors: Types = {
+	normal: '#9fa19f',
+	fire: '#e62829',
+	fighting: '#ff8000',
+	water: '#62afec',
+	flying: '#81b9ef',
+	grass: '#42a129',
+	poison: '#9040cc',
+	electric: '#fac000',
+	ground: '#915121',
+	psychic: '#ef4179',
+	rock: '#afa981',
+	ice: '#3fd8ff',
+	bug: '#91a119',
+	dragon: '#5061e1',
+	ghost: '#704170',
+	dark: '#50413f',
+	steel: '#60a1b8',
+	fairy: '#f170f1',
+};
+
 export const types: (keyof Types)[] = [
 	'normal',
 	'fire',

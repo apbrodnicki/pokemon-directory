@@ -1,6 +1,6 @@
 import { Box, Paper, Typography } from '@mui/material';
 import { DamageRelationFromContent } from 'components/DamageRelationChart';
-import { typeColors } from 'data';
+import { alternateTypeColors } from 'data';
 import { getDoubleTypeDamageRelationFrom } from 'helper/getDoubleTypeDamageRelationFrom';
 import { capitalizeFirstLetter } from 'helper/helper';
 import PopupState, { bindHover, bindPopover } from 'material-ui-popup-state';
@@ -40,7 +40,7 @@ export const TypesCell = ({ typeNames, types }: TypesCellProps): React.JSX.Eleme
 			<Box
 				sx={{
 					width: '40%',
-					backgroundColor: typeColors[typeName],
+					backgroundColor: alternateTypeColors[typeName],
 				}}
 				key={index}
 			>
@@ -130,7 +130,7 @@ export const TypesCell = ({ typeNames, types }: TypesCellProps): React.JSX.Eleme
 							{...bindHover(popupState)}
 							sx={{
 								width: '40%',
-								backgroundColor: typeColors[typeName],
+								backgroundColor: alternateTypeColors[typeName],
 							}}
 						>
 							<Typography variant='subtitle2' my={1} align='center'>{capitalizeFirstLetter(typeName)}</Typography>

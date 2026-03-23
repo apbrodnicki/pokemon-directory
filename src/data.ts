@@ -25,7 +25,7 @@ export const alternateTypeColors: Types = {
 	normal: '#9fa19f',
 	fire: '#e62829',
 	fighting: '#ff8000',
-	water: '#62afec',
+	water: '#2980ef',
 	flying: '#81b9ef',
 	grass: '#42a129',
 	poison: '#9040cc',

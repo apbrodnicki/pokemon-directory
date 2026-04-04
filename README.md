@@ -9,7 +9,7 @@ The backend data is supplied by [PokéApi](https://pokeapi.co/).
 
 Assets are supplied by [Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/Main_Page).
 
-You may view the website [here](https://pokemon-directory.apbrodnicki.com).
+View the website [here](https://pokemon-directory.apbrodnicki.com)!
 
 ![Home Page](src/assets/readme/home-page.png)
 
